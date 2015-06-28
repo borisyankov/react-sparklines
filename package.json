@@ -1,0 +1,32 @@
+{
+  "name": "react-sparklines",
+  "version": "0.0.1",
+  "description": "Beautiful and expressive Sparklines React component",
+  "main": "index.js",
+  "directories": {
+    "src": "src/"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borisyankov/react-sparklines.git"
+  },
+  "author": "Boris Yankov <borisyankov@gmail.com> (https://github.com/borisyankov)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/borisyankov/react-sparklines/issues"
+  },
+  "homepage": "https://github.com/borisyankov/react-sparklines#readme",
+  "devDependencies": {
+    "babel-core": "^5.6.15",
+    "babel-loader": "^5.2.2",
+    "jsx-loader": "^0.13.2",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.10.0"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
+}
