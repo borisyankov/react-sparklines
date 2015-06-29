@@ -30,6 +30,7 @@ class SparklinesBars extends React.Component {
             <g>
                 {points.map((p, i) =>
                     <rect
+                        key={i}
                         x={p.x - 10} y={p.y}
                         width="20" height={50 - p.y}
                         stroke={this.props.stroke}
@@ -60,6 +61,19 @@ class Sparklines extends React.Component {
         return this.props.data[i];
     }
 
+    lastDirection() {
+        console.log('1');
+        let data = this.props.data;
+        console.log('2');
+        if (data.length <= 1) {
+            return 0;
+        }
+        console.log('3');
+        let diff = data[data.length - 1] - data[data.length - 2];
+        console.log(diff, diff ? diff < 0 ? -1 : 1 : 0);
+        return diff ? diff < 0 ? -1 : 1 : 0;
+    }
+
     render() {
 
         let { data, limit } = this.props;
@@ -78,6 +92,12 @@ class Sparklines extends React.Component {
                 y: this.getY(i)
             }
         });
+
+        let lastSpotColors = {
+            '-1': 'red',
+            '0': 'black',
+            '1': 'green'
+        }
 
         return (
             <svg preserveAspectRatio="xMinYMin meet">
@@ -102,7 +122,7 @@ class Sparklines extends React.Component {
                             cx={points[points.length - 1].x}
                             cy={points[points.length - 1].y}
                             r={this.props.lineWidth * 3}
-                            fill={this.props.endSpotColor} />
+                            fill={this.props.endSpotColor || lastSpotColors[this.lastDirection()] } />
                     </g>
                 }
             </svg>
@@ -121,8 +141,7 @@ Sparklines.defaultProps = {
     limit: 100,
     lineColor: 'black',
     lineWidth: 1,
-    fill: 'red',
-    endSpotColor: 'red'
+    fill: 'red'
 };
 
 export default Sparklines;
