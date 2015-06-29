@@ -29,7 +29,9 @@ class SparklinesBars extends React.Component {
         return (
             <g>
                 {points.map((p, i) =>
-                    <rect x={p.x - 10} y={p.y} width="20" height={50 - p.y}
+                    <rect
+                        x={p.x - 10} y={p.y}
+                        width="20" height={50 - p.y}
                         stroke={this.props.stroke}
                         strokeWidth={this.props.strokeWidth}
                         fill={this.props.fill}
@@ -80,14 +82,28 @@ class Sparklines extends React.Component {
         return (
             <svg preserveAspectRatio="xMinYMin meet">
                 {this.props.bars
-                    ? <SparklinesBars points={points}
+                    ? <SparklinesBars
+                        points={points}
                         stroke={this.props.lineColor}
                         strokeWidth={this.props.lineWidth}
                         fill={this.props.fill} />
-                    : <SparklinesLine points={points}
-                        stroke={this.props.lineColor}
-                        strokeWidth={this.props.lineWidth}
-                        fill={this.props.fill} />
+                    : <g>
+                        <SparklinesLine
+                            points={points}
+                            stroke={this.props.lineColor}
+                            strokeWidth={this.props.lineWidth}
+                            fill={this.props.fill} />
+                        <circle
+                            cx={points[0].x}
+                            cy={points[0].y}
+                            r={this.props.lineWidth * 3}
+                            fill={this.props.endSpotColor} />
+                        <circle
+                            cx={points[points.length - 1].x}
+                            cy={points[points.length - 1].y}
+                            r={this.props.lineWidth * 3}
+                            fill={this.props.endSpotColor} />
+                    </g>
                 }
             </svg>
         );
@@ -105,7 +121,8 @@ Sparklines.defaultProps = {
     limit: 100,
     lineColor: 'black',
     lineWidth: 1,
-    fill: 'red'
+    fill: 'red',
+    endSpotColor: 'red'
 };
 
 export default Sparklines;
