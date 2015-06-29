@@ -1,9 +1,17 @@
 import React from 'react';
 
 class Sparklines extends React.Component {
-    
+
     constructor (props) {
         super(props);
+    }
+
+    getX(i) {
+        return i * 20;
+    }
+
+    getY(i) {
+        return this.props.data[i];
     }
 
     render() {
@@ -17,14 +25,25 @@ class Sparklines extends React.Component {
         if (limit && limit < data.length) {
             data = data.slice(data.length - limit);
         }
+
+        let points = data.map((d, i) => {
+            return {
+                x: this.getX(i),
+                y: this.getY(i)
+            }
+        });
+
+        let svgPath = 'M' + points[0].x + ' ' + points[0].y +
+            points.map((p, i) => ' L ' + points[i].x + ' ' + points[i].y) +
+            ' L' + points[points.length - 1].x + ' 10000 L0 10000 L0 ' + points[0].y;
+
         return (
             <svg>
-                {data.map((p, i) => <line
-                                    x1={i * 10} y1={p}
-                                    x2={(i + 1) * 10} y2={p}
-                                    stroke="black"
-                                    stroke-width="2"/>
-                )}
+                <path d={svgPath}
+                    stroke={this.props.lineColor}
+                    strokeWidth={this.props.lineWidth}
+                    fill={this.props.fill}
+                    fillOpacity='0.1' />
             </svg>
         );
     }
@@ -32,11 +51,17 @@ class Sparklines extends React.Component {
 
 Sparklines.propTypes = {
     data: React.PropTypes.array,
-    limit: React.PropTypes.number
+    limit: React.PropTypes.number,
+    lineColor: React.PropTypes.string,
+    lineWidth: React.PropTypes.number,
+    fill: React.PropTypes.string
 };
 Sparklines.defaultProps = {
     data: [],
-    limit: 100
+    limit: 100,
+    lineColor: 'black',
+    lineWidth: 1,
+    fill: 'red'
 };
 
 export default Sparklines;
