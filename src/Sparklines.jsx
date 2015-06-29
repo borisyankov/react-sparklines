@@ -1,50 +1,7 @@
 import React from 'react';
-
-class SparklinesLine extends React.Component {
-    render() {
-
-        let points = this.props.points;
-        let svgPath = 'M' + points[0].x + ' ' + points[0].y +
-            points.map((p, i) => ' L ' + points[i].x + ' ' + points[i].y) +
-            ' L' + points[points.length - 1].x + ' 10000 L0 10000 L0 ' + points[0].y;
-
-        return (
-            <path d={svgPath}
-                stroke={this.props.stroke}
-                strokeWidth={this.props.strokeWidth}
-                fill={this.props.fill}
-                fillOpacity='0.1' />
-        )
-    }
-}
-SparklinesLine.propTypes = {
-    points: React.PropTypes.array
-};
-
-class SparklinesBars extends React.Component {
-    render() {
-
-        let points = this.props.points;
-
-        return (
-            <g>
-                {points.map((p, i) =>
-                    <rect
-                        key={i}
-                        x={p.x - 10} y={p.y}
-                        width="20" height={50 - p.y}
-                        stroke={this.props.stroke}
-                        strokeWidth={this.props.strokeWidth}
-                        fill={this.props.fill}
-                        fillOpacity='0.1' />
-                )}
-            </g>
-        )
-    }
-}
-SparklinesBars.propTypes = {
-    points: React.PropTypes.array
-};
+import SparklinesLine from './SparklinesLine';
+import SparklinesBars from './SparklinesBars';
+import SparklinesSpots from './SparklinesSpots';
 
 
 class Sparklines extends React.Component {
@@ -53,25 +10,8 @@ class Sparklines extends React.Component {
         super(props);
     }
 
-    getX(i) {
-        return i * 20;
-    }
-
-    getY(i) {
-        return this.props.data[i];
-    }
-
-    lastDirection() {
-        console.log('1');
-        let data = this.props.data;
-        console.log('2');
-        if (data.length <= 1) {
-            return 0;
-        }
-        console.log('3');
-        let diff = data[data.length - 1] - data[data.length - 2];
-        console.log(diff, diff ? diff < 0 ? -1 : 1 : 0);
-        return diff ? diff < 0 ? -1 : 1 : 0;
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.data.some((d, index) => d !== this.props.data[index]);
     }
 
     render() {
@@ -88,16 +28,10 @@ class Sparklines extends React.Component {
 
         let points = data.map((d, i) => {
             return {
-                x: this.getX(i),
-                y: this.getY(i)
+                x: i * 20,
+                y: data[i]
             }
         });
-
-        let lastSpotColors = {
-            '-1': 'red',
-            '0': 'black',
-            '1': 'green'
-        }
 
         return (
             <svg preserveAspectRatio="xMinYMin meet">
@@ -113,16 +47,10 @@ class Sparklines extends React.Component {
                             stroke={this.props.lineColor}
                             strokeWidth={this.props.lineWidth}
                             fill={this.props.fill} />
-                        <circle
-                            cx={points[0].x}
-                            cy={points[0].y}
-                            r={this.props.lineWidth * 3}
-                            fill={this.props.endSpotColor} />
-                        <circle
-                            cx={points[points.length - 1].x}
-                            cy={points[points.length - 1].y}
-                            r={this.props.lineWidth * 3}
-                            fill={this.props.endSpotColor || lastSpotColors[this.lastDirection()] } />
+                        <SparklinesSpots
+                            points={points}
+                            size={this.props.lineWidth * 3}
+                            color={this.props.endSpotColor} />
                     </g>
                 }
             </svg>
