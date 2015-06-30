@@ -11,8 +11,8 @@ class SparklinesBars extends React.Component {
                     <rect
                         key={i}
                         x={p.x - 10} y={p.y}
-                        width="20" height={50 - p.y}
-                        stroke={this.props.stroke}
+                        width="20" height={100 - p.y}
+                        stroke={this.props.color}
                         strokeWidth={this.props.strokeWidth}
                         fill={this.props.fill}
                         fillOpacity='0.1' />

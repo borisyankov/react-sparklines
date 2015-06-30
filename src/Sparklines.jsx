@@ -29,7 +29,7 @@ class Sparklines extends React.Component {
         let points = data.map((d, i) => {
             return {
                 x: i * 20,
-                y: data[i]
+                y: 100 - data[i]
             }
         });
 
@@ -38,13 +38,13 @@ class Sparklines extends React.Component {
                 {this.props.bars
                     ? <SparklinesBars
                         points={points}
-                        stroke={this.props.lineColor}
+                        color={this.props.color}
                         strokeWidth={this.props.lineWidth}
                         fill={this.props.fill} />
                     : <g>
                         <SparklinesLine
                             points={points}
-                            stroke={this.props.lineColor}
+                            color={this.props.color}
                             strokeWidth={this.props.lineWidth}
                             fill={this.props.fill} />
                         <SparklinesSpots
@@ -61,15 +61,15 @@ Sparklines.propTypes = {
     data: React.PropTypes.array,
     limit: React.PropTypes.number,
     bars: false,
-    lineColor: React.PropTypes.string,
+    color: React.PropTypes.string,
     lineWidth: React.PropTypes.number,
     fill: React.PropTypes.string
 };
 Sparklines.defaultProps = {
     limit: 100,
-    lineColor: 'black',
+    color: 'black',
     lineWidth: 1,
-    fill: 'red'
+    fill: 'transparent'
 };
 
 export default Sparklines;

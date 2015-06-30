@@ -11,7 +11,7 @@ class Examples extends React.Component {
         this.setState({
             data: this.state.data.concat([Math.random() * 100])
         });
-        setTimeout(() => this.updater(), 500);
+        setTimeout(() => this.updater(), 300);
     }
 
     constructor(props) {
@@ -21,18 +21,18 @@ class Examples extends React.Component {
     }
 
     componentDidMount() {
-        setTimeout(() => this.updater(), 500);
+        setTimeout(() => this.updater(), 300);
     }
 
     render() {
         return (
             <div>
-                <Sparklines data={this.state.data} limit={10} lineColor="#1c8cdc" fill="#1c8cdc" />
-                <Sparklines data={this.state.data} bars="true" limit={10} lineColor="#0a83d8" fill="#0a83d8" endSpotColor="#0a83d8" />
-                <Sparklines data={this.state.data} limit={10} lineColor="#fa7e17" fill="#fa7e17" endSpotColor="#fa7e17" />
-                <Sparklines data={this.state.data} limit={10} lineColor="#ea485c" fill="#ea485c" endSpotColor="#ea485c" />
-                <Sparklines data={this.state.data} limit={10} lineColor="#56b45d" fill="#56b45d" endSpotColor="#56b45d" />
-                <Sparklines data={this.state.data} limit={10} lineColor="#8e44af" fill="#8e44af" endSpotColor="#8e44af" />
+                <Sparklines data={this.state.data} limit={10} color="#1c8cdc" />
+                <Sparklines data={this.state.data} bars="true" limit={10} color="#0a83d8" fill="#0a83d8" endSpotColor="#0a83d8" />
+                <Sparklines data={this.state.data} limit={10} color="#fa7e17" fill="#fa7e17" endSpotColor="#fa7e17" />
+                <Sparklines data={this.state.data} limit={10} color="#ea485c" fill="#ea485c" endSpotColor="#ea485c" />
+                <Sparklines data={this.state.data} limit={10} color="#56b45d" fill="#56b45d" endSpotColor="#56b45d" />
+                <Sparklines data={this.state.data} limit={10} color="#8e44af" fill="#8e44af" endSpotColor="#8e44af" />
             </div>
         );
     }

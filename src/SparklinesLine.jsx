@@ -4,16 +4,23 @@ class SparklinesLine extends React.Component {
     render() {
 
         let points = this.props.points;
-        let svgPath = 'M' + points[0].x + ' ' + points[0].y +
-            points.map((p, i) => ' L ' + points[i].x + ' ' + points[i].y) +
-            ' L' + points[points.length - 1].x + ' 10000 L0 10000 L0 ' + points[0].y;
+        let linePoints = points
+            .map((p) => [p.x, p.y])
+            .reduce((a, b) => a.concat(b));
+        let fillPoints = linePoints.concat([points[points.length - 1].x, 10000, 0, 10000, 0, points[0].y]);
 
         return (
-            <path d={svgPath}
-                stroke={this.props.stroke}
-                strokeWidth={this.props.strokeWidth}
-                fill={this.props.fill}
-                fillOpacity='0.1' />
+            <g>
+                <polyline points={fillPoints.join(' ')}
+                    stroke='none'
+                    fill={this.props.fill}
+                    fillOpacity='0.1' />
+                <polyline points={linePoints.join(' ')}
+                    stroke={this.props.color}
+                    strokeWidth='2'
+                    strokeLinejoin='round'
+                    fill='none' />
+            </g>
         )
     }
 }

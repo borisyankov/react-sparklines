@@ -7,7 +7,7 @@ class SparklinesSpots extends React.Component {
         if (points.length < 2) {
             return 0;
         }
-        return Math.sign(points[points.length - 1].y - points[points.length - 2].y);
+        return Math.sign(points[points.length - 2].y - points[points.length - 1].y);
     }
 
     render() {
@@ -22,16 +22,18 @@ class SparklinesSpots extends React.Component {
 
         return (
             <g>
-                <circle
-                    cx={points[0].x}
-                    cy={points[0].y}
-                    r={this.props.size}
-                    fill={this.props.endSpotColor} />
+                {!this.props.color
+                    ? {}
+                    : <circle
+                        cx={points[0].x}
+                        cy={points[0].y}
+                        r={this.props.size}
+                        fill={this.props.color} />}
                 <circle
                     cx={points[points.length - 1].x}
                     cy={points[points.length - 1].y}
                     r={this.props.size}
-                    fill={this.props.endSpotColor || lastSpotColors[this.lastDirection()] } />
+                    fill={this.props.color || lastSpotColors[this.lastDirection()] } />
             </g>
         )
     }
