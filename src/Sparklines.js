@@ -3,6 +3,7 @@ import SparklinesLine from './SparklinesLine';
 import SparklinesBars from './SparklinesBars';
 import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
+import DataProcessor from './DataProcessor';
 
 class Sparklines extends React.Component {
 
@@ -26,12 +27,7 @@ class Sparklines extends React.Component {
             data = data.slice(data.length - limit);
         }
 
-        let points = data.map((d, i) => {
-            return {
-                x: i * 20,
-                y: 100 - data[i]
-            }
-        });
+        let points = DataProcessor.dataToPoints(data);
 
         let sparklinesBars = !this.props.bars ? {} :
             <SparklinesBars
@@ -56,11 +52,17 @@ class Sparklines extends React.Component {
                     color={this.props.endSpotColor} />
             </g>
 
+        let sparklinesReferenceLine = this.props.referenceLine ? {} :
+            <SparklinesSpots
+                points={points}
+                size={this.props.lineWidth * 3}
+                color={this.props.endSpotColor} />
+
         return (
             <svg preserveAspectRatio="xMinYMin meet">
                 {sparklinesBars}
                 {sparklinesGroup}
-                <SparklinesReferenceLine points={points} />
+                {sparklinesReferenceLine}
             </svg>
         );
     }
@@ -71,7 +73,8 @@ Sparklines.propTypes = {
     bars: React.PropTypes.bool,
     color: React.PropTypes.string,
     lineWidth: React.PropTypes.number,
-    fill: React.PropTypes.string
+    fill: React.PropTypes.string,
+    referenceLine: React.PropTypes.string
 };
 Sparklines.defaultProps = {
     limit: 100,
