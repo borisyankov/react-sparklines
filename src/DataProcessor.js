@@ -1,9 +1,6 @@
 export default class DataProcessor {
 
-    static dataToPoints(data) {
-
-        let width = 300;
-        let height = 150;
+    static dataToPoints(data, width, height) {
 
         let max = Math.max.apply(Math, data);
         let min = Math.min.apply(Math, data);

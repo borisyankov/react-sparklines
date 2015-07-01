@@ -17,7 +17,7 @@ class Sparklines extends React.Component {
 
     render() {
 
-        let { data, limit } = this.props;
+        let { width, height, data, limit } = this.props;
 
         if (!data || data.length === 0) {
             return;
@@ -27,7 +27,7 @@ class Sparklines extends React.Component {
             data = data.slice(data.length - limit);
         }
 
-        let points = DataProcessor.dataToPoints(data);
+        let points = DataProcessor.dataToPoints(data, width, height);
 
         let sparklinesBars = !this.props.bars ? {} :
             <SparklinesBars
@@ -59,7 +59,7 @@ class Sparklines extends React.Component {
                 color={this.props.endSpotColor} />
 
         return (
-            <svg preserveAspectRatio="xMinYMin meet">
+            <svg width={width} height={height} preserveAspectRatio="xMinYMin meet">
                 {sparklinesBars}
                 {sparklinesGroup}
                 {sparklinesReferenceLine}
@@ -68,6 +68,8 @@ class Sparklines extends React.Component {
     }
 }
 Sparklines.propTypes = {
+    width: React.PropTypes.number,
+    height: React.PropTypes.number,
     data: React.PropTypes.array,
     limit: React.PropTypes.number,
     bars: React.PropTypes.bool,
@@ -77,6 +79,8 @@ Sparklines.propTypes = {
     referenceLine: React.PropTypes.string
 };
 Sparklines.defaultProps = {
+    width: 120,
+    height: 40,
     limit: 100,
     color: 'black',
     lineWidth: 1,
