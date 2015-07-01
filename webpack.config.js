@@ -3,7 +3,7 @@ var webpack = require('webpack'),
 
 module.exports = {
     cache: true,
-    entry: './demo/index',
+    entry: './demo/demo',
     output: {
         path: './demo',
         filename: 'index.js'

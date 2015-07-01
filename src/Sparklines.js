@@ -2,7 +2,7 @@ import React from 'react';
 import SparklinesLine from './SparklinesLine';
 import SparklinesBars from './SparklinesBars';
 import SparklinesSpots from './SparklinesSpots';
-
+import SparklinesReferenceLine from './SparklinesReferenceLine';
 
 class Sparklines extends React.Component {
 
@@ -53,6 +53,7 @@ class Sparklines extends React.Component {
                             color={this.props.endSpotColor} />
                     </g>
                 }
+                <SparklinesReferenceLine points={points} />
             </svg>
         );
     }

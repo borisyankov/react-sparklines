@@ -1,6 +1,7 @@
 import React from 'react';
 
 class SparklinesLine extends React.Component {
+    
     render() {
 
         let points = this.props.points;
