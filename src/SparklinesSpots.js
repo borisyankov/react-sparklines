@@ -20,20 +20,24 @@ class SparklinesSpots extends React.Component {
             '1': 'green'
         }
 
+        let startSpot = !this.props.color
+            ? {}
+            : <circle
+                cx={points[0].x}
+                cy={points[0].y}
+                r={this.props.size}
+                fill={this.props.color} />
+
+        let endSpot = <circle
+                            cx={points[points.length - 1].x}
+                            cy={points[points.length - 1].y}
+                            r={this.props.size}
+                            fill={this.props.color || lastSpotColors[this.lastDirection()] } />
+
         return (
             <g>
-                {!this.props.color
-                    ? {}
-                    : <circle
-                        cx={points[0].x}
-                        cy={points[0].y}
-                        r={this.props.size}
-                        fill={this.props.color} />}
-                <circle
-                    cx={points[points.length - 1].x}
-                    cy={points[points.length - 1].y}
-                    r={this.props.size}
-                    fill={this.props.color || lastSpotColors[this.lastDirection()] } />
+                {startSpot}
+                {endSpot}
             </g>
         )
     }

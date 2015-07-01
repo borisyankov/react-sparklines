@@ -28,7 +28,7 @@ class Examples extends React.Component {
         return (
             <div>
                 <Sparklines data={this.state.data} limit={10} color="#1c8cdc" />
-                <Sparklines data={this.state.data} bars="true" limit={10} color="#0a83d8" fill="#0a83d8" endSpotColor="#0a83d8" />
+                <Sparklines data={this.state.data} bars={true} limit={10} color="#0a83d8" fill="#0a83d8" endSpotColor="#0a83d8" />
                 <Sparklines data={this.state.data} limit={10} color="#fa7e17" fill="#fa7e17" endSpotColor="#fa7e17" />
                 <Sparklines data={this.state.data} limit={10} color="#ea485c" fill="#ea485c" endSpotColor="#ea485c" />
                 <Sparklines data={this.state.data} limit={10} color="#56b45d" fill="#56b45d" endSpotColor="#56b45d" />

@@ -33,26 +33,33 @@ class Sparklines extends React.Component {
             }
         });
 
+        let sparklinesBars = !this.props.bars ? {} :
+            <SparklinesBars
+                points={points}
+                color={this.props.color}
+                strokeWidth={this.props.lineWidth}
+                fill={this.props.fill} />
+
+        let sparklinesLine = points.length < 2 ? {} :
+            <SparklinesLine
+                points={points}
+                color={this.props.color}
+                strokeWidth={this.props.lineWidth}
+                fill={this.props.fill} />
+
+        let sparklinesGroup = this.props.bars ? {} :
+            <g>
+                {sparklinesLine}
+                <SparklinesSpots
+                    points={points}
+                    size={this.props.lineWidth * 3}
+                    color={this.props.endSpotColor} />
+            </g>
+
         return (
             <svg preserveAspectRatio="xMinYMin meet">
-                {this.props.bars
-                    ? <SparklinesBars
-                        points={points}
-                        color={this.props.color}
-                        strokeWidth={this.props.lineWidth}
-                        fill={this.props.fill} />
-                    : <g>
-                        <SparklinesLine
-                            points={points}
-                            color={this.props.color}
-                            strokeWidth={this.props.lineWidth}
-                            fill={this.props.fill} />
-                        <SparklinesSpots
-                            points={points}
-                            size={this.props.lineWidth * 3}
-                            color={this.props.endSpotColor} />
-                    </g>
-                }
+                {sparklinesBars}
+                {sparklinesGroup}
                 <SparklinesReferenceLine points={points} />
             </svg>
         );
@@ -61,7 +68,7 @@ class Sparklines extends React.Component {
 Sparklines.propTypes = {
     data: React.PropTypes.array,
     limit: React.PropTypes.number,
-    bars: false,
+    bars: React.PropTypes.bool,
     color: React.PropTypes.string,
     lineWidth: React.PropTypes.number,
     fill: React.PropTypes.string
