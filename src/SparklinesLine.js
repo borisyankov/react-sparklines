@@ -1,10 +1,14 @@
 import React from 'react';
+import DataProcessor from './DataProcessor';
 
 class SparklinesLine extends React.Component {
-    
+
     render() {
 
-        let points = this.props.points;
+        let { width, height, data, limit } = this.props;
+
+        let points = DataProcessor.dataToPoints(data, width, height, limit);
+
         let linePoints = points
             .map((p) => [p.x, p.y])
             .reduce((a, b) => a.concat(b));
@@ -18,15 +22,27 @@ class SparklinesLine extends React.Component {
                     fillOpacity='0.1' />
                 <polyline points={linePoints.join(' ')}
                     stroke={this.props.color}
-                    strokeWidth='2'
+                    strokeWidth='1'
                     strokeLinejoin='round'
+                    style={{strokeLinejoin: 'round'}}
                     fill='none' />
             </g>
         )
     }
 }
 SparklinesLine.propTypes = {
-    points: React.PropTypes.array
+    width: React.PropTypes.number,
+    height: React.PropTypes.number,
+    data: React.PropTypes.array,
+    color: React.PropTypes.string,
+    fill: React.PropTypes.string
+};
+SparklinesLine.defaultProps = {
+    width: 120,
+    height: 30,
+    data: [],
+    color: 'black',
+    fill: 'transparent'
 };
 
 export default SparklinesLine;

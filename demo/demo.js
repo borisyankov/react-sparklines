@@ -1,5 +1,5 @@
 import React from 'react';
-import Sparklines from '../src/Sparklines';
+import { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots } from '../src/Sparklines';
 
 class Examples extends React.Component {
 
@@ -11,28 +11,67 @@ class Examples extends React.Component {
         this.setState({
             data: this.state.data.concat([Math.random() * 100])
         });
-        setTimeout(() => this.updater(), 300);
+        setTimeout(() => this.updater(), 100);
     }
 
     constructor(props) {
         super(props);
 
-        this.state = { data: [20, 30, 15, 40, 18, 35, 22, 28, 33, 55, 14] };
+        this.state = { data: [0] };
     }
 
     componentDidMount() {
-        setTimeout(() => this.updater(), 300);
+        setTimeout(() => this.updater(), 100);
     }
 
     render() {
+
+        let sampleData = [23.88, 23.68, 24.35, 24.4, 24.39, 24.67, 24.52, 24.75, 24.41, 24.34, 24.18, 24.07, 24.33, 24.21, 24.33, 24.6];
+
         return (
             <div>
-                <Sparklines data={[23.88, 23.68, 24.35, 24.4, 24.39, 24.67, 24.52, 24.75, 24.41, 24.34, 24.18, 24.07, 24.33, 24.21, 24.33, 24.6]} limit={15} color="#1c8cdc" />
-                <Sparklines data={this.state.data} bars={true} limit={10} color="#0a83d8" fill="#0a83d8" endSpotColor="#0a83d8" />
-                <Sparklines data={this.state.data} limit={10} color="#fa7e17" fill="#fa7e17" endSpotColor="#fa7e17" />
-                <Sparklines data={this.state.data} limit={10} color="#ea485c" fill="#ea485c" endSpotColor="#ea485c" />
-                <Sparklines data={this.state.data} limit={10} color="#56b45d" fill="#56b45d" endSpotColor="#56b45d" />
-                <Sparklines data={this.state.data} limit={10} color="#8e44af" fill="#8e44af" endSpotColor="#8e44af" />
+                <h2>Static</h2>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine data={sampleData} limit={15} />
+                    <SparklinesSpots data={sampleData} limit={15} />
+                </Sparklines>
+
+                <Sparklines data={this.state.data} >
+                    <SparklinesLine data={this.state.data} limit={20} color="#1c8cdc" fill="#1c8cdc" />
+                    <SparklinesSpots data={this.state.data} limit={20} />
+                </Sparklines>
+
+                <Sparklines data={this.state.data}>
+                    <SparklinesBars data={this.state.data} limit={10} color="#0a83d8" fill="#0a83d8" />
+                </Sparklines>
+
+                <h2>Colorful</h2>
+                <Sparklines  data={this.state.data} >
+                    <SparklinesLine data={this.state.data} limit={20} color="#1c8cdc" fill="#1c8cdc" />
+                    <SparklinesSpots data={this.state.data} limit={20} color="#1c8cdc" endSpotColor="#1c8cdc" />
+                </Sparklines>
+                <Sparklines data={this.state.data} >
+                    <SparklinesLine data={this.state.data} limit={20} color="#fa7e17" fill="#fa7e17" />
+                </Sparklines>
+                <br />
+                <Sparklines data={this.state.data} >
+                    <SparklinesLine data={this.state.data} limit={20} color="#ea485c" fill="#ea485c" />
+                </Sparklines>
+                <Sparklines data={this.state.data} >
+                    <SparklinesLine data={this.state.data} limit={20} color="#56b45d" fill="#56b45d" />
+                </Sparklines>
+                <br />
+                <Sparklines data={this.state.data} >
+                    <SparklinesLine data={this.state.data} limit={20} color="#8e44af" fill="#8e44af" />
+                </Sparklines>
+                <Sparklines data={this.state.data} >
+                    <SparklinesLine data={this.state.data} limit={20} color="#253e56" fill="#253e56" />
+                </Sparklines>
+
+                <h2>Soundables</h2>
+                <Sparklines data={this.state.data} >
+                    <SparklinesBars data={this.state.data} limit={30} color="transparent" fill="#41c3f9" />
+                </Sparklines>
             </div>
         );
     }
