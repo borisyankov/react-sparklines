@@ -3,6 +3,7 @@ import SparklinesLine from './SparklinesLine';
 import SparklinesBars from './SparklinesBars';
 import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
+import DataProcessor from './DataProcessor';
 
 class Sparklines extends React.Component {
 
@@ -16,11 +17,15 @@ class Sparklines extends React.Component {
 
     render() {
 
-        let { width, height, data } = this.props;
+        let { width, height, data, limit } = this.props;
+
+        let points = DataProcessor.dataToPoints(data, width, height, limit);
 
         return (
-            <svg width={width} height={height} data={data} preserveAspectRatio="xMinYMin meet">
-                {this.props.children}
+            <svg width={width} height={height} preserveAspectRatio="xMinYMin meet">
+                { React.Children.map(this.props.children, function(child) {
+                    return React.cloneElement(child, { points, width, height });
+                })}
             </svg>
         );
     }

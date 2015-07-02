@@ -1,13 +1,10 @@
 import React from 'react';
-import DataProcessor from './DataProcessor';
 
 class SparklinesBars extends React.Component {
 
     render() {
 
-        let { width, height, data, limit } = this.props;
-
-        let points = DataProcessor.dataToPoints(data, width, height, limit);
+        let { points, width, height } = this.props;
 
         return (
             <g>
@@ -26,14 +23,12 @@ class SparklinesBars extends React.Component {
     }
 }
 SparklinesBars.propTypes = {
+    points: React.PropTypes.array,
     width: React.PropTypes.number,
-    height: React.PropTypes.number,
-    data: React.PropTypes.array
+    height: React.PropTypes.number
 };
 SparklinesBars.defaultProps = {
-    width: 120,
-    height: 30,
-    data: []
+    points: []
 };
 
 export default SparklinesBars;

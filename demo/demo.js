@@ -31,46 +31,58 @@ class Examples extends React.Component {
         return (
             <div>
                 <h2>Static</h2>
-                <Sparklines data={sampleData}>
-                    <SparklinesLine data={sampleData} limit={15} />
-                    <SparklinesSpots data={sampleData} limit={15} />
+
+                <Sparklines data={sampleData} limit={15}>
+                    <SparklinesLine />
+                    <SparklinesSpots />
                 </Sparklines>
 
-                <Sparklines data={this.state.data} >
-                    <SparklinesLine data={this.state.data} limit={20} color="#1c8cdc" fill="#1c8cdc" />
-                    <SparklinesSpots data={this.state.data} limit={20} />
+                <h2>Dyanmic</h2>
+
+                <Sparklines data={this.state.data}  limit={20}>
+                    <SparklinesLine color="#1c8cdc" fill="#1c8cdc" />
+                    <SparklinesSpots limit={20} />
+                </Sparklines>
+                <Sparklines data={this.state.data}  limit={20}>
+                    <SparklinesBars color="transparent" fill="#56b45d" />
+                    <SparklinesLine color="#1c8cdc" />
+                    <SparklinesSpots limit={20} />
                 </Sparklines>
 
-                <Sparklines data={this.state.data}>
-                    <SparklinesBars data={this.state.data} limit={10} color="#0a83d8" fill="#0a83d8" />
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesLine color="#8e44af" fill="#8e44af" fillOpacity="1"/>
+                </Sparklines>
+
+                <Sparklines data={this.state.data} limit={10} >
+                    <SparklinesBars color="#0a83d8" fill="#0a83d8" />
                 </Sparklines>
 
                 <h2>Colorful</h2>
-                <Sparklines  data={this.state.data} >
-                    <SparklinesLine data={this.state.data} limit={20} color="#1c8cdc" fill="#1c8cdc" />
-                    <SparklinesSpots data={this.state.data} limit={20} color="#1c8cdc" endSpotColor="#1c8cdc" />
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesLine color="#1c8cdc" fill="#1c8cdc" />
+                    <SparklinesSpots color="#1c8cdc" endSpotColor="#1c8cdc" />
                 </Sparklines>
-                <Sparklines data={this.state.data} >
-                    <SparklinesLine data={this.state.data} limit={20} color="#fa7e17" fill="#fa7e17" />
-                </Sparklines>
-                <br />
-                <Sparklines data={this.state.data} >
-                    <SparklinesLine data={this.state.data} limit={20} color="#ea485c" fill="#ea485c" />
-                </Sparklines>
-                <Sparklines data={this.state.data} >
-                    <SparklinesLine data={this.state.data} limit={20} color="#56b45d" fill="#56b45d" />
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesLine color="#fa7e17" fill="#fa7e17" />
                 </Sparklines>
                 <br />
-                <Sparklines data={this.state.data} >
-                    <SparklinesLine data={this.state.data} limit={20} color="#8e44af" fill="#8e44af" />
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesLine color="#ea485c" fill="#ea485c" />
                 </Sparklines>
-                <Sparklines data={this.state.data} >
-                    <SparklinesLine data={this.state.data} limit={20} color="#253e56" fill="#253e56" />
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesLine color="#56b45d" fill="#56b45d" />
+                </Sparklines>
+                <br />
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesLine color="#8e44af" fill="#8e44af"/>
+                </Sparklines>
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesLine color="#253e56" fill="#253e56" />
                 </Sparklines>
 
                 <h2>Soundables</h2>
-                <Sparklines data={this.state.data} >
-                    <SparklinesBars data={this.state.data} limit={30} color="transparent" fill="#41c3f9" />
+                <Sparklines data={this.state.data} limit={20}>
+                    <SparklinesBars color="transparent" fill="#41c3f9" />
                 </Sparklines>
             </div>
         );

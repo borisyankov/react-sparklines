@@ -1,5 +1,4 @@
 import React from 'react';
-import DataProcessor from './DataProcessor';
 
 class SparklinesSpots extends React.Component {
 
@@ -13,9 +12,7 @@ class SparklinesSpots extends React.Component {
 
     render() {
 
-        let { width, height, data, limit, size, color } = this.props;
-
-        let points = DataProcessor.dataToPoints(data, width, height, limit);
+        let { points, width, height, size, color } = this.props;
 
         let lastSpotColors = {
             '-1': 'red',
@@ -46,16 +43,14 @@ class SparklinesSpots extends React.Component {
     }
 }
 SparklinesSpots.propTypes = {
+    points: React.PropTypes.array,
     width: React.PropTypes.number,
     height: React.PropTypes.number,
-    data: React.PropTypes.array,
     size: React.PropTypes.number,
     fill: React.PropTypes.string
 };
 SparklinesSpots.defaultProps = {
-    width: 120,
-    height: 30,
-    data: [],
+    points: [],
     size: 2
 };
 
