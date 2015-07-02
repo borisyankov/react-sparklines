@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots } from '../src/Sparklines';
+import { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots, SparklinesReferenceLine } from '../src/Sparklines';
 
 class Examples extends React.Component {
 
@@ -32,21 +32,44 @@ class Examples extends React.Component {
             <div>
                 <h2>Static</h2>
 
-                <Sparklines data={sampleData} limit={15}>
+                <Sparklines data={sampleData}>
                     <SparklinesLine />
                     <SparklinesSpots />
                 </Sparklines>
 
-                <h2>Dyanmic</h2>
+                <h2>Customizable</h2>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine color="#1c8cdc" fill="#1c8cdc" />
+                    <SparklinesSpots color="#1c8cdc" endSpotColor="#1c8cdc" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine color="#fa7e17" fill="#fa7e17" />
+                </Sparklines>
+                <br />
+                <Sparklines data={sampleData}>
+                    <SparklinesLine color="#ea485c" fill="#ea485c" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine color="#56b45d" fill="#56b45d" />
+                </Sparklines>
+                <br />
+                <Sparklines data={sampleData}>
+                    <SparklinesLine color="#8e44af" fill="#8e44af"/>
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine color="#253e56" fill="#253e56" />
+                </Sparklines>
+
+                <h2>Dynamic</h2>
 
                 <Sparklines data={this.state.data}  limit={20}>
                     <SparklinesLine color="#1c8cdc" fill="#1c8cdc" />
-                    <SparklinesSpots limit={20} />
+                    <SparklinesSpots />
                 </Sparklines>
                 <Sparklines data={this.state.data}  limit={20}>
                     <SparklinesBars color="transparent" fill="#56b45d" />
                     <SparklinesLine color="#1c8cdc" />
-                    <SparklinesSpots limit={20} />
+                    <SparklinesSpots />
                 </Sparklines>
 
                 <Sparklines data={this.state.data} limit={20}>
@@ -57,32 +80,33 @@ class Examples extends React.Component {
                     <SparklinesBars color="#0a83d8" fill="#0a83d8" />
                 </Sparklines>
 
-                <h2>Colorful</h2>
-                <Sparklines data={this.state.data} limit={20}>
-                    <SparklinesLine color="#1c8cdc" fill="#1c8cdc" />
-                    <SparklinesSpots color="#1c8cdc" endSpotColor="#1c8cdc" />
-                </Sparklines>
-                <Sparklines data={this.state.data} limit={20}>
-                    <SparklinesLine color="#fa7e17" fill="#fa7e17" />
-                </Sparklines>
-                <br />
-                <Sparklines data={this.state.data} limit={20}>
-                    <SparklinesLine color="#ea485c" fill="#ea485c" />
-                </Sparklines>
-                <Sparklines data={this.state.data} limit={20}>
-                    <SparklinesLine color="#56b45d" fill="#56b45d" />
-                </Sparklines>
-                <br />
-                <Sparklines data={this.state.data} limit={20}>
-                    <SparklinesLine color="#8e44af" fill="#8e44af"/>
-                </Sparklines>
-                <Sparklines data={this.state.data} limit={20}>
-                    <SparklinesLine color="#253e56" fill="#253e56" />
-                </Sparklines>
+
 
                 <h2>Soundables</h2>
                 <Sparklines data={this.state.data} limit={20}>
                     <SparklinesBars color="transparent" fill="#41c3f9" />
+                </Sparklines>
+
+                <h2>Reference Lines</h2>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesReferenceLine type="max" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesReferenceLine type="min" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesReferenceLine type="mid" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesReferenceLine type="avg" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesReferenceLine type="mean" />
                 </Sparklines>
             </div>
         );
