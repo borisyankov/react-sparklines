@@ -45,7 +45,7 @@ Sparklines.defaultProps = {
     data: [],
     width: 120,
     height: 30,
-    margin: 0
+    margin: 2
 };
 
 export { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand }
