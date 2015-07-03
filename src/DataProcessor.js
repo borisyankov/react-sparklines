@@ -46,8 +46,9 @@ export default class DataProcessor {
         return this.mean(sq);
     }
 
-    static stddev(data) {
+    static stdev(data) {
         let avg = this.avg(data);
+        let mean = this.mean(data);
         let sqDiff = data.map(n => Math.pow(n - mean, 2));
         let avgSqDiff = this.avg(sqDiff);
         return Math.sqrt(avgSqDiff);

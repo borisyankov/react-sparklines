@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots, SparklinesReferenceLine } from '../src/Sparklines';
+import * from '../src/Sparklines';
 
 class Examples extends React.Component {
 
@@ -60,8 +60,16 @@ class Examples extends React.Component {
                     <SparklinesLine color="#253e56" fill="#253e56" />
                 </Sparklines>
 
-                <h2>Dynamic</h2>
+                <h2>Bars</h2>
+                <Sparklines data={sampleData}>
+                    <SparklinesBars color="transparent" fill="#41c3f9" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine fill="#41c3f9" />
+                    <SparklinesBars color="transparent" fill="#41c3f9" />
+                </Sparklines>
 
+                <h2>Dynamic</h2>
                 <Sparklines data={this.state.data}  limit={20}>
                     <SparklinesLine color="#1c8cdc" fill="#1c8cdc" />
                     <SparklinesSpots />
@@ -71,21 +79,14 @@ class Examples extends React.Component {
                     <SparklinesLine color="#1c8cdc" />
                     <SparklinesSpots />
                 </Sparklines>
-
                 <Sparklines data={this.state.data} limit={20}>
                     <SparklinesLine color="#8e44af" fill="#8e44af" fillOpacity="1"/>
                 </Sparklines>
-
                 <Sparklines data={this.state.data} limit={10} >
                     <SparklinesBars color="#0a83d8" fill="#0a83d8" />
                 </Sparklines>
 
-                <h2>Bars</h2>
-                <Sparklines data={this.state.data} limit={20}>
-                    <SparklinesBars color="transparent" fill="#41c3f9" />
-                </Sparklines>
-
-                <h2>Reference Lines</h2>
+                <h2>Reference Line</h2>
                 <Sparklines data={sampleData}>
                     <SparklinesLine />
                     <SparklinesReferenceLine type="max" />
@@ -107,12 +108,19 @@ class Examples extends React.Component {
                     <SparklinesReferenceLine type="median" />
                 </Sparklines>
                 <Sparklines data={sampleData}>
-                    <SparklinesLine />
-                    <SparklinesReferenceLine type="variance" />
-                </Sparklines>
-                <Sparklines data={sampleData}>
                     <SparklinesBars />
                     <SparklinesReferenceLine />
+                </Sparklines>
+
+                <h2>Normal Band</h2>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesNormalBand />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesNormalBand />
+                    <SparklinesReferenceLine type="mean" />
                 </Sparklines>
             </div>
         );

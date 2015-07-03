@@ -9,9 +9,7 @@ class SparklinesReferenceLine extends React.Component {
 
         let ypoints = points.map(p => p.y);
         let y = DataProcessor.calculateFromData(ypoints, type);
-
-        console.log(DataProcessor.calculateFromData([2, 3, 4, 6, 2, 5, 7, 2, 4, 5, 99], 'variance'))
-
+        
         return (
             <line
                 x1={points[0].x} y1={y}

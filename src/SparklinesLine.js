@@ -38,8 +38,8 @@ SparklinesLine.propTypes = {
 };
 SparklinesLine.defaultProps = {
     points: [],
-    style: { stroke: 'black' },
-    color: 'black',
+    style: { stroke: 'grey' },
+    color: 'slategray',
     fill: 'transparent',
     fillOpacity: '0.1'
 };
