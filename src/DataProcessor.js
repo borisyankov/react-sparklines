@@ -40,6 +40,19 @@ export default class DataProcessor {
         return data.sort()[Math.floor(data.length / 2)];
     }
 
+    static variance(data) {
+        let mean = this.mean(data);
+        let sq = data.map(n => Math.pow(n - mean, 2));
+        return this.mean(sq);
+    }
+
+    static stddev(data) {
+        let avg = this.avg(data);
+        let sqDiff = data.map(n => Math.pow(n - mean, 2));
+        let avgSqDiff = this.avg(sqDiff);
+        return Math.sqrt(avgSqDiff);
+    }
+
     static calculateFromData(data, calculationType) {
         return this[calculationType].call(this, data);
     }
