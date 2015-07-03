@@ -1,6 +1,6 @@
 export default class DataProcessor {
 
-    static dataToPoints(data, width, height, limit) {
+    static dataToPoints(data, limit, width, height, margin) {
 
         if (limit && limit < data.length) {
             data = data.slice(data.length - limit);
@@ -9,13 +9,13 @@ export default class DataProcessor {
         let max = this.max(data);
         let min = this.min(data);
 
-        let vfactor = height / (max - min);
-        let hfactor = width / (limit || data.length);
+        let vfactor = (height - margin * 2) / (max - min);
+        let hfactor = (width - margin * 2) / ((limit || data.length) - 1);
 
         return data.map((d, i) => {
             return {
-                x: i * hfactor,
-                y: (max - data[i]) * vfactor
+                x: i * hfactor + margin,
+                y: (max - data[i]) * vfactor + margin
             }
         });
     }

@@ -4,12 +4,12 @@ class SparklinesLine extends React.Component {
 
     render() {
 
-        let { points, width, height, fill, fillOpacity } = this.props;
+        let { points, width, height, margin, fill, fillOpacity } = this.props;
 
         let linePoints = points
             .map((p) => [p.x, p.y])
             .reduce((a, b) => a.concat(b));
-        let fillPoints = linePoints.concat([points[points.length - 1].x, 10000, 0, 10000, 0, points[0].y]);
+        let fillPoints = linePoints.concat([points[points.length - 1].x, height, margin, height, margin, points[0].y]);
 
         return (
             <g>

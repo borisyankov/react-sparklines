@@ -1,5 +1,5 @@
 import React from 'react';
-import * from '../src/Sparklines';
+import { Sparklines, SparklinesBars, SparklinesLine, SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from '../src/Sparklines';
 
 class Examples extends React.Component {
 
@@ -32,17 +32,17 @@ class Examples extends React.Component {
             <div>
                 <h2>Static</h2>
 
-                <Sparklines data={sampleData}>
+                <Sparklines data={[1, 5, 3]}>
                     <SparklinesLine />
                     <SparklinesSpots />
                 </Sparklines>
 
                 <h2>Customizable</h2>
-                <Sparklines data={sampleData}>
+                <Sparklines data={sampleData} margin={2}>
                     <SparklinesLine color="#1c8cdc" fill="#1c8cdc" />
                     <SparklinesSpots color="#1c8cdc" endSpotColor="#1c8cdc" />
                 </Sparklines>
-                <Sparklines data={sampleData}>
+                <Sparklines data={sampleData} margin={2}>
                     <SparklinesLine color="#fa7e17" fill="#fa7e17" />
                 </Sparklines>
                 <br />

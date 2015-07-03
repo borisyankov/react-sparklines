@@ -10,9 +10,7 @@ class SparklinesNormalBand extends React.Component {
         let ypoints = points.map(p => p.y);
         let mean = DataProcessor.calculateFromData(ypoints, 'mean');
         let stdev = DataProcessor.calculateFromData(ypoints, 'stdev');
-
-        console.log(ypoints, mean, stdev);
-
+        
         return (
             <rect x={points[0].x} y={mean - stdev}
                 width={points[points.length - 1].x - points[0].x} height={stdev * 2}
