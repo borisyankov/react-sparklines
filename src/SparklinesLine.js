@@ -31,12 +31,14 @@ SparklinesLine.propTypes = {
     width: React.PropTypes.number,
     height: React.PropTypes.number,
     data: React.PropTypes.array,
+    style: React.PropTypes.object,
     color: React.PropTypes.string,
     fill: React.PropTypes.string,
     fillOpacity: React.PropTypes.string
 };
 SparklinesLine.defaultProps = {
     points: [],
+    style: { stroke: 'black' },
     color: 'black',
     fill: 'transparent',
     fillOpacity: '0.1'

@@ -80,9 +80,7 @@ class Examples extends React.Component {
                     <SparklinesBars color="#0a83d8" fill="#0a83d8" />
                 </Sparklines>
 
-
-
-                <h2>Soundables</h2>
+                <h2>Bars</h2>
                 <Sparklines data={this.state.data} limit={20}>
                     <SparklinesBars color="transparent" fill="#41c3f9" />
                 </Sparklines>
@@ -98,7 +96,7 @@ class Examples extends React.Component {
                 </Sparklines>
                 <Sparklines data={sampleData}>
                     <SparklinesLine />
-                    <SparklinesReferenceLine type="mid" />
+                    <SparklinesReferenceLine type="mean" />
                 </Sparklines>
                 <Sparklines data={sampleData}>
                     <SparklinesLine />
@@ -106,7 +104,15 @@ class Examples extends React.Component {
                 </Sparklines>
                 <Sparklines data={sampleData}>
                     <SparklinesLine />
-                    <SparklinesReferenceLine type="mean" />
+                    <SparklinesReferenceLine type="median" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesLine />
+                    <SparklinesReferenceLine type="variance" />
+                </Sparklines>
+                <Sparklines data={sampleData}>
+                    <SparklinesBars />
+                    <SparklinesReferenceLine />
                 </Sparklines>
             </div>
         );

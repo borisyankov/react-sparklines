@@ -28,7 +28,7 @@ export default class DataProcessor {
         return Math.min.apply(Math, data);
     }
 
-    static mid(data) {
+    static mean(data) {
         return (this.max(data) - this.min(data)) / 2;
     }
 
@@ -36,7 +36,7 @@ export default class DataProcessor {
         return data.reduce((a, b) => a + b) / (data.length + 1);
     }
 
-    static mean(data) {
+    static median(data) {
         return data.sort()[Math.floor(data.length / 2)];
     }
 
