@@ -19,6 +19,6 @@ To run demo:
 npm install
 npm install webpack -g
 npm install webpack-dev-server -g
-webpack-dev-server --progress
-http://localhost:8080/index
+npm start
+http://localhost:8080/
 ```
