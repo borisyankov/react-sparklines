@@ -7,7 +7,7 @@
     "src": "src/"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel-core": "^5.6.15",
     "babel-loader": "^5.2.2",
+    "jest-cli": "^0.4.15",
     "jsx-loader": "^0.13.2",
     "node-libs-browser": "^0.5.2",
     "webpack": "^1.10.0",
