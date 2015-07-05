@@ -9,9 +9,8 @@ export default class DataProcessor {
         let max = this.max(data);
         let min = this.min(data);
 
-        let vfactor = (height - margin * 2) / (max - min);
+        let vfactor = (height - margin * 2) / ((max - min) || 1);
         let hfactor = (width - margin * 2) / ((limit || data.length) - 1);
-
         return data.map((d, i) => {
             return {
                 x: i * hfactor + margin,

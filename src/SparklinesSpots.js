@@ -27,7 +27,7 @@ class SparklinesSpots extends React.Component {
 
         return (
             <g>
-                {style ? startSpot : {}}
+                {style ? startSpot : ''}
                 {endSpot}
             </g>
         )

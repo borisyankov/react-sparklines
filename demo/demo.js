@@ -52,6 +52,7 @@ class Examples extends React.Component {
 
         return (
             <div>
+                <h1>React Sparklines</h1>
                 <h2>Static</h2>
                 <Sparklines data={this.sampleData}>
                     <SparklinesLine style={{ fill: "none" }} />

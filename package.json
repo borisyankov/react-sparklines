@@ -1,6 +1,6 @@
 {
   "name": "react-sparklines",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Beautiful and expressive Sparklines React component",
   "main": "index.js",
   "directories": {
@@ -27,12 +27,12 @@
     "jsx-loader": "^0.13.2",
     "babel-jest": "*",
     "node-libs-browser": "^0.5.2",
+    "react-tools": "*",
     "webpack": "^1.10.0",
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
-    "react": "^0.13.3",
-    "react-tools": "*"
+    "react": "^0.13.3"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",

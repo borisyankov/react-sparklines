@@ -14,7 +14,6 @@ class SparklinesLine extends React.Component {
             margin, points[0].y
         ];
         let fillPoints = linePoints.concat(closePolyPoints);
-
         let lineStyle = {
             stroke: color || style.stroke || 'slategray',
             strokeWidth: style.strokeWidth || '1',
@@ -43,6 +42,6 @@ SparklinesLine.propTypes = {
 };
 SparklinesLine.defaultProps = {
     style: {}
-}
+};
 
 export default SparklinesLine;
