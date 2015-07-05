@@ -3,46 +3,46 @@ import React from 'react';
 class SparklinesLine extends React.Component {
 
     render() {
-
-        let { points, width, height, margin, color, strokeWidth, fill, fillOpacity } = this.props;
+        let { points, width, height, margin, color, style } = this.props;
 
         let linePoints = points
             .map((p) => [p.x, p.y])
             .reduce((a, b) => a.concat(b));
-        let fillPoints = linePoints.concat([points[points.length - 1].x, height, margin, height, margin, points[0].y]);
+        let closePolyPoints = [
+            points[points.length - 1].x, height - margin,
+            margin, height - margin,
+            margin, points[0].y
+        ];
+        let fillPoints = linePoints.concat(closePolyPoints);
+
+        let lineStyle = {
+            stroke: color || style.stroke || 'slategray',
+            strokeWidth: style.strokeWidth || '1',
+            strokeLinejoin: style.strokeLinejoin || 'round',
+            strokeLinecap: style.strokeLinecap || 'round',
+            fill: 'none'
+        };
+        let fillStyle = {
+            stroke: style.stroke || 'none',
+            strokeWidth: '0',
+            fillOpacity: style.fillOpacity || '.1',
+            fill: color || style.fill || 'slategray'
+        };
 
         return (
             <g>
-                <polyline points={fillPoints.join(' ')}
-                    stroke='none'
-                    fill={fill}
-                    fillOpacity={fillOpacity} />
-                <polyline points={linePoints.join(' ')}
-                    stroke={color}
-                    strokeWidth={strokeWidth}
-                    strokeLinejoin='round'
-                    style={{strokeLinejoin: 'round', strokeLinecap: 'round'}}
-                    fill='none' />
+                <polyline points={fillPoints.join(' ')} style={fillStyle} />
+                <polyline points={linePoints.join(' ')} style={lineStyle} />
             </g>
         )
     }
 }
 SparklinesLine.propTypes = {
-    width: React.PropTypes.number,
-    height: React.PropTypes.number,
-    data: React.PropTypes.array,
     color: React.PropTypes.string,
-    strokeWidth: React.PropTypes.number,
-    fill: React.PropTypes.string,
-    fillOpacity: React.PropTypes.string
+    style: React.PropTypes.object
 };
 SparklinesLine.defaultProps = {
-    points: [],
-    style: { stroke: 'grey' },
-    color: 'slategray',
-    strokeWidth: 1,
-    fill: 'transparent',
-    fillOpacity: .1
-};
+    style: {}
+}
 
 export default SparklinesLine;

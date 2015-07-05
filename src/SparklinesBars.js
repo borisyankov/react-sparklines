@@ -4,34 +4,27 @@ class SparklinesBars extends React.Component {
 
     render() {
 
-        let { points, width, height, color, fill, strokeWidth } = this.props;
+        let { points, width, height, margin, style } = this.props;
+        let barWidth = points.length >= 2 ? points[1].x - points[0].x : 0;
 
         return (
             <g>
                 {points.map((p, i) =>
                     <rect
                         key={i}
-                        x={p.x - 10} y={p.y}
-                        width="10" height={100 - p.y}
-                        stroke={color}
-                        strokeWidth={strokeWidth}
-                        fill={fill}
-                        fillOpacity='0.1' />
+                        x={p.x} y={p.y}
+                        width={barWidth} height={height - p.y}
+                        style={style} />
                 )}
             </g>
         )
     }
 }
 SparklinesBars.propTypes = {
-    points: React.PropTypes.array.required,
-    width: React.PropTypes.number,
-    height: React.PropTypes.number,
-    color: React.PropTypes.string,
-    fill: React.PropTypes.string,
-    strokeWidth: React.PropTypes.string
+    style: React.PropTypes.object
 };
 SparklinesBars.defaultProps = {
-    points: []
+    style: { fill: 'slategray' }
 };
 
 export default SparklinesBars;

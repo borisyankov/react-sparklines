@@ -5,21 +5,20 @@ class SparklinesNormalBand extends React.Component {
 
     render() {
 
-        let { points, type, style } = this.props;
+        let { points, margin, type, style } = this.props;
 
         let ypoints = points.map(p => p.y);
         let mean = DataProcessor.calculateFromData(ypoints, 'mean');
         let stdev = DataProcessor.calculateFromData(ypoints, 'stdev');
 
         return (
-            <rect x={points[0].x} y={mean - stdev}
+            <rect x={points[0].x} y={mean - stdev + margin}
                 width={points[points.length - 1].x - points[0].x} height={stdev * 2}
                 style={style} />
         )
     }
 }
 SparklinesNormalBand.propTypes = {
-    points: React.PropTypes.array,
     type: React.PropTypes.string,
     style: React.PropTypes.object
 };

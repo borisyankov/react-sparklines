@@ -19,12 +19,12 @@ class Sparklines extends React.Component {
 
     render() {
 
-        let { data, limit, width, height, margin  } = this.props;
+        let { data, limit, width, height, margin, style  } = this.props;
 
         let points = DataProcessor.dataToPoints(data, limit, width, height, margin);
 
         return (
-            <svg width={width} height={height} preserveAspectRatio="xMinYMin meet">
+            <svg width={width} height={height} style={style}>
                 {
                     React.Children.map(this.props.children, function(child) {
                         return React.cloneElement(child, { points, width, height, margin });
@@ -39,7 +39,8 @@ Sparklines.propTypes = {
     limit: React.PropTypes.number,
     width: React.PropTypes.number,
     height: React.PropTypes.number,
-    margin: React.PropTypes.number
+    margin: React.PropTypes.number,
+    style: React.PropTypes.object
 };
 Sparklines.defaultProps = {
     data: [],
