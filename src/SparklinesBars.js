@@ -2,10 +2,18 @@ import React from 'react';
 
 class SparklinesBars extends React.Component {
 
+    static propTypes = {
+        style: React.PropTypes.object
+    };
+
+    static defaultProps = {
+        style: { fill: 'slategray' }
+    };
+
     render() {
 
-        let { points, width, height, margin, style } = this.props;
-        let barWidth = points.length >= 2 ? points[1].x - points[0].x : 0;
+        const { points, width, height, margin, style } = this.props;
+        const barWidth = points.length >= 2 ? points[1].x - points[0].x : 0;
 
         return (
             <g>
@@ -20,11 +28,5 @@ class SparklinesBars extends React.Component {
         )
     }
 }
-SparklinesBars.propTypes = {
-    style: React.PropTypes.object
-};
-SparklinesBars.defaultProps = {
-    style: { fill: 'slategray' }
-};
 
 export default SparklinesBars;

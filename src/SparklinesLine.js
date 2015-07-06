@@ -2,26 +2,36 @@ import React from 'react';
 
 class SparklinesLine extends React.Component {
 
-    render() {
-        let { points, width, height, margin, color, style } = this.props;
+    static propTypes = {
+        color: React.PropTypes.string,
+        style: React.PropTypes.object
+    };
 
-        let linePoints = points
+    static defaultProps = {
+        style: {}
+    };
+
+    render() {
+        const { points, width, height, margin, color, style } = this.props;
+
+        const linePoints = points
             .map((p) => [p.x, p.y])
             .reduce((a, b) => a.concat(b));
-        let closePolyPoints = [
+        const closePolyPoints = [
             points[points.length - 1].x, height - margin,
             margin, height - margin,
             margin, points[0].y
         ];
-        let fillPoints = linePoints.concat(closePolyPoints);
-        let lineStyle = {
+        const fillPoints = linePoints.concat(closePolyPoints);
+        
+        const lineStyle = {
             stroke: color || style.stroke || 'slategray',
             strokeWidth: style.strokeWidth || '1',
             strokeLinejoin: style.strokeLinejoin || 'round',
             strokeLinecap: style.strokeLinecap || 'round',
             fill: 'none'
         };
-        let fillStyle = {
+        const fillStyle = {
             stroke: style.stroke || 'none',
             strokeWidth: '0',
             fillOpacity: style.fillOpacity || '.1',
@@ -36,12 +46,5 @@ class SparklinesLine extends React.Component {
         )
     }
 }
-SparklinesLine.propTypes = {
-    color: React.PropTypes.string,
-    style: React.PropTypes.object
-};
-SparklinesLine.defaultProps = {
-    style: {}
-};
 
 export default SparklinesLine;

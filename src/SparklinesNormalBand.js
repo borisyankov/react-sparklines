@@ -3,13 +3,23 @@ import DataProcessor from './DataProcessor';
 
 class SparklinesNormalBand extends React.Component {
 
+    static propTypes = {
+        type: React.PropTypes.string,
+        style: React.PropTypes.object
+    };
+
+    static defaultProps = {
+        points: [],
+        style: { fill: 'red', fillOpacity: .1 }
+    };
+
     render() {
 
-        let { points, margin, type, style } = this.props;
+        const { points, margin, type, style } = this.props;
 
-        let ypoints = points.map(p => p.y);
-        let mean = DataProcessor.calculateFromData(ypoints, 'mean');
-        let stdev = DataProcessor.calculateFromData(ypoints, 'stdev');
+        const ypoints = points.map(p => p.y);
+        const mean = DataProcessor.calculateFromData(ypoints, 'mean');
+        const stdev = DataProcessor.calculateFromData(ypoints, 'stdev');
 
         return (
             <rect x={points[0].x} y={mean - stdev + margin}
@@ -18,13 +28,5 @@ class SparklinesNormalBand extends React.Component {
         )
     }
 }
-SparklinesNormalBand.propTypes = {
-    type: React.PropTypes.string,
-    style: React.PropTypes.object
-};
-SparklinesNormalBand.defaultProps = {
-    points: [],
-    style: { fill: 'red', fillOpacity: .1 }
-};
 
 export default SparklinesNormalBand;

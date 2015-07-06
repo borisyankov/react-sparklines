@@ -6,11 +6,12 @@ export default class DataProcessor {
             data = data.slice(data.length - limit);
         }
 
-        let max = this.max(data);
-        let min = this.min(data);
+        const max = this.max(data);
+        const min = this.min(data);
 
-        let vfactor = (height - margin * 2) / ((max - min) || 1);
-        let hfactor = (width - margin * 2) / ((limit || data.length) - 1);
+        const vfactor = (height - margin * 2) / ((max - min) || 1);
+        const hfactor = (width - margin * 2) / ((limit || data.length) - 1);
+
         return data.map((d, i) => {
             return {
                 x: i * hfactor + margin,
@@ -40,16 +41,16 @@ export default class DataProcessor {
     }
 
     static variance(data) {
-        let mean = this.mean(data);
-        let sq = data.map(n => Math.pow(n - mean, 2));
+        const mean = this.mean(data);
+        const sq = data.map(n => Math.pow(n - mean, 2));
         return this.mean(sq);
     }
 
     static stdev(data) {
-        let avg = this.avg(data);
-        let mean = this.mean(data);
-        let sqDiff = data.map(n => Math.pow(n - mean, 2));
-        let avgSqDiff = this.avg(sqDiff);
+        const avg = this.avg(data);
+        const mean = this.mean(data);
+        const sqDiff = data.map(n => Math.pow(n - mean, 2));
+        const avgSqDiff = this.avg(sqDiff);
         return Math.sqrt(avgSqDiff);
     }
 

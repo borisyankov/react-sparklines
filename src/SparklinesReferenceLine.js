@@ -3,12 +3,22 @@ import DataProcessor from './DataProcessor';
 
 class SparklinesReferenceLine extends React.Component {
 
+    static propTypes = {
+        type: React.PropTypes.string,
+        style: React.PropTypes.object
+    };
+
+    static defaultProps = {
+        type: 'mean',
+        style: { stroke: 'red', strokeOpacity: .75, strokeDasharray: '2, 2' }
+    };
+
     render() {
 
-        let { points, margin, type, style } = this.props;
+        const { points, margin, type, style } = this.props;
 
-        let ypoints = points.map(p => p.y);
-        let y = DataProcessor.calculateFromData(ypoints, type);
+        const ypoints = points.map(p => p.y);
+        const y = DataProcessor.calculateFromData(ypoints, type);
 
         return (
             <line
@@ -18,13 +28,5 @@ class SparklinesReferenceLine extends React.Component {
         )
     }
 }
-SparklinesReferenceLine.propTypes = {
-    type: React.PropTypes.string,
-    style: React.PropTypes.object
-};
-SparklinesReferenceLine.defaultProps = {
-    type: 'mean',
-    style: { stroke: 'red', strokeOpacity: .75, strokeDasharray: '2, 2' }
-};
 
 export default SparklinesReferenceLine;

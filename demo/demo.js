@@ -182,13 +182,13 @@ class Examples extends React.Component {
                     <SparklinesLine style={{ stroke: "#d1192e", strokeWidth: "1", fill: "none" }} />
                 </Sparklines>
                 <br/>
-                <Sparklines data={this.sampleData}>
+                <Sparklines data={this.sampleData} height={40}>
                     <SparklinesLine style={{ stroke: "#559500", fill: "#8fc638", fillOpacity: "1" }} />
                 </Sparklines>
-                <Sparklines data={this.sampleData} style={{background: "#272727"}} margin={10} >
+                <Sparklines data={this.sampleData} style={{background: "#272727"}} margin={10} height={40}>
                     <SparklinesLine style={{ stroke: "none", fill: "#d2673a", fillOpacity: ".5" }} />
                 </Sparklines>
-                <Sparklines data={this.sampleData} style={{background: "#00bdcc"}} margin={10} >
+                <Sparklines data={this.sampleData} style={{background: "#00bdcc"}} margin={10} height={40}>
                     <SparklinesLine style={{ stroke: "white", fill: "none" }} />
                     <SparklinesReferenceLine style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
                 </Sparklines>

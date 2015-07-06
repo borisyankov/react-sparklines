@@ -9,6 +9,22 @@ import DataProcessor from './DataProcessor';
 
 class Sparklines extends React.Component {
 
+    static propTypes = {
+        data: React.PropTypes.array,
+        limit: React.PropTypes.number,
+        width: React.PropTypes.number,
+        height: React.PropTypes.number,
+        margin: React.PropTypes.number,
+        style: React.PropTypes.object
+    };
+
+    static defaultProps = {
+        data: [],
+        width: 120,
+        height: 30,
+        margin: 2
+    };
+
     constructor (props) {
         super(props);
     }
@@ -19,9 +35,9 @@ class Sparklines extends React.Component {
 
     render() {
 
-        let { data, limit, width, height, margin, style  } = this.props;
+        const { data, limit, width, height, margin, style  } = this.props;
 
-        let points = DataProcessor.dataToPoints(data, limit, width, height, margin);
+        const points = DataProcessor.dataToPoints(data, limit, width, height, margin);
 
         return (
             <svg width={width} height={height} style={style}>
@@ -34,19 +50,5 @@ class Sparklines extends React.Component {
         );
     }
 }
-Sparklines.propTypes = {
-    data: React.PropTypes.array,
-    limit: React.PropTypes.number,
-    width: React.PropTypes.number,
-    height: React.PropTypes.number,
-    margin: React.PropTypes.number,
-    style: React.PropTypes.object
-};
-Sparklines.defaultProps = {
-    data: [],
-    width: 120,
-    height: 30,
-    margin: 2
-};
 
 export { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand }
