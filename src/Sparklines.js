@@ -37,6 +37,8 @@ class Sparklines extends React.Component {
 
         const { data, limit, width, height, margin, style  } = this.props;
 
+        if (data.length === 0) return false;
+
         const points = DataProcessor.dataToPoints(data, limit, width, height, margin);
 
         return (
