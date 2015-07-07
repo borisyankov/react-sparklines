@@ -1,21 +1,19 @@
 import React from 'react';
 import DataProcessor from './DataProcessor';
 
-class SparklinesNormalBand extends React.Component {
+export default class SparklinesNormalBand extends React.Component {
 
     static propTypes = {
-        type: React.PropTypes.string,
         style: React.PropTypes.object
     };
 
     static defaultProps = {
-        points: [],
         style: { fill: 'red', fillOpacity: .1 }
     };
 
     render() {
 
-        const { points, margin, type, style } = this.props;
+        const { points, margin, style } = this.props;
 
         const ypoints = points.map(p => p.y);
         const mean = DataProcessor.calculateFromData(ypoints, 'mean');
@@ -28,5 +26,3 @@ class SparklinesNormalBand extends React.Component {
         )
     }
 }
-
-export default SparklinesNormalBand;

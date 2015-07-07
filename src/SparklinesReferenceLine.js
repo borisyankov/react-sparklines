@@ -1,10 +1,10 @@
 import React from 'react';
 import DataProcessor from './DataProcessor';
 
-class SparklinesReferenceLine extends React.Component {
+export default class SparklinesReferenceLine extends React.Component {
 
     static propTypes = {
-        type: React.PropTypes.string,
+        type: React.PropTypes.oneOf(['max', 'min', 'mean', 'avg', 'median']),
         style: React.PropTypes.object
     };
 
@@ -28,5 +28,3 @@ class SparklinesReferenceLine extends React.Component {
         )
     }
 }
-
-export default SparklinesReferenceLine;

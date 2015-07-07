@@ -4,7 +4,6 @@ import SparklinesBars from './SparklinesBars';
 import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
 import SparklinesNormalBand from './SparklinesNormalBand';
-
 import DataProcessor from './DataProcessor';
 
 class Sparklines extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SparklinesSpots extends React.Component {
+export default class SparklinesSpots extends React.Component {
 
     static propTypes = {
         size: React.PropTypes.number,
@@ -39,7 +39,7 @@ class SparklinesSpots extends React.Component {
                             cy={points[points.length - 1].y}
                             r={size}
                             style={style || { fill: spotColors[this.lastDirection(points)] }} />
-                            
+
         return (
             <g>
                 {style ? startSpot + endSpot : endSpot}
@@ -47,5 +47,3 @@ class SparklinesSpots extends React.Component {
         )
     }
 }
-
-export default SparklinesSpots;

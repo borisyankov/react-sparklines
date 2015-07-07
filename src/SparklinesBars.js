@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SparklinesBars extends React.Component {
+export default class SparklinesBars extends React.Component {
 
     static propTypes = {
         style: React.PropTypes.object
@@ -28,5 +28,3 @@ class SparklinesBars extends React.Component {
         )
     }
 }
-
-export default SparklinesBars;

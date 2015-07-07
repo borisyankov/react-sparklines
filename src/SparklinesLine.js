@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SparklinesLine extends React.Component {
+export default class SparklinesLine extends React.Component {
 
     static propTypes = {
         color: React.PropTypes.string,
@@ -23,7 +23,7 @@ class SparklinesLine extends React.Component {
             margin, points[0].y
         ];
         const fillPoints = linePoints.concat(closePolyPoints);
-        
+
         const lineStyle = {
             stroke: color || style.stroke || 'slategray',
             strokeWidth: style.strokeWidth || '1',
@@ -46,5 +46,3 @@ class SparklinesLine extends React.Component {
         )
     }
 }
-
-export default SparklinesLine;
