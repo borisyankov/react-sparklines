@@ -47,7 +47,6 @@ export default class DataProcessor {
     }
 
     static stdev(data) {
-        const avg = this.avg(data);
         const mean = this.mean(data);
         const sqDiff = data.map(n => Math.pow(n - mean, 2));
         const avgSqDiff = this.avg(sqDiff);
