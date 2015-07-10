@@ -42,7 +42,8 @@ export default class SparklinesSpots extends React.Component {
 
         return (
             <g>
-                {style ? startSpot + endSpot : endSpot}
+                {style && startSpot}
+                {endSpot}
             </g>
         )
     }

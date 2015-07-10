@@ -27,14 +27,14 @@ function randomData(n = 30) {
 }
 
 const sampleData = randomData(30);
-const sampleData100 = randomData(1000);
+const sampleData100 = randomData(100);
 
 class Static1 extends React.Component {
 
     render() {
         return (
             <Sparklines data={sampleData}>
-                <SparklinesLine style={{ fill: "none" }} />
+                <SparklinesLine />
             </Sparklines>
         );
     }
@@ -189,7 +189,7 @@ class Dynamic1 extends React.Component {
 
     render() {
         return (
-            <Sparklines data={this.state.data}  limit={20}>
+            <Sparklines data={this.state.data} limit={20}>
                 <SparklinesLine color="#1c8cdc" />
                 <SparklinesSpots />
             </Sparklines>
@@ -210,7 +210,7 @@ class Dynamic2 extends React.Component {
 
     render() {
         return (
-            <Sparklines data={this.state.data}  limit={20}>
+            <Sparklines data={this.state.data} limit={20}>
                 <SparklinesBars style={{ fill: "#41c3f9", fillOpacity: ".25" }} />
                 <SparklinesLine style={{ stroke: "#41c3f9", fill: "none" }} />
             </Sparklines>

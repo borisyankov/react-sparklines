@@ -1,12 +1,41 @@
 <html>
 <head>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet">
+
     <style>
+
+        pre .str, code .str { color: #e6db5a; } /* string */
+        pre .kwd, code .kwd { color: #66d9ef; } /* keyword */
+        pre .com, code .com { color: #75715e; font-style: italic; } /* comment */
+        pre .typ, code .typ { color: #66d9ef; } /* type */
+        pre .lit, code .lit { color: #ae81ff; } /* literal */
+        pre .pun, code .pun { color: #fff; } /* punctuation */
+        pre .pln, code .pln { color: #fff; } /* plaintext */
+        pre .tag, code .tag { color: #f92672; } /* html/xml tag */
+        pre .atn, code .atn { color: #a6e22a; } /* html/xml attribute name */
+        pre .atv, code .atv { color: #e6db74; } /* html/xml attribute value */
+        pre .dec, code .dec { color: #ae81ff; } /* decimal */
+
+        pre.prettyprint, code.prettyprint {
+        	background-color: #272822;
+        	font-family: consolas, menlo, courier, monospace;
+        }
+
+        pre.prettyprint {
+        	width: 100%;
+        	margin: 1rem auto;
+        	padding: 0 1rem;
+            border: 0;
+        	white-space: pre-wrap;
+            font-size: 14px;
+        }
+
         body { margin: 0; font-family: roboto; }
         header { color: white; background: #336aff; }
-        .content { max-width: 1000px; margin: 0 auto; }
-        .c2 { background: 'slategray'; }
+        .content { max-width: 1000px; margin: 0 auto; padding: 1rem 0}
+        .c2 { background: #272822; padding: 1rem 0; color: white }
         h1, h2, h3 { font-weight: 300; }
+        xmp { margin: 0; }
     </style>
 </head>
 <body>
@@ -14,14 +43,27 @@
         <div class="content">
             <h1>React Sparklines</h1>
         </div>
+        <div class="c2">
+            <h3 class="content">
+                Beautiful and expressive Sparklines React component
+            </h3>
+        </div>
     </header>
     <div class="content">
-        <div class="c2">
-            Hello, this is awesome!
-        </div>
+
         <h2>Static</h2>
         <div id="static1"></div>
+        <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData}>
+    <SparklinesLine />
+</Sparklines>
+        </xmp></pre>
         <div id="static2"></div>
+        <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData}>
+    <SparklinesLine style={{ strokeWidth: 3, stroke: "#336aff", fill: "none" }} />
+</Sparklines>
+        </xmp></pre>
 
         <h2>Customizable</h2>
         <div id="customizable1"></div>
@@ -44,7 +86,7 @@
         <div id="dynamic1"></div>
         <div id="dynamic2"></div>
         <div id="dynamic3"></div>
-        <div id="dynamic4"></div>        
+        <div id="dynamic4"></div>
 
         <h2>Reference Line</h2>
         <div id="referenceline1"></div>
@@ -70,5 +112,7 @@
     </div>
 
     <script src="index.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js"></script>
+    <script>prettyPrint();</script>
 </body>
 </html>
