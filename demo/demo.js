@@ -42,23 +42,12 @@ class Header extends React.Component {
 }
 
 
-class Static1 extends React.Component {
+class Simple extends React.Component {
 
     render() {
         return (
             <Sparklines data={sampleData}>
                 <SparklinesLine />
-            </Sparklines>
-        );
-    }
-}
-
-class Static2 extends React.Component {
-
-    render() {
-        return (
-            <Sparklines data={sampleData}>
-                <SparklinesLine style={{ strokeWidth: 3, stroke: "#336aff", fill: "none" }} />
             </Sparklines>
         );
     }
@@ -378,6 +367,17 @@ class RealWorld1 extends React.Component {
 
     render() {
         return (
+            <Sparklines data={sampleData}>
+                <SparklinesLine style={{ strokeWidth: 3, stroke: "#336aff", fill: "none" }} />
+            </Sparklines>
+        );
+    }
+}
+
+class RealWorld2 extends React.Component {
+
+    render() {
+        return (
             <Sparklines data={sampleData100} width={200}>
                 <SparklinesLine style={{ stroke: "#2991c8", fill: "none"}} />
                 <SparklinesSpots />
@@ -387,7 +387,7 @@ class RealWorld1 extends React.Component {
     }
 }
 
-class RealWorld2 extends React.Component {
+class RealWorld3 extends React.Component {
 
     render() {
         return (
@@ -399,7 +399,7 @@ class RealWorld2 extends React.Component {
     }
 }
 
-class RealWorld3 extends React.Component {
+class RealWorld4 extends React.Component {
 
     render() {
         return (
@@ -410,7 +410,7 @@ class RealWorld3 extends React.Component {
     }
 }
 
-class RealWorld4 extends React.Component {
+class RealWorld5 extends React.Component {
 
     render() {
         return (
@@ -421,7 +421,7 @@ class RealWorld4 extends React.Component {
     }
 }
 
-class RealWorld5 extends React.Component {
+class RealWorld6 extends React.Component {
 
     render() {
         return (
@@ -432,7 +432,7 @@ class RealWorld5 extends React.Component {
     }
 }
 
-class RealWorld6 extends React.Component {
+class RealWorld7 extends React.Component {
 
     render() {
         return (
@@ -443,7 +443,7 @@ class RealWorld6 extends React.Component {
     }
 }
 
-class RealWorld7 extends React.Component {
+class RealWorld8 extends React.Component {
 
     render() {
         return (
@@ -454,7 +454,7 @@ class RealWorld7 extends React.Component {
     }
 }
 
-class RealWorld8 extends React.Component {
+class RealWorld9 extends React.Component {
 
     render() {
         return (
@@ -468,8 +468,7 @@ class RealWorld8 extends React.Component {
 
 const demos = {
     'headersparklines': Header,
-    'static1': Static1,
-    'static2': Static2,
+    'simple': Simple,
     'customizable1': Customizable1,
     'customizable2': Customizable2,
     'customizable3': Customizable3,
@@ -500,7 +499,8 @@ const demos = {
     'realworld5': RealWorld5,
     'realworld6': RealWorld6,
     'realworld7': RealWorld7,
-    'realworld8': RealWorld8
+    'realworld8': RealWorld8,
+    'realworld9': RealWorld9
 };
 
 for (let d in demos) {
