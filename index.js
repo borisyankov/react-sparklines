@@ -95,16 +95,40 @@
 	var sampleData = randomData(30);
 	var sampleData100 = randomData(100);
 
-	var Static1 = (function (_React$Component) {
-	    function Static1() {
-	        _classCallCheck(this, Static1);
+	var Header = (function (_React$Component) {
+	    function Header() {
+	        _classCallCheck(this, Header);
 
-	        _get(Object.getPrototypeOf(Static1.prototype), 'constructor', this).apply(this, arguments);
+	        _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).apply(this, arguments);
 	    }
 
-	    _inherits(Static1, _React$Component);
+	    _inherits(Header, _React$Component);
 
-	    _createClass(Static1, [{
+	    _createClass(Header, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2['default'].createElement(
+	                _srcSparklines.Sparklines,
+	                { data: sampleData, width: 300, height: 50 },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: 'white', fill: 'none' } }),
+	                _react2['default'].createElement(_srcSparklines.SparklinesReferenceLine, { style: { stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' } })
+	            );
+	        }
+	    }]);
+
+	    return Header;
+	})(_react2['default'].Component);
+
+	var Simple = (function (_React$Component2) {
+	    function Simple() {
+	        _classCallCheck(this, Simple);
+
+	        _get(Object.getPrototypeOf(Simple.prototype), 'constructor', this).apply(this, arguments);
+	    }
+
+	    _inherits(Simple, _React$Component2);
+
+	    _createClass(Simple, [{
 	        key: 'render',
 	        value: function render() {
 	            return _react2['default'].createElement(
@@ -115,30 +139,7 @@
 	        }
 	    }]);
 
-	    return Static1;
-	})(_react2['default'].Component);
-
-	var Static2 = (function (_React$Component2) {
-	    function Static2() {
-	        _classCallCheck(this, Static2);
-
-	        _get(Object.getPrototypeOf(Static2.prototype), 'constructor', this).apply(this, arguments);
-	    }
-
-	    _inherits(Static2, _React$Component2);
-
-	    _createClass(Static2, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2['default'].createElement(
-	                _srcSparklines.Sparklines,
-	                { data: sampleData },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { strokeWidth: 3, stroke: '#336aff', fill: 'none' } })
-	            );
-	        }
-	    }]);
-
-	    return Static2;
+	    return Simple;
 	})(_react2['default'].Component);
 
 	var Customizable1 = (function (_React$Component3) {
@@ -731,10 +732,8 @@
 	        value: function render() {
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
-	                { data: sampleData100, width: 200 },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#2991c8', fill: 'none' } }),
-	                _react2['default'].createElement(_srcSparklines.SparklinesSpots, null),
-	                _react2['default'].createElement(_srcSparklines.SparklinesNormalBand, { style: { fill: '#2991c8', fillOpacity: .1 } })
+	                { data: sampleData },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { strokeWidth: 3, stroke: '#336aff', fill: 'none' } })
 	            );
 	        }
 	    }]);
@@ -756,9 +755,10 @@
 	        value: function render() {
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
-	                { data: sampleData100 },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: 'black', fill: 'none' } }),
-	                _react2['default'].createElement(_srcSparklines.SparklinesSpots, { style: { fill: 'orange' } })
+	                { data: sampleData100, width: 200 },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#2991c8', fill: 'none' } }),
+	                _react2['default'].createElement(_srcSparklines.SparklinesSpots, null),
+	                _react2['default'].createElement(_srcSparklines.SparklinesNormalBand, { style: { fill: '#2991c8', fillOpacity: .1 } })
 	            );
 	        }
 	    }]);
@@ -780,8 +780,9 @@
 	        value: function render() {
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
-	                { data: sampleData },
-	                _react2['default'].createElement(_srcSparklines.SparklinesBars, { style: { stroke: 'white', strokeWidth: '1', fill: '#40c0f5' } })
+	                { data: sampleData100 },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: 'black', fill: 'none' } }),
+	                _react2['default'].createElement(_srcSparklines.SparklinesSpots, { style: { fill: 'orange' } })
 	            );
 	        }
 	    }]);
@@ -803,8 +804,8 @@
 	        value: function render() {
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
-	                { data: sampleData, height: 80 },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#8ed53f', strokeWidth: '1', fill: 'none' } })
+	                { data: sampleData },
+	                _react2['default'].createElement(_srcSparklines.SparklinesBars, { style: { stroke: 'white', strokeWidth: '1', fill: '#40c0f5' } })
 	            );
 	        }
 	    }]);
@@ -827,7 +828,7 @@
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
 	                { data: sampleData, height: 80 },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#d1192e', strokeWidth: '1', fill: 'none' } })
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#8ed53f', strokeWidth: '1', fill: 'none' } })
 	            );
 	        }
 	    }]);
@@ -849,8 +850,8 @@
 	        value: function render() {
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
-	                { data: sampleData, height: 40 },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#559500', fill: '#8fc638', fillOpacity: '1' } })
+	                { data: sampleData, height: 80 },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#d1192e', strokeWidth: '1', fill: 'none' } })
 	            );
 	        }
 	    }]);
@@ -872,8 +873,8 @@
 	        value: function render() {
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
-	                { data: sampleData, style: { background: '#272727' }, margin: 10, height: 40 },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: 'none', fill: '#d2673a', fillOpacity: '.5' } })
+	                { data: sampleData, height: 40 },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: '#559500', fill: '#8fc638', fillOpacity: '1' } })
 	            );
 	        }
 	    }]);
@@ -895,9 +896,8 @@
 	        value: function render() {
 	            return _react2['default'].createElement(
 	                _srcSparklines.Sparklines,
-	                { data: sampleData, style: { background: '#00bdcc' }, margin: 10, height: 40 },
-	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: 'white', fill: 'none' } }),
-	                _react2['default'].createElement(_srcSparklines.SparklinesReferenceLine, { style: { stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' } })
+	                { data: sampleData, style: { background: '#272727' }, margin: 10, height: 40 },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: 'none', fill: '#d2673a', fillOpacity: '.5' } })
 	            );
 	        }
 	    }]);
@@ -905,9 +905,33 @@
 	    return RealWorld8;
 	})(_react2['default'].Component);
 
+	var RealWorld9 = (function (_React$Component34) {
+	    function RealWorld9() {
+	        _classCallCheck(this, RealWorld9);
+
+	        _get(Object.getPrototypeOf(RealWorld9.prototype), 'constructor', this).apply(this, arguments);
+	    }
+
+	    _inherits(RealWorld9, _React$Component34);
+
+	    _createClass(RealWorld9, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2['default'].createElement(
+	                _srcSparklines.Sparklines,
+	                { data: sampleData, style: { background: '#00bdcc' }, margin: 10, height: 40 },
+	                _react2['default'].createElement(_srcSparklines.SparklinesLine, { style: { stroke: 'white', fill: 'none' } }),
+	                _react2['default'].createElement(_srcSparklines.SparklinesReferenceLine, { style: { stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' } })
+	            );
+	        }
+	    }]);
+
+	    return RealWorld9;
+	})(_react2['default'].Component);
+
 	var demos = {
-	    'static1': Static1,
-	    'static2': Static2,
+	    'headersparklines': Header,
+	    'simple': Simple,
 	    'customizable1': Customizable1,
 	    'customizable2': Customizable2,
 	    'customizable3': Customizable3,
@@ -938,7 +962,8 @@
 	    'realworld5': RealWorld5,
 	    'realworld6': RealWorld6,
 	    'realworld7': RealWorld7,
-	    'realworld8': RealWorld8
+	    'realworld8': RealWorld8,
+	    'realworld9': RealWorld9
 	};
 
 	for (var d in demos) {

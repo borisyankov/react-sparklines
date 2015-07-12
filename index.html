@@ -22,19 +22,55 @@
         }
 
         pre.prettyprint {
+            overflow: auto;
         	width: 100%;
         	margin: 1rem auto;
         	padding: 0 1rem;
             border: 0;
         	white-space: pre-wrap;
-            font-size: 14px;
+            font-size: 13px;
         }
-
-        body { margin: 0; font-family: roboto; }
-        header { color: white; background: #336aff; }
-        .content { max-width: 1000px; margin: 0 auto; padding: 1rem 0}
-        .c2 { background: #272822; padding: 1rem 0; color: white }
-        h1, h2, h3 { font-weight: 300; }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0; font-family: roboto;
+        }
+        header {
+            color: white; background: #336aff;
+        }
+        .content {
+            max-width: 1000px; margin: 0 auto; padding: 1rem .5rem;
+        }
+        header .content {
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+        }
+        h1, #headersparklines {
+             margin: 1rem 0;
+        }
+        .c2 {
+            background: #272822; color: white;
+        }
+        .c3 {
+            background: slategray; color: white;
+        }
+        h1, h2, h3 {
+            font-weight: 300;
+        }
+        h2 {
+            color: #336aff;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .row > div {
+            flex: 1;
+        }
+        .row > pre {
+            flex: 2;
+        }
         xmp { margin: 0; }
     </style>
 </head>
@@ -42,278 +78,317 @@
     <header>
         <div class="content">
             <h1>React Sparklines</h1>
-        </div>
-        <div class="c2">
-            <h3 class="content">
-                Beautiful and expressive Sparklines React component
-            </h3>
+            <div id="headersparklines"></div>
         </div>
     </header>
+    <div class="c2">
+        <h3 class="content">
+            Beautiful and expressive sparklines component for React
+        </h3>
+    </div>
+    <div class="c3">
+        <h3 class="content">
+            npm install react-sparklines
+        </h3>
+    </div>
     <div class="content">
 
-        <h2>Static</h2>
+        <h2>Simple</h2>
 
-        <div id="static1"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="simple"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine />
 </Sparklines>
-        </xmp></pre>
-
-        <div id="static2"></div>
-        <pre class="prettyprint"><xmp>
-<Sparklines data={sampleData}>
-    <SparklinesLine style={{ strokeWidth: 3, stroke: "#336aff", fill: "none" }} />
-</Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
         <h2>Customizable</h2>
 
-        <div id="customizable1"></div>
-        <pre class="prettyprint"><xmp>
-<Sparklines data={sampleData}>
-    <SparklinesLine color="#1c8cdc" />
-</Sparklines>
-        </xmp></pre>
-
-        <div id="customizable2"></div>
-        <pre class="prettyprint"><xmp>
-<Sparklines data={sampleData}>
-    <SparklinesLine color="#fa7e17" />
-</Sparklines>
-        </xmp></pre>
-
-        <div id="customizable3"></div>
-        <pre class="prettyprint"><xmp>
-<Sparklines data={sampleData}>
-    <SparklinesLine color="#ea485c" />
-</Sparklines>
-        </xmp></pre>
-
-        <div id="customizable4"></div>
-        <pre class="prettyprint"><xmp>
-<Sparklines data={sampleData}>
-    <SparklinesLine color="#56b45d" />
-</Sparklines>
-        </xmp></pre>
-
-        <div id="customizable5"></div>
-        <pre class="prettyprint"><xmp>
-<Sparklines data={sampleData}>
-    <SparklinesLine color="#8e44af" />
-</Sparklines>
-        </xmp></pre>
-
-        <div id="customizable6"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div>
+                <span id="customizable1"></span>
+                <span id="customizable2"></span>
+                <span id="customizable3"></span>
+                <span id="customizable4"></span>
+                <span id="customizable5"></span>
+                <span id="customizable6"></span>
+            </div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine color="#253e56" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
         <h2>Spots</h2>
 
-        <div id="spots1"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="spots1"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine style={{ fill: "none" }} />
     <SparklinesSpots />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="spots2"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="spots2"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine color="#56b45d" />
     <SparklinesSpots style={{ fill: "#56b45d" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="spots3"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="spots3"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData} margin={6}>
     <SparklinesLine style={{ strokeWidth: 3, stroke: "#336aff", fill: "none" }} />
-    <SparklinesSpots size={4} style={{ stroke: "#336aff", strokeWidth: 3, fill: "white" }} />
+    <SparklinesSpots size={4}
+        style={{ stroke: "#336aff", strokeWidth: 3, fill: "white" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
         <h2>Bars</h2>
-        <div id="bars1"></div>
-        <pre class="prettyprint"><xmp>
+
+        <div class="row">
+            <div id="bars1"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesBars style={{ fill: "#41c3f9" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="bars2"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="bars2"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesBars style={{ stroke: "white", fill: "#41c3f9", fillOpacity: ".25" }} />
     <SparklinesLine style={{ stroke: "#41c3f9", fill: "none" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
         <h2>Dynamic</h2>
 
-        <div id="dynamic1"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="dynamic1"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={this.state.data} limit={20}>
     <SparklinesLine color="#1c8cdc" />
     <SparklinesSpots />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="dynamic2"></div>
-        <pre class="prettyprint"><xmp>
-            return (
+        <div class="row">
+            <div id="dynamic2"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={this.state.data} limit={20}>
     <SparklinesBars style={{ fill: "#41c3f9", fillOpacity: ".25" }} />
     <SparklinesLine style={{ stroke: "#41c3f9", fill: "none" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="dynamic3"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="dynamic3"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={this.state.data} limit={20}>
     <SparklinesLine style={{ stroke: "none", fill: "#8e44af", fillOpacity: "1" }}/>
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="dynamic4"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="dynamic4"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={this.state.data} limit={10} >
     <SparklinesBars color="#0a83d8" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
         <h2>Reference Line</h2>
 
-        <div id="referenceline1"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="referenceline1"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine />
     <SparklinesReferenceLine type="max" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="referenceline2"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="referenceline2"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine />
     <SparklinesReferenceLine type="min" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="referenceline3"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="referenceline3"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine />
     <SparklinesReferenceLine type="mean" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="referenceline4"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="referenceline4"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine />
     <SparklinesReferenceLine type="avg" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="referenceline5"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="referenceline5"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine />
     <SparklinesReferenceLine type="median" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="referenceline6"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="referenceline6"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesBars style={{ fill: 'slategray', fillOpacity: ".5" }} />
     <SparklinesReferenceLine />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
         <h2>Normal Band</h2>
-        <div id="normalband1"></div>
-        <pre class="prettyprint"><xmp>
+
+        <div class="row">
+            <div id="normalband1"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine style={{ fill: "none" }}/>
     <SparklinesNormalBand />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="normalband2"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="normalband2"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesLine style={{ fill: "none" }}/>
     <SparklinesNormalBand />
     <SparklinesReferenceLine type="mean" />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
         <h2>Real world examples</h2>
 
-        <div id="realworld1"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="realworld1"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData}>
+    <SparklinesLine style={{ strokeWidth: 3, stroke: "#336aff", fill: "none" }} />
+</Sparklines>
+            </xmp></pre>
+        </div>
+
+        <div class="row">
+            <div id="realworld2"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData100} width={200}>
     <SparklinesLine style={{ stroke: "#2991c8", fill: "none"}} />
     <SparklinesSpots />
     <SparklinesNormalBand style={{ fill: "#2991c8", fillOpacity: .1 }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="realworld2"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="realworld3"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData100}>
     <SparklinesLine style={{ stroke: "black", fill: "none" }} />
     <SparklinesSpots style={{ fill: "orange" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="realworld3"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="realworld4"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
     <SparklinesBars style={{ stroke: "white", strokeWidth: "1", fill: "#40c0f5" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="realworld4"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="realworld5"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData} height={80}>
     <SparklinesLine style={{ stroke: "#8ed53f", strokeWidth: "1", fill: "none" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="realworld5"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="realworld6"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData} height={80}>
     <SparklinesLine style={{ stroke: "#d1192e", strokeWidth: "1", fill: "none" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="realworld6"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="realworld7"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData} height={40}>
     <SparklinesLine style={{ stroke: "#559500", fill: "#8fc638", fillOpacity: "1" }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
 
-        <div id="realworld7"></div>
-        <pre class="prettyprint"><xmp>
+        <div class="row">
+            <div id="realworld8"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData} style={{background: "#272727"}} margin={10} height={40}>
     <SparklinesLine style={{ stroke: "none", fill: "#d2673a", fillOpacity: ".5" }} />
 </Sparklines>
-        </xmp></pre>
-        <div id="realworld8"></div>
-        <pre class="prettyprint"><xmp>
+            </xmp></pre>
+        </div>
+
+        <div class="row">
+            <div id="realworld9"></div>
+            <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData} style={{background: "#00bdcc"}} margin={10} height={40}>
     <SparklinesLine style={{ stroke: "white", fill: "none" }} />
-    <SparklinesReferenceLine style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
+    <SparklinesReferenceLine
+        style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
 </Sparklines>
-        </xmp></pre>
+            </xmp></pre>
+        </div>
+
     </div>
 
     <script src="index.js"></script>
