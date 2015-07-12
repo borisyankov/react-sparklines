@@ -19,6 +19,8 @@ export default class SparklinesSpots extends React.Component {
 
     lastDirection(points) {
 
+        Math.sign = Math.sign || function(x) { return x > 0 ? 1 : -1; }
+
         return points.length < 2
             ? 0
             : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
