@@ -22,6 +22,7 @@
         }
 
         pre.prettyprint {
+            overflow: auto;
         	width: 100%;
         	margin: 1rem auto;
         	padding: 0 1rem;
@@ -29,10 +30,12 @@
         	white-space: pre-wrap;
             font-size: 14px;
         }
-
+        * { box-sizing: border-box; }
         body { margin: 0; font-family: roboto; }
         header { color: white; background: #336aff; }
-        .content { max-width: 1000px; margin: 0 auto; padding: 1rem 0}
+        .content { max-width: 1000px; margin: 0 auto; padding: 1rem .5rem; }
+        header .content { display: flex; justify-content: space-between; flex-wrap: wrap; }
+        h1, #headersparklines { margin: 1rem 0; }
         .c2 { background: #272822; padding: 1rem 0; color: white }
         h1, h2, h3 { font-weight: 300; }
         xmp { margin: 0; }
@@ -42,10 +45,11 @@
     <header>
         <div class="content">
             <h1>React Sparklines</h1>
+            <div id="headersparklines"></div>
         </div>
         <div class="c2">
             <h3 class="content">
-                Beautiful and expressive Sparklines React component
+                Beautiful and expressive sparklines component for React
             </h3>
         </div>
     </header>

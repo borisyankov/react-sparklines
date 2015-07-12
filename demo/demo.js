@@ -29,6 +29,19 @@ function randomData(n = 30) {
 const sampleData = randomData(30);
 const sampleData100 = randomData(100);
 
+class Header extends React.Component {
+
+    render() {
+        return (
+            <Sparklines data={sampleData} width={300} height={50}>
+                <SparklinesLine style={{ stroke: "white", fill: "none" }} />
+                <SparklinesReferenceLine style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
+            </Sparklines>
+        );
+    }
+}
+
+
 class Static1 extends React.Component {
 
     render() {
@@ -454,6 +467,7 @@ class RealWorld8 extends React.Component {
 }
 
 const demos = {
+    'headersparklines': Header,
     'static1': Static1,
     'static2': Static2,
     'customizable1': Customizable1,
