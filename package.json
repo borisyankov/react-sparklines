@@ -1,6 +1,6 @@
 {
   "name": "react-sparklines",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beautiful and expressive Sparklines component for React ",
   "main": "index.js",
   "directories": {
