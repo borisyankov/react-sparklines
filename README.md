@@ -1,5 +1,8 @@
-# react-sparklines
-Beautiful and expressive sparklines component for React
+# Beautiful and expressive sparklines component for React
+
+Live demos and docs: [borisyankov.github.io/react-sparklines/](borisyankov.github.io/react-sparklines/)
+
+![](http://borisyankov.github.io/react-sparklines/img/dynamic.gif)
 
 ## Install
 
@@ -18,6 +21,8 @@ http://localhost:8080
 
 ## Use
 
+![](http://borisyankov.github.io/react-sparklines/img/basic.png)
+
 ```
 <Sparklines data={[5, 10, 5, 20, 8, 15]} limit={5} width={100} height={20} margin={5}>
 </Sparklines>
@@ -35,6 +40,9 @@ margin - optional, offset the chart
 
 
 #### Basic Sparkline
+
+![](http://borisyankov.github.io/react-sparklines/img/customizable.png)
+
 ```
 <Sparklines data={[5, 10, 5, 20]}>
   <SparklinesLine color="blue" />
@@ -42,6 +50,10 @@ margin - optional, offset the chart
 ```
 
 #### Bars
+
+![](http://borisyankov.github.io/react-sparklines/img/bars.png)
+
+
 ```
 <Sparklines data={[5, 10, 5, 20]}>
   <SparklinesBars />
@@ -49,6 +61,10 @@ margin - optional, offset the chart
 ```
 
 #### Spots
+
+![](http://borisyankov.github.io/react-sparklines/img/spots.png)
+
+
 ```
 <Sparklines data={sampleData}>
     <SparklinesLine style={{ fill: "none" }} />
@@ -57,6 +73,10 @@ margin - optional, offset the chart
 ```
 
 #### Reference Line
+
+![](http://borisyankov.github.io/react-sparklines/img/referenceline.png)
+
+
 ```
 <Sparklines data={sampleData}>
     <SparklinesLine />
@@ -65,6 +85,10 @@ margin - optional, offset the chart
 ```
 
 #### Normal Band
+
+![](http://borisyankov.github.io/react-sparklines/img/normalband.png)
+
+
 ```
 <Sparklines data={sampleData}>
     <SparklinesLine style={{ fill: "none" }}/>
