@@ -1,6 +1,6 @@
 {
   "name": "react-sparklines",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Beautiful and expressive Sparklines component for React ",
   "main": "index.js",
   "directories": {
@@ -14,6 +14,15 @@
     "type": "git",
     "url": "git+https://github.com/borisyankov/react-sparklines.git"
   },
+  "keywords": [
+    "react",
+    "component",
+    "react-component",
+    "charts",
+    "sparklines",
+    "visualization",
+    "jsx"
+  ],
   "author": "Boris Yankov <borisyankov@gmail.com> (https://github.com/borisyankov)",
   "license": "MIT",
   "bugs": {
