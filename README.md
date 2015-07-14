@@ -1,6 +1,6 @@
 # Beautiful and expressive sparklines component for React
 
-Live demos and docs: [borisyankov.github.io/react-sparklines/](borisyankov.github.io/react-sparklines/)
+Live demos and docs: [borisyankov.github.io/react-sparklines/](http://borisyankov.github.io/react-sparklines/)
 
 ![](http://borisyankov.github.io/react-sparklines/img/dynamic.gif)
 
