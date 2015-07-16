@@ -2,14 +2,14 @@
   "name": "react-sparklines",
   "version": "1.0.2",
   "description": "Beautiful and expressive Sparklines component for React ",
-  "main": "demo/sparklines.js",
+  "main": "build/index.js",
   "directories": {
     "src": "src/"
   },
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --progress --content-base demo/",
+    "start": "cd demo && webpack-dev-server --progress",
     "test": "jest",
-    "build": "webpack"
+    "prepublish": "webpack"
   },
   "repository": {
     "type": "git",
