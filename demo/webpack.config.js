@@ -2,19 +2,13 @@ var path = require('path');
 var webpack = require('webpack')
 
 module.exports = {
-    entry: {
-        index: [
-            './index.js'
-        ]
-    },
+    cache: true,
+    entry: './demo.js',
     output: {
-        path: path.join(__dirname, 'build'),
+        path: __dirname,
         publicPath: '/',
-        filename: '[name].js',
-        library: 'react-sparklines',
-        libraryTarget: 'commonjs2'
+        filename: 'demo.build.js',
     },
-    externals: { react: 'react' },
     module: {
         loaders: [{
             test: /\.jsx?$/,
@@ -24,5 +18,6 @@ module.exports = {
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
-    }
+    },
+    plugins: []
 };
