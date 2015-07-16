@@ -1,12 +1,26 @@
+var path = require('path');
+
 var webpack = require('webpack'),
     plugins = [];
 
 module.exports = {
     cache: true,
-    entry: './demo/demo',
+    entry: {
+        demo: [
+            './src/demo.js'
+        ],
+        sparklines: [
+            './src/Sparklines.js'
+        ],
+        libs: [
+            'react'
+        ]
+    },
     output: {
-        path: './demo',
-        filename: 'index.js'
+        path: path.join(__dirname, 'demo'),
+        publicPath: '/',
+        filename: '[name].js',
+        chunkFilename: '[chunkhash].bundle.js'
     },
     module: {
         loaders: [{
