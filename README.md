@@ -38,6 +38,8 @@ width, height - dimensions of the component
 
 margin - optional, offset the chart
 
+min, max - optional, bound the chart
+
 
 #### Basic Sparkline
 
