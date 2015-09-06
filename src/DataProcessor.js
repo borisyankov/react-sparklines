@@ -1,13 +1,13 @@
 export default class DataProcessor {
 
-    static dataToPoints(data, limit, width, height, margin) {
+    static dataToPoints(data, limit, width, height, margin, max, min) {
 
         if (limit && limit < data.length) {
             data = data.slice(data.length - limit);
         }
 
-        const max = this.max(data);
-        const min = this.min(data);
+        if (max == null) max = this.max(data);
+        if (min == null) min = this.min(data);
 
         const vfactor = (height - margin * 2) / ((max - min) || 1);
         const hfactor = (width - margin * 2) / ((limit || data.length) - 1);

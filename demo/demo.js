@@ -119,6 +119,17 @@ class Customizable6 extends React.Component {
     }
 }
 
+class Bounds1 extends React.Component {
+
+    render() {
+        return (
+            <Sparklines data={sampleData} max={0.5}>
+                <SparklinesLine />
+            </Sparklines>
+        );
+    }
+}
+
 class Spots1 extends React.Component {
 
     render() {
@@ -478,6 +489,7 @@ const demos = {
     'spots1': Spots1,
     'spots2': Spots2,
     'spots3': Spots3,
+    'bounds1': Bounds1,
     'bars1': Bars1,
     'bars2': Bars2,
     'dynamic1': Dynamic1,
