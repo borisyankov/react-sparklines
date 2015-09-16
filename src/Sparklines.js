@@ -29,7 +29,10 @@ class Sparklines extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.data.some((d, i) => d !== this.props.data[i]);
+        return nextProps.width != nextState.width ||
+            nextProps.height != nextState.height ||
+            nextProps.margin != nextState.margin ||
+            nextProps.data.some((d, i) => d !== this.props.data[i]);
     }
 
     render() {
