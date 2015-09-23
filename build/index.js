@@ -137,10 +137,10 @@ module.exports =
 
 	    _createClass(Sparklines, [{
 	        key: 'shouldComponentUpdate',
-	        value: function shouldComponentUpdate(nextProps, nextState) {
+	        value: function shouldComponentUpdate(nextProps) {
 	            var _this = this;
 
-	            return nextProps.data.some(function (d, i) {
+	            return nextProps.width != this.props.width || nextProps.height != this.props.height || nextProps.margin != this.props.margin || nextProps.data.some(function (d, i) {
 	                return d !== _this.props.data[i];
 	            });
 	        }
