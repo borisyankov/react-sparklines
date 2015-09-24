@@ -1,11 +1,10 @@
+import React from 'react'
+import TestUtils from 'react-addons-test-utils';
+import { Sparklines } from '../build';
+
 describe('Sparklines', function() {
-    it('is rendered as svg', function() {
-        import React from 'react'
-        import { TestUtils } from "react/addons";
-        import { Sparklines } from '../build';
-
+    it('should render successfully', function() {
         const sparklines = TestUtils.renderIntoDocument(<Sparklines/>);
-
-        expect(sparklines.type).toBe('svg');
+        expect(TestUtils.isCompositeComponent(sparklines)).toBeTruthy();
     });
 });
