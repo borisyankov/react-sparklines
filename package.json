@@ -44,7 +44,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "peerDependencies": {
-    "react": "^0.13.3"
+    "react": ">=0.13.3 || ^0.14.0-rc1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
