@@ -22,10 +22,10 @@ export default class SparklinesBars extends React.Component {
                 {points.map((p, i) =>
                     <rect
                         key={i}
-                        x={p.x}
-                        y={p.y}
-                        width={barWidth}
-                        height={Math.max(0, height - p.y)}
+                        x={Math.ceil(p.x)}
+                        y={Math.ceil(p.y)}
+                        width={Math.ceil(barWidth)}
+                        height={Math.ceil(Math.max(0, height - p.y))}
                         style={style} />
                 )}
             </g>
