@@ -1,18 +1,20 @@
 export default class DataProcessor {
 
-    static dataToPoints(data, limit, width, height, margin, max = this.max(data), min = this.min(data)) {
+    static dataToPoints(data, limit, width = 1, height = 1, margin = 0, max = this.max(data), min = this.min(data)) {
 
-        if (limit && limit < data.length) {
-            data = data.slice(data.length - limit);
+        const len = data.length;
+
+        if (limit && limit < len) {
+            data = data.slice(len - limit);
         }
 
         const vfactor = (height - margin * 2) / ((max - min) || 1);
-        const hfactor = (width - margin * 2) / ((limit || data.length) - 1);
+        const hfactor = (width - margin * 2) / ((limit || len) - (len > 1 ? 1 : 0));
 
         return data.map((d, i) => {
             return {
                 x: i * hfactor + margin,
-                y: (max - data[i]) * vfactor + margin
+                y: ((max === min ? height : max) - d) * vfactor + margin
             }
         });
     }
@@ -30,7 +32,7 @@ export default class DataProcessor {
     }
 
     static avg(data) {
-        return data.reduce((a, b) => a + b) / (data.length + 1);
+        return data.reduce((a, b) => a + b) / data.length;
     }
 
     static median(data) {
