@@ -4,7 +4,8 @@ import DataProcessor from './DataProcessor';
 export default class SparklinesReferenceLine extends React.Component {
 
     static propTypes = {
-        type: React.PropTypes.oneOf(['max', 'min', 'mean', 'avg', 'median']),
+        type: React.PropTypes.oneOf(['max', 'min', 'mean', 'avg', 'median', 'custom']),
+        value: React.PropTypes.number,
         style: React.PropTypes.object
     };
 
@@ -15,10 +16,10 @@ export default class SparklinesReferenceLine extends React.Component {
 
     render() {
 
-        const { points, margin, type, style } = this.props;
+        const { points, margin, type, style, value } = this.props;
 
         const ypoints = points.map(p => p.y);
-        const y = DataProcessor.calculateFromData(ypoints, type);
+        const y = type == 'custom' ? value : DataProcessor.calculateFromData(ypoints, type);
 
         return (
             <line
