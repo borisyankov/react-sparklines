@@ -11,8 +11,16 @@ module.exports = {
         path: path.join(__dirname, 'build'),
         publicPath: '/',
         filename: '[name].js',
-        library: 'react-sparklines',
-        libraryTarget: 'commonjs2'
+        library: 'ReactSparklines',
+        libraryTarget: 'umd'
+    },
+    externals: {
+        react: {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react'
+        }
     },
     externals: { react: 'react' },
     module: {
