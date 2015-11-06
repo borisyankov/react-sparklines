@@ -22,7 +22,6 @@ module.exports = {
             amd: 'react'
         }
     },
-    externals: { react: 'react' },
     module: {
         loaders: [{
             test: /\.jsx?$/,
