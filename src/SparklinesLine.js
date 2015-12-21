@@ -35,7 +35,7 @@ export default class SparklinesLine extends React.Component {
             stroke: style.stroke || 'none',
             strokeWidth: '0',
             fillOpacity: style.fillOpacity || '.1',
-            fill: color || style.fill || 'slategray'
+            fill: style.fill || color || 'slategray'
         };
 
         return (
