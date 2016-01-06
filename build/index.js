@@ -335,7 +335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(SparklinesBars, null, [{
 	        key: 'propTypes',
 	        value: {
-	            points: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.number),
+	            points: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.object),
 	            height: _react2['default'].PropTypes.number,
 	            style: _react2['default'].PropTypes.object,
 	            barWidth: _react2['default'].PropTypes.number
