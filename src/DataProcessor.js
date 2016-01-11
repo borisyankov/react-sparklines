@@ -51,7 +51,11 @@ export default class DataProcessor {
         const avgSqDiff = this.avg(sqDiff);
         return Math.sqrt(avgSqDiff);
     }
-
+    
+    static initial(data) {
+        return data[0];
+    }
+    
     static calculateFromData(data, calculationType) {
         return this[calculationType].call(this, data);
     }
