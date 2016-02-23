@@ -8,13 +8,13 @@ export default class DataProcessor {
             data = data.slice(len - limit);
         }
 
-        const vfactor = (height - margin * 2) / ((max - min) || 1);
+        const vfactor = (height - margin * 2) / ((max - min) || 2);
         const hfactor = (width - margin * 2) / ((limit || len) - (len > 1 ? 1 : 0));
 
         return data.map((d, i) => {
             return {
                 x: i * hfactor + margin,
-                y: ((max === min ? height : max) - d) * vfactor + margin
+                y: (max === min ? 1 : (max - d)) * vfactor + margin
             }
         });
     }
