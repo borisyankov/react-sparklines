@@ -8,8 +8,8 @@
   },
   "scripts": {
     "start": "cd demo && webpack-dev-server --progress",
-    "test": "mocha --compilers js:mocha-babel __tests__",
-    "test:watch": "mocha --compilers js:mocha-babel --watch __tests__",
+    "test": "mocha --compilers js:babel/register __tests__",
+    "test:watch": "mocha --compilers js:babel/register --watch __tests__",
     "compile": "webpack",
     "prepublish": "npm run compile"
   },
@@ -40,7 +40,8 @@
     "chai": "^3.3.0",
     "jsdom": "^3.1.2",
     "mocha": "^2.3.3",
-    "mocha-babel": "^3.0.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
     "webpack": "^1.10.0",
     "webpack-dev-server": "^1.10.1"
   },

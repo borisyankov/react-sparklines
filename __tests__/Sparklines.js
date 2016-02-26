@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import TestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
 import { Sparklines } from '../src/Sparklines';
@@ -11,12 +12,12 @@ describe('Sparklines', () => {
 
     it('should render nothing without data', () => {
         const sparklines = TestUtils.renderIntoDocument(<Sparklines />);
-        expect(React.findDOMNode(sparklines)).to.be.null;
+        expect(ReactDOM.findDOMNode(sparklines)).to.be.null;
     });
 
     it('is rendered as svg', () => {
         const sparklines = TestUtils.renderIntoDocument(<Sparklines data={[1]}/>);
-        expect(React.findDOMNode(sparklines).tagName).to.eq('svg');
+        expect(ReactDOM.findDOMNode(sparklines).tagName).to.eq('svg');
     });
 
 });
