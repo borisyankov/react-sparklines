@@ -23,9 +23,14 @@ http://localhost:8080
 
 ## Use
 
+Import the Sparklines components that you need; for example to generate a simple chart:
+
 ![](http://borisyankov.github.io/react-sparklines/img/basic.png)
 
 ```
+import React from 'react';
+import { Sparklines } from 'react-sparklines';
+...
 <Sparklines data={[5, 10, 5, 20, 8, 15]} limit={5} width={100} height={20} margin={5}>
 </Sparklines>
 ```
@@ -48,6 +53,9 @@ min, max - optional, bound the chart
 ![](http://borisyankov.github.io/react-sparklines/img/customizable.png)
 
 ```
+import React from 'react';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
+...
 <Sparklines data={[5, 10, 5, 20]}>
   <SparklinesLine color="blue" />
 </Sparklines>
@@ -59,6 +67,9 @@ min, max - optional, bound the chart
 
 
 ```
+import React from 'react';
+import { Sparklines, SparklinesBars } from 'react-sparklines';
+...
 <Sparklines data={[5, 10, 5, 20]}>
   <SparklinesBars />
 </Sparklines>
@@ -70,6 +81,9 @@ min, max - optional, bound the chart
 
 
 ```
+import React from 'react';
+import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
+...
 <Sparklines data={sampleData}>
     <SparklinesLine style={{ fill: "none" }} />
     <SparklinesSpots />
@@ -82,6 +96,9 @@ min, max - optional, bound the chart
 
 
 ```
+import React from 'react';
+import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
+...
 <Sparklines data={sampleData}>
     <SparklinesLine />
     <SparklinesReferenceLine type="mean" />
@@ -94,6 +111,9 @@ min, max - optional, bound the chart
 
 
 ```
+import React from 'react';
+import { Sparklines, SparklinesLine, SparklinesNormalBand } from 'react-sparklines';
+...
 <Sparklines data={sampleData}>
     <SparklinesLine style={{ fill: "none" }}/>
     <SparklinesNormalBand />
