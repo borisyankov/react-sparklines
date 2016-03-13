@@ -10,10 +10,13 @@ module.exports = function (wallaby) {
         },
 
         compilers: {
-            '**/*.js*': wallaby.compilers.babel({
-                babel: require('babel'),
-                stage: 0
-            })
+            '**/*.js': wallaby.compilers.babel({
+                presets: [
+                    'react',
+                    'es2015',
+                    'stage-1',
+                ],
+            }),
         },
 
         testFramework: 'mocha'
