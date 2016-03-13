@@ -20,14 +20,14 @@ describe('DataProcessor', () => {
 
         it('should return proper values for 1 value', () => {
             expect(DataProcessor.dataToPoints([1])).to.eql([
-                {x: 0, y: 0}
+                {x: 0, y: 0.5}
             ])
         });
 
         it('should return proper values 2+ values', () => {
             expect(DataProcessor.dataToPoints([1,1])).to.eql([
-                {x: 0, y: 0},
-                {x: 1, y: 0}
+                {x: 0, y: 0.5},
+                {x: 1, y: 0.5}
             ])
 
             expect(DataProcessor.dataToPoints([0,1])).to.eql([
@@ -66,12 +66,12 @@ describe('DataProcessor', () => {
 
         it('should return y == height for 0 and null values', () => {
             expect(DataProcessor.dataToPoints([0])).to.eql([
-                {x: 0, y: 1}
+                {x: 0, y: 0.5}
             ])
             expect(DataProcessor.dataToPoints([0, null, 0])).to.eql([
-                {x: 0, y: 1},
-                {x: 0.5, y: 1},
-                {x: 1, y: 1}
+                {x: 0, y: 0.5},
+                {x: 0.5, y: 0.5},
+                {x: 1, y: 0.5}
             ])
         });
 
