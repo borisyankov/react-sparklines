@@ -43,9 +43,7 @@
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "webpack": "^1.10.0",
-    "webpack-dev-server": "^1.10.1"
-  },
-  "peerDependencies": {
-    "react": ">=0.13.3 || ^0.14.0-rc1"
+    "webpack-dev-server": "^1.10.1",
+    "react": ">=0.13.3"
   }
 }
