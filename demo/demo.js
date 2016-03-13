@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparklines, SparklinesBars, SparklinesLine, SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from '../src/Sparklines';
+import { Sparklines, SparklinesBars, SparklinesLine, SparklinesCurve,  SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from '../src/Sparklines';
 
 function boxMullerRandom () {
     let phase = false,
@@ -48,6 +48,17 @@ class Simple extends React.Component {
         return (
             <Sparklines data={sampleData}>
                 <SparklinesLine />
+            </Sparklines>
+        );
+    }
+}
+
+class SimpleCurve extends React.Component {
+
+    render() {
+        return (
+            <Sparklines data={sampleData}>
+                <SparklinesCurve />
             </Sparklines>
         );
     }
@@ -480,6 +491,7 @@ class RealWorld9 extends React.Component {
 const demos = {
     'headersparklines': Header,
     'simple': Simple,
+    'simpleCurve': SimpleCurve,
     'customizable1': Customizable1,
     'customizable2': Customizable2,
     'customizable3': Customizable3,

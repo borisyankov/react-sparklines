@@ -1,5 +1,6 @@
 import React from 'react';
 import SparklinesLine from './SparklinesLine';
+import SparklinesCurve from './SparklinesCurve';
 import SparklinesBars from './SparklinesBars';
 import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
@@ -21,8 +22,8 @@ class Sparklines extends React.Component {
 
     static defaultProps = {
         data: [],
-        width: 120,
-        height: 30,
+        width: 240,
+        height: 60,
         margin: 2
     };
 
@@ -61,4 +62,4 @@ class Sparklines extends React.Component {
     }
 }
 
-export { Sparklines, SparklinesLine, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand, DataProcessor }
+export { Sparklines, SparklinesLine, SparklinesCurve, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand, DataProcessor }
