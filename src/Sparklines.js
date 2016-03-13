@@ -14,7 +14,9 @@ class Sparklines extends React.Component {
         width: React.PropTypes.number,
         height: React.PropTypes.number,
         margin: React.PropTypes.number,
-        style: React.PropTypes.object
+        style: React.PropTypes.object,
+        min: React.PropTypes.number,
+        max: React.PropTypes.number
     };
 
     static defaultProps = {
@@ -32,6 +34,9 @@ class Sparklines extends React.Component {
         return nextProps.width != this.props.width ||
             nextProps.height != this.props.height ||
             nextProps.margin != this.props.margin ||
+            nextProps.min != this.props.min ||
+            nextProps.max != this.props.max ||
+            nextProps.limit != this.props.limit ||
             nextProps.data.length != this.props.data.length ||
             nextProps.data.some((d, i) => d !== this.props.data[i]);
     }
