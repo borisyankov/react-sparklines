@@ -8,8 +8,8 @@
   },
   "scripts": {
     "start": "cd demo && webpack-dev-server --progress",
-    "test": "mocha --compilers js:babel/register __tests__",
-    "test:watch": "mocha --compilers js:babel/register --watch __tests__",
+    "test": "mocha --compilers js:babel-core/register __tests__",
+    "test:watch": "mocha --compilers js:babel-core/register --watch __tests__",
     "compile": "webpack",
     "prepublish": "npm run compile"
   },
@@ -40,8 +40,11 @@
     "chai": "^3.3.0",
     "jsdom": "^3.1.2",
     "mocha": "^2.3.3",
+<<<<<<< HEAD
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+=======
+>>>>>>> 2f21bfccf6537c7a6960e377acb01d27ca3753f6
     "webpack": "^1.10.0",
     "webpack-dev-server": "^1.10.1",
     "react": ">=0.13.3"
