@@ -114,6 +114,17 @@
             </xmp></pre>
         </div>
 
+        <h2>Simple Curve</h2>
+
+        <div class="row">
+            <div id="simpleCurve"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData}>
+    <SparklinesCurve />
+</Sparklines>
+            </xmp></pre>
+        </div>
+
         <h2>Customizable</h2>
 
         <div class="row">
@@ -161,6 +172,17 @@
     <SparklinesLine style={{ strokeWidth: 3, stroke: "#336aff", fill: "none" }} />
     <SparklinesSpots size={4}
         style={{ stroke: "#336aff", strokeWidth: 3, fill: "white" }} />
+</Sparklines>
+            </xmp></pre>
+        </div>
+
+        <h2>Bounds</h2>
+
+        <div class="row">
+            <div id="bounds1"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData} max={0.5}>
+    <SparklinesLine />
 </Sparklines>
             </xmp></pre>
         </div>
@@ -401,7 +423,7 @@
 
     </div>
 
-    <script src="index.js"></script>
+    <script src="demo.build.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js"></script>
     <script>prettyPrint();</script>
 </body>
