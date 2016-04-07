@@ -36,7 +36,7 @@ export default class DataProcessor {
     }
 
     static median(data) {
-        return data.sort()[Math.floor(data.length / 2)];
+        return data.sort((a,b) => a - b)[Math.floor(data.length / 2)];
     }
 
     static variance(data) {

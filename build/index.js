@@ -126,7 +126,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: "median",
 	        value: function median(data) {
-	            return data.sort()[Math.floor(data.length / 2)];
+	            return data.sort(function (a, b) {
+	                return a - b;
+	            })[Math.floor(data.length / 2)];
 	        }
 	    }, {
 	        key: "variance",
@@ -252,7 +254,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var min = _props.min;
 
 
-	            if (data.length === 0) return false;
+	            if (data.length === 0) return null;
 
 	            var points = _DataProcessor2.default.dataToPoints(data, limit, width, height, margin, max, min);
 

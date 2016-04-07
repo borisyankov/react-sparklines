@@ -84,6 +84,20 @@ describe('DataProcessor', () => {
             expect(DataProcessor.avg([1, 2])).to.eq(3/2)
             expect(DataProcessor.avg([0, 1, 2])).to.eq(1)
         });
-    })
+    });
 
+    describe('median', () => {
+        it('should return median of values', () => {
+            expect(DataProcessor.median([0])).to.eq(0)
+            expect(DataProcessor.median([0, 1])).to.eq(1)
+            expect(DataProcessor.median([1, 2, 3])).to.eq(2)
+            expect(DataProcessor.median([5, 4, 3, 2, 1])).to.eq(3)
+            expect(DataProcessor.median([2, 4, 1, 3, 5])).to.eq(3)
+        });
+
+        it('should calculate median by correctly sorting numbers, not lexicographically', () => {
+            expect(DataProcessor.median([0, 20, 100])).to.eq(20)
+            expect(DataProcessor.median([1, 3, 5, 7, 100, 1000, 10000])).to.eq(7)
+        });
+    });
 });
