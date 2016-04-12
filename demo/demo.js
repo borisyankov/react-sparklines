@@ -29,6 +29,7 @@ function randomData(n = 30) {
 
 const sampleData = randomData(30);
 const sampleData100 = randomData(100);
+const sampleDataGaps = sampleData.map(x => x < -1 ? NaN : x);
 
 const Header = () =>
     <Sparklines data={sampleData} width={300} height={50}>
@@ -38,6 +39,11 @@ const Header = () =>
 
 const Simple = () =>
     <Sparklines data={sampleData}>
+        <SparklinesLine />
+    </Sparklines>
+
+const SimpleGaps = () =>
+    <Sparklines data={sampleDataGaps} gaps={true}>
         <SparklinesLine />
     </Sparklines>
 
@@ -295,6 +301,7 @@ const RealWorld9 = () =>
 const demos = {
     'headersparklines': Header,
     'simple': Simple,
+    'simpleGaps': SimpleGaps,
     'simpleCurve': SimpleCurve,
     'customizable1': Customizable1,
     'customizable2': Customizable2,

@@ -104,4 +104,43 @@ describe('DataProcessor', () => {
             expect(DataProcessor.median(data)).to.eq(3668.810244)
         })
     });
+
+    describe('isGapValue', () => {
+        it('finite numbers are not gaps', () => {
+            expect(DataProcessor.isGapValue(0)).to.eq(false);
+            expect(DataProcessor.isGapValue(1.5)).to.eq(false);
+        });
+
+        it('anything else is a gap', () => {
+            expect(DataProcessor.isGapValue(Infinity)).to.eq(true);
+            expect(DataProcessor.isGapValue(-Infinity)).to.eq(true);
+            expect(DataProcessor.isGapValue(NaN)).to.eq(true);
+            expect(DataProcessor.isGapValue('0')).to.eq(true);
+            expect(DataProcessor.isGapValue('1.5')).to.eq(true);
+            expect(DataProcessor.isGapValue({})).to.eq(true);
+            expect(DataProcessor.isGapValue(null)).to.eq(true);
+            expect(DataProcessor.isGapValue(undefined)).to.eq(true);
+            expect(DataProcessor.isGapValue([])).to.eq(true);
+        });
+    });
+
+    describe('pointsToSegments', () => {
+        it('without gap', () => {
+            expect(DataProcessor.pointsToSegments([{x: 0, y: 0}])).to.eql([{isGap: false, points: [{x: 0, y: 0}]}]);
+            expect(DataProcessor.pointsToSegments([{x: 0, y: 0}, {x: 1, y: 1}, {x: 2, y: 1}])).to.eql([{isGap: false, points: [{x: 0, y: 0}, {x: 1, y: 1}, {x: 2, y: 1}]}]);
+        });
+        it('only gap', () => {
+            expect(DataProcessor.pointsToSegments([{x: 0, y: null}])).to.eql([{isGap: true, points: [{x: 0, y: null}]}]);
+            expect(DataProcessor.pointsToSegments([{x: 0, y: null}, {x: 1, y: null}, {x: 2, y: null}])).to.eql([{isGap: true, points: [{x: 0, y: null}, {x: 1, y: null}, {x: 2, y: null}]}]);
+        });
+        it('gap-nongap', () => {
+            expect(DataProcessor.pointsToSegments([{x: 0, y: null}, {x: 1, y: 2}, {x: 2, y: 3}])).to.eql([{isGap: true, points: [{x: 0, y: null}]}, {isGap: false, points: [{x: 1, y: 2}, {x: 2, y: 3}]}]);
+        });
+        it('nongap-gap', () => {
+            expect(DataProcessor.pointsToSegments([{x: 0, y: 1}, {x: 1, y: null}, {x: 2, y: null}])).to.eql([{isGap: false, points: [{x: 0, y: 1}]}, {isGap: true, points: [{x: 1, y: null}, {x: 2, y: null}]}]);
+        });
+        it('gap-nongap-gap', () => {
+            expect(DataProcessor.pointsToSegments([{x: 0, y: null}, {x: 1, y: 2}, {x: 2, y: null}])).to.eql([{isGap: true, points: [{x: 0, y: null}]}, {isGap: false, points: [{x: 1, y: 2}]}, {isGap: true, points: [{x: 2, y: null}]}]);
+        });
+    });
 });

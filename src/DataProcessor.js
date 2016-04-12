@@ -1,6 +1,6 @@
 export default class DataProcessor {
 
-    static dataToPoints(data, limit, width = 1, height = 1, margin = 0, max = this.max(data), min = this.min(data)) {
+    static dataToPoints(data, limit, width = 1, height = 1, margin = 0, max = this.max(data), min = this.min(data), leaveGaps = false) {
 
         const len = data.length;
 
@@ -14,17 +14,17 @@ export default class DataProcessor {
         return data.map((d, i) => {
             return {
                 x: i * hfactor + margin,
-                y: (max === min ? 1 : (max - d)) * vfactor + margin
+                y: (leaveGaps && this.isGapValue(d)) ? d : ((max === min ? 1 : (max - d)) * vfactor + margin)
             }
         });
     }
 
     static max(data) {
-        return Math.max.apply(Math, data);
+        return Math.max.apply(Math, data.filter(d => !this.isGapValue(d)));
     }
 
     static min(data) {
-        return Math.min.apply(Math, data);
+        return Math.min.apply(Math, data.filter(d => !this.isGapValue(d)));
     }
 
     static mean(data) {
@@ -54,5 +54,29 @@ export default class DataProcessor {
 
     static calculateFromData(data, calculationType) {
         return this[calculationType].call(this, data);
+    }
+
+    static pointsToSegments(points) {
+        let segment, segments = [];
+        const newSegment = (isGap) => ({points: [], isGap});
+        for (let point of points) {
+            if (!segment)
+                segment = newSegment(false);
+            const isGapHere = this.isGapValue(point.y);
+            if (segment.isGap != isGapHere) {
+                if (segment.points.length)
+                    segments.push(segment);
+                segment = newSegment(isGapHere);
+            }
+            segment.points.push(point);            
+        }
+        if (segment && segment.points.length)
+            segments.push(segment);
+        return segments;
+    }
+
+    static isGapValue(y)
+    {
+        return !Number.isFinite(y);
     }
 }
