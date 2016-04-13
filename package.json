@@ -44,11 +44,12 @@
     "chai": "^3.5.0",
     "enzyme": "^2.1.0",
     "hiff": "^0.3.0",
-    "jsdom": "^8.1.0",
     "line-by-line": "^0.1.4",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
+    "react": "^0.14.7",
     "react-element-to-jsx-string": "=2.5.0",
+    "react-dom": "^0.14.7",
     "replaceall": "^0.1.6",
     "webpack": "^2.1.0-beta.4",
     "webpack-dev-server": "^2.0.0-beta"
