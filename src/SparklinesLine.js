@@ -50,8 +50,6 @@ export default class SparklinesLine extends React.Component {
 
     render() {
         const { points, height, margin, color, style } = this.props;
-        if (DataProcessor.pointsToSegments(points).length !== 1)
-            console.log(points);
         return (
             <g>
                 {DataProcessor.pointsToSegments(points)
