@@ -11,7 +11,8 @@
     "test": "mocha --compilers js:babel-core/register __tests__",
     "test:watch": "mocha --compilers js:babel-core/register --watch __tests__",
     "compile": "webpack",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "test:bootstrap": "node -r babel-core/register bootstrap-tests.js"
   },
   "repository": {
     "type": "git",

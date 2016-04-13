@@ -6,7 +6,7 @@
 // 2) Imports the same fixtures file and (re-)renders each ReactElement to a static SVG string.
 // 3) On success, overwrites __tests__/fixtures.js with an updated copy.
 //
-// Run with babel-node or similar.
+// Run with babel-node or using "npm run test:bootstrap".
 
 import path from 'path';
 import {render} from 'enzyme';
