@@ -19,33 +19,42 @@ export default class DataProcessor {
         });
     }
 
+    static nonGapValues(data) {
+        return data.filter(d => !this.isGapValue(d));
+    }
+
     static max(data) {
-        return Math.max.apply(Math, data.filter(d => !this.isGapValue(d)));
+        return Math.max.apply(Math, this.nonGapValues(data));
     }
 
     static min(data) {
-        return Math.min.apply(Math, data.filter(d => !this.isGapValue(d)));
+        return Math.min.apply(Math, this.nonGapValues(data));
     }
 
     static mean(data) {
+        data = this.nonGapValues(data);
         return (this.max(data) - this.min(data)) / 2;
     }
 
     static avg(data) {
+        data = this.nonGapValues(data);
         return data.reduce((a, b) => a + b) / data.length;
     }
 
     static median(data) {
+        data = this.nonGapValues(data);
         return data.sort((a,b) => a - b)[Math.floor(data.length / 2)];
     }
 
     static variance(data) {
+        data = this.nonGapValues(data);
         const mean = this.mean(data);
         const sq = data.map(n => Math.pow(n - mean, 2));
         return this.mean(sq);
     }
 
     static stdev(data) {
+        data = this.nonGapValues(data);
         const mean = this.mean(data);
         const sqDiff = data.map(n => Math.pow(n - mean, 2));
         const avgSqDiff = this.avg(sqDiff);

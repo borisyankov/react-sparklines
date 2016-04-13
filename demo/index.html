@@ -136,6 +136,17 @@
             </xmp></pre>
         </div>
 
+        <h2>Simple Curve w/Gaps</h2>
+
+        <div class="row">
+            <div id="simpleCurveGaps"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleDataGaps} gaps={true}>
+    <SparklinesCurve />
+</Sparklines>
+            </xmp></pre>
+        </div>
+
         <h2>Customizable</h2>
 
         <div class="row">
@@ -213,6 +224,16 @@
             <div id="bars2"></div>
             <pre class="prettyprint"><xmp>
 <Sparklines data={sampleData}>
+    <SparklinesBars style={{ stroke: "white", fill: "#41c3f9", fillOpacity: ".25" }} />
+    <SparklinesLine style={{ stroke: "#41c3f9", fill: "none" }} />
+</Sparklines>
+            </xmp></pre>
+        </div>
+
+        <div class="row">
+            <div id="barsGaps"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleDataGaps} gaps={true}>
     <SparklinesBars style={{ stroke: "white", fill: "#41c3f9", fillOpacity: ".25" }} />
     <SparklinesLine style={{ stroke: "#41c3f9", fill: "none" }} />
 </Sparklines>
@@ -321,6 +342,16 @@
             </xmp></pre>
         </div>
 
+        <div class="row">
+            <div id="referencelineGaps"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleDataGaps} gaps={true}>
+    <SparklinesBars style={{ fill: 'slategray', fillOpacity: ".5" }} />
+    <SparklinesReferenceLine />
+</Sparklines>
+            </xmp></pre>
+        </div>
+
         <h2>Normal Band</h2>
 
         <div class="row">
@@ -343,6 +374,17 @@
 </Sparklines>
             </xmp></pre>
         </div>
+
+        <div class="row">
+            <div id="normalbandGaps"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData} gaps={true}>
+    <SparklinesLine style={{ fill: "none" }}/>
+    <SparklinesNormalBand />
+    <SparklinesReferenceLine type="mean" />
+</Sparklines>
+            </xmp></pre>
+        </div>        
 
         <h2>Real world examples</h2>
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import DataProcessor from './DataProcessor';
+import * as defaults from './defaults';
+import SparklinesSegmentContainer from './SparklinesSegmentContainer';
 
 function SparklinesLineSegment({points, width, height, margin, color, style}) {
     if (!style)
@@ -15,19 +16,9 @@ function SparklinesLineSegment({points, width, height, margin, color, style}) {
     ];
     const fillPoints = linePoints.concat(closePolyPoints);
 
-    const lineStyle = {
-        stroke: color || style.stroke || 'slategray',
-        strokeWidth: style.strokeWidth || '1',
-        strokeLinejoin: style.strokeLinejoin || 'round',
-        strokeLinecap: style.strokeLinecap || 'round',
-        fill: 'none'
-    };
-    const fillStyle = {
-        stroke: style.stroke || 'none',
-        strokeWidth: '0',
-        fillOpacity: style.fillOpacity || '.1',
-        fill: style.fill || color || 'slategray'
-    };
+    const lineStyle = defaults.getLineStyle({color, style});
+
+    const fillStyle = defaults.getFillStyle({color, style});
 
     return (
         <g>
@@ -49,18 +40,8 @@ export default class SparklinesLine extends React.Component {
     };
 
     render() {
-        const { points, height, margin, color, style } = this.props;
-        const groups = DataProcessor.pointsToSegments(points)
-                .filter(segment => !segment.isGap)
-                .map((segment, i) => (<SparklinesLineSegment
-                                        key={i}
-                                        points={segment.points}
-                                        height={height}
-                                        margin={margin}
-                                        color={color}
-                                        style={style} />));
-        if (groups.length === 1)
-            return groups[0];
-        return <g>{groups}</g>;
+        return (<SparklinesSegmentContainer {...this.props}>
+                    <SparklinesLineSegment />
+                </SparklinesSegmentContainer>);
     }
 }

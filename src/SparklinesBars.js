@@ -1,4 +1,5 @@
 import React from 'react';
+import DataProcessor from './DataProcessor';
 
 export default class SparklinesBars extends React.Component {
 
@@ -22,13 +23,13 @@ export default class SparklinesBars extends React.Component {
         return (
             <g>
                 {points.map((p, i) =>
-                    <rect
+                    DataProcessor.isGapValue(p.y) ? null : (<rect
                         key={i}
                         x={Math.ceil(p.x - strokeWidth * i)}
                         y={Math.ceil(p.y)}
                         width={Math.ceil(width)}
                         height={Math.ceil(Math.max(0, height - p.y))}
-                        style={style} />
+                        style={style} />)
                 )}
             </g>
         )
