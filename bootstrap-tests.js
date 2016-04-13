@@ -18,14 +18,14 @@ function writeFixtures() {
 	for (let key of Object.keys(fixtures)) {
 		const jsx = fixtures[key].jsx;
 		const wrapper = render(jsx);
-		const jsxCode = `(${toOneLine(reactElementToJsx(jsx))})`;
+		const jsxCode = `(${markupToOneLine(reactElementToJsx(jsx))})`;
 		const htmlCode = JSON.stringify(wrapper.html());
 
-        write(`\t${JSON.stringify(key)}: {jsx: ${jsxCode}, html: ${htmlCode}},`);
+        write(`\t${JSON.stringify(key)}: {jsx: ${jsxCode}, svg: ${htmlCode}},`);
 	}
 }
-function toOneLine(code) {
-	return code.replace(/\s*[\r\n]\s*/g, ' ').replace(/\s+/g, ' ');
+function markupToOneLine(code) {
+	return code.replace(/\s*[\r\n]\s*/g, ' ').replace(/\s+/g, ' ').replace(/\s*([<>])\s*/g, '$1');
 }
 
 // Input control
