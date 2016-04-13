@@ -42,6 +42,7 @@
     "babel-runtime": "^6.6.1",
     "chai": "^3.5.0",
     "enzyme": "^2.1.0",
+    "hiff": "^0.3.0",
     "jsdom": "^8.1.0",
     "line-by-line": "^0.1.4",
     "mocha": "^2.4.5",
