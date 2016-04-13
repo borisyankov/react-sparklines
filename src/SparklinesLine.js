@@ -50,20 +50,17 @@ export default class SparklinesLine extends React.Component {
 
     render() {
         const { points, height, margin, color, style } = this.props;
-        return (
-            <g>
-                {DataProcessor.pointsToSegments(points)
+        const groups = DataProcessor.pointsToSegments(points)
                 .filter(segment => !segment.isGap)
-                .map((segment, i) => (
-                    <SparklinesLineSegment
-                        key={i}
-                        points={segment.points}
-                        height={height}
-                        margin={margin}
-                        color={color}
-                        style={style} />)
-                )}
-            </g>
-        );
+                .map((segment, i) => (<SparklinesLineSegment
+                                        key={i}
+                                        points={segment.points}
+                                        height={height}
+                                        margin={margin}
+                                        color={color}
+                                        style={style} />));
+        if (groups.length === 1)
+            return groups[0];
+        return <g>{groups}</g>;
     }
 }
