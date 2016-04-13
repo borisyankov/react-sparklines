@@ -2,6 +2,7 @@ import path from 'path';
 import {render} from 'enzyme';
 import LineByLineReader from 'line-by-line';
 import reactElementToJsx from 'react-element-to-jsx-string';
+import {writeFileSync} from 'fs';
 
 const fixturesFile = path.resolve(__dirname, './__tests__/fixtures.js');
 const dynamicPartStartSignal = '// AUTO-GENERATED PART STARTS HERE';
@@ -12,7 +13,7 @@ const fixtures = require(fixturesFile).default;
 // Output control
 let outData = '';
 const write = content => { outData += content + '\n'; }
-const save = () => console.log(outData);
+const save = () => writeFileSync(fixturesFile, outData);
 function writeFixtures() {
 	for (let key of Object.keys(fixtures)) {
 		const jsx = fixtures[key].jsx;
