@@ -23,9 +23,9 @@ const dynamicPartEndSignal = '// AUTO-GENERATED PART ENDS HERE';
 const fixtures = require(fixturesFile).default;
 
 // Handle recurring data constants
-import {sampleData, sampleData100} from './__tests__/data.json';
+import {sampleData, sampleData100, sampleDataGaps} from './__tests__/data.json';
 const recognizedDataConstants = {
-	sampleData, sampleData100
+	sampleData, sampleData100, sampleDataGaps
 };
 const recognizedDataStrings = {};
 for (let dataKey of Object.keys(recognizedDataConstants)) {
