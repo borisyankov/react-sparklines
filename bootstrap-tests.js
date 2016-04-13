@@ -1,3 +1,13 @@
+// bootstrap-tests.js - A tool for updating the test cases in __tests__/fixtures.js
+//
+// 1) Reads __tests__/fixtures.js and looks for a "dynamic part", which should be a list of fields
+//    belonging to that file's default export, enclosed in a pair of markers (see "signal" constants
+//	  below).
+// 2) Imports the same fixtures file and (re-)renders each ReactElement to a static SVG string.
+// 3) On success, overwrites __tests__/fixtures.js with an updated copy.
+//
+// Run with babel-node or similar.
+
 import path from 'path';
 import {render} from 'enzyme';
 import LineByLineReader from 'line-by-line';
