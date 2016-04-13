@@ -13,12 +13,25 @@ import {render} from 'enzyme';
 import LineByLineReader from 'line-by-line';
 import reactElementToJsx from 'react-element-to-jsx-string';
 import {writeFileSync} from 'fs';
+import replaceAll from 'replaceall';
+import React from 'react';
 
 const fixturesFile = path.resolve(__dirname, './__tests__/fixtures.js');
 const dynamicPartStartSignal = '// AUTO-GENERATED PART STARTS HERE';
 const dynamicPartEndSignal = '// AUTO-GENERATED PART ENDS HERE';
 
 const fixtures = require(fixturesFile).default;
+
+// Handle recurring data constants
+import {sampleData, sampleData100} from './__tests__/data.json';
+const recognizedDataConstants = {
+	sampleData, sampleData100
+};
+const recognizedDataStrings = {};
+for (let dataKey of Object.keys(recognizedDataConstants)) {
+	recognizedDataStrings[dataKey] = markupToOneLine(reactElementToJsx(<div data-value={recognizedDataConstants[dataKey]} />)
+		.replace(/[^{]*\{|\}[^}]*/g, ''));
+}
 
 // Output control
 let outData = '';
@@ -28,9 +41,11 @@ function writeFixtures() {
 	for (let key of Object.keys(fixtures)) {
 		const jsx = fixtures[key].jsx;
 		const wrapper = render(jsx);
-		const jsxCode = `(${markupToOneLine(reactElementToJsx(jsx))})`;
+		let jsxCode = `(${markupToOneLine(reactElementToJsx(jsx))})`;
 		const htmlCode = JSON.stringify(wrapper.html());
-
+		for (let dataKey of Object.keys(recognizedDataStrings)) {
+			jsxCode = replaceAll(recognizedDataStrings[dataKey], dataKey, jsxCode);
+		}
         write(`\t${JSON.stringify(key)}: {jsx: ${jsxCode}, svg: ${htmlCode}},`);
 	}
 }
