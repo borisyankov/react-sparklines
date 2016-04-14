@@ -17,8 +17,7 @@ class Sparklines extends React.Component {
         margin: React.PropTypes.number,
         style: React.PropTypes.object,
         min: React.PropTypes.number,
-        max: React.PropTypes.number,
-        gaps: React.PropTypes.bool
+        max: React.PropTypes.number
     };
 
     static defaultProps = {
@@ -44,11 +43,11 @@ class Sparklines extends React.Component {
     }
 
     render() {
-        const { data, limit, width, height, margin, style, max, min, gaps } = this.props;
+        const { data, limit, width, height, margin, style, max, min } = this.props;
 
         if (data.length === 0) return null;
 
-        const points = DataProcessor.dataToPoints(data, limit, width, height, margin, max, min, gaps);
+        const points = DataProcessor.dataToPoints(data, limit, width, height, margin, max, min );
 
         return (
             <svg width={width} height={height} style={style} viewBox={`0 0 ${width} ${height}`}>

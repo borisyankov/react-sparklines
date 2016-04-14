@@ -1,6 +1,6 @@
 export default class DataProcessor {
 
-    static dataToPoints(data, limit, width = 1, height = 1, margin = 0, max = this.max(data), min = this.min(data), leaveGaps = false) {
+    static dataToPoints(data, limit, width = 1, height = 1, margin = 0, max = this.max(data), min = this.min(data)) {
 
         const len = data.length;
 
@@ -14,7 +14,7 @@ export default class DataProcessor {
         return data.map((d, i) => {
             return {
                 x: i * hfactor + margin,
-                y: (leaveGaps && this.isGapValue(d)) ? d : ((max === min ? 1 : (max - d)) * vfactor + margin)
+                y: this.isGapValue(d) ? d : ((max === min ? 1 : (max - d)) * vfactor + margin)
             }
         });
     }
