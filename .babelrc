@@ -4,5 +4,8 @@
       "es2015",
       "stage-1"
     ],
+    "plugins": [
+      "transform-object-assign"
+    ],
     "sourceMaps": true,
 }

@@ -29,6 +29,7 @@ function randomData(n = 30) {
 
 const sampleData = randomData(30);
 const sampleData100 = randomData(100);
+const sampleDataGaps = sampleData.map(x => x < -1 ? NaN : x);
 
 const Header = () =>
     <Sparklines data={sampleData} width={300} height={50}>
@@ -41,8 +42,18 @@ const Simple = () =>
         <SparklinesLine />
     </Sparklines>
 
+const SimpleGaps = () =>
+    <Sparklines data={sampleDataGaps} gaps={true}>
+        <SparklinesLine />
+    </Sparklines>
+
 const SimpleCurve = () =>
     <Sparklines data={sampleData}>
+        <SparklinesCurve />
+    </Sparklines>
+
+const SimpleCurveGaps = () =>
+    <Sparklines data={sampleDataGaps} gaps={true}>
         <SparklinesCurve />
     </Sparklines>
 
@@ -106,6 +117,12 @@ const Bars1 = () =>
 
 const Bars2 = () =>
     <Sparklines data={sampleData}>
+        <SparklinesBars style={{ stroke: "white", fill: "#41c3f9", fillOpacity: ".25" }} />
+        <SparklinesLine style={{ stroke: "#41c3f9", fill: "none" }} />
+    </Sparklines>
+
+const BarsGaps = () =>
+    <Sparklines data={sampleDataGaps} gaps={true}>
         <SparklinesBars style={{ stroke: "white", fill: "#41c3f9", fillOpacity: ".25" }} />
         <SparklinesLine style={{ stroke: "#41c3f9", fill: "none" }} />
     </Sparklines>
@@ -230,6 +247,12 @@ const ReferenceLine6 = () =>
         <SparklinesReferenceLine />
     </Sparklines>
 
+const ReferenceLineGaps = () =>
+    <Sparklines data={sampleDataGaps} gaps={true}>
+        <SparklinesBars style={{ fill: 'slategray', fillOpacity: ".5" }} />
+        <SparklinesReferenceLine />
+    </Sparklines>
+
 const NormalBand1 = () =>
     <Sparklines data={sampleData}>
         <SparklinesLine style={{ fill: "none" }} />
@@ -238,6 +261,13 @@ const NormalBand1 = () =>
 
 const NormalBand2 = () =>
     <Sparklines data={sampleData}>
+        <SparklinesLine style={{ fill: "none" }}/>
+        <SparklinesNormalBand />
+        <SparklinesReferenceLine type="mean" />
+    </Sparklines>
+
+const NormalBandGaps = () =>
+    <Sparklines data={sampleDataGaps} gaps={true}>
         <SparklinesLine style={{ fill: "none" }}/>
         <SparklinesNormalBand />
         <SparklinesReferenceLine type="mean" />
@@ -295,7 +325,9 @@ const RealWorld9 = () =>
 const demos = {
     'headersparklines': Header,
     'simple': Simple,
+    'simpleGaps': SimpleGaps,
     'simpleCurve': SimpleCurve,
+    'simpleCurveGaps': SimpleCurveGaps,
     'customizable1': Customizable1,
     'customizable2': Customizable2,
     'customizable3': Customizable3,
@@ -308,6 +340,7 @@ const demos = {
     'bounds1': Bounds1,
     'bars1': Bars1,
     'bars2': Bars2,
+    'barsGaps': BarsGaps,
     'dynamic1': Dynamic1,
     'dynamic2': Dynamic2,
     'dynamic3': Dynamic3,
@@ -318,8 +351,10 @@ const demos = {
     'referenceline4': ReferenceLine4,
     'referenceline5': ReferenceLine5,
     'referenceline6': ReferenceLine6,
+    'referencelineGaps': ReferenceLineGaps,
     'normalband1': NormalBand1,
     'normalband2': NormalBand2,
+    'normalbandGaps': NormalBandGaps,
     'realworld1': RealWorld1,
     'realworld2': RealWorld2,
     'realworld3': RealWorld3,

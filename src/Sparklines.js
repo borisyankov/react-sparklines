@@ -39,7 +39,7 @@ class Sparklines extends React.Component {
             nextProps.max != this.props.max ||
             nextProps.limit != this.props.limit ||
             nextProps.data.length != this.props.data.length ||
-            nextProps.data.some((d, i) => d !== this.props.data[i]);
+            nextProps.data.some((d, i) => !Object.is(d, this.props.data[i]));
     }
 
     render() {
@@ -47,7 +47,7 @@ class Sparklines extends React.Component {
 
         if (data.length === 0) return null;
 
-        const points = DataProcessor.dataToPoints(data, limit, width, height, margin, max, min);
+        const points = DataProcessor.dataToPoints(data, limit, width, height, margin, max, min );
 
         return (
             <svg width={width} height={height} style={style} viewBox={`0 0 ${width} ${height}`}>
