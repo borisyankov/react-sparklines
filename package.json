@@ -1,6 +1,6 @@
 {
   "name": "react-sparklines",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Beautiful and expressive Sparklines component for React ",
   "main": "build/index.js",
   "directories": {
@@ -49,7 +49,7 @@
     "webpack-dev-server": "^2.0.0-beta"
   },
   "peerDependencies": {
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react": "*",
+    "react-dom": "*"
   }
 }
