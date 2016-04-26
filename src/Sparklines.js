@@ -17,7 +17,8 @@ class Sparklines extends React.Component {
         margin: React.PropTypes.number,
         style: React.PropTypes.object,
         min: React.PropTypes.number,
-        max: React.PropTypes.number
+        max: React.PropTypes.number,
+        onMouseMove: React.PropTypes.func
     };
 
     static defaultProps = {
@@ -43,7 +44,7 @@ class Sparklines extends React.Component {
     }
 
     render() {
-        const { data, limit, width, height, margin, style, max, min } = this.props;
+        const { data, limit, width, height, margin, style, max, min, onMouseMove } = this.props;
 
         if (data.length === 0) return null;
 
@@ -53,7 +54,7 @@ class Sparklines extends React.Component {
             <svg width={width} height={height} style={style} viewBox={`0 0 ${width} ${height}`}>
                 {
                     React.Children.map(this.props.children, function(child) {
-                        return React.cloneElement(child, { points, width, height, margin });
+                        return React.cloneElement(child, { points, width, height, margin, onMouseMove });
                     })
                 }
             </svg>
