@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { Sparklines } from '../src/Sparklines';
-import jsdom from 'jsdom'
-
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
-global.window = document.parentWindow;
 
 describe('Sparklines', () => {
     it('does not throw without any parameters', () => {
