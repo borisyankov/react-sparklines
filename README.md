@@ -41,7 +41,11 @@ data - the data set used to build the sparkline
 
 limit - optional, how many data points to display at once
 
-width, height - dimensions of the component
+width, height - dimensions of the generated sparkline in the SVG viewbox.  This will be automatically scaled (i.e. responsive) inside the parent container by default.
+
+svgWidth, svgHeight - If you want absolute dimensions instead of a responsive component set these attributes.
+
+[preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) - default: 'none', set this to modify how the sparkline should scale 
 
 margin - optional, offset the chart
 

@@ -249,7 +249,7 @@ const RealWorld1 = () =>
     </Sparklines>
 
 const RealWorld2 = () =>
-    <Sparklines data={sampleData100} width={200}>
+    <Sparklines data={sampleData100} svgWidth={200}>
         <SparklinesLine style={{ stroke: "#2991c8", fill: "none"}} />
         <SparklinesSpots />
         <SparklinesNormalBand style={{ fill: "#2991c8", fillOpacity: .1 }} />

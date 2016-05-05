@@ -67,6 +67,7 @@
         }
         .row > div {
             flex: 1;
+            margin-right: 5px;
         }
         .row > pre {
             flex: 2;
@@ -347,7 +348,7 @@
         <div class="row">
             <div id="realworld2"></div>
             <pre class="prettyprint"><xmp>
-<Sparklines data={sampleData100} width={200}>
+<Sparklines data={sampleData100} svgWidth={200}>
     <SparklinesLine style={{ stroke: "#2991c8", fill: "none"}} />
     <SparklinesSpots />
     <SparklinesNormalBand style={{ fill: "#2991c8", fillOpacity: .1 }} />
