@@ -5,7 +5,9 @@ import SparklinesBars from './SparklinesBars';
 import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
 import SparklinesNormalBand from './SparklinesNormalBand';
-import DataProcessor from './DataProcessor';
+import dataToPoints from './dataProcessing/dataToPoints';
+import shallowCompare from 'react-addons-shallow-compare';
+
 
 class Sparklines extends React.Component {
 
@@ -37,17 +39,7 @@ class Sparklines extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return nextProps.width != this.props.width ||
-            nextProps.height != this.props.height ||
-            nextProps.svgWidth != this.props.svgWidth ||
-            nextProps.svgHeight != this.props.svgHeight ||
-            nextProps.preserveAspectRatio != this.props.preserveAspectRatio ||
-            nextProps.margin != this.props.margin ||
-            nextProps.min != this.props.min ||
-            nextProps.max != this.props.max ||
-            nextProps.limit != this.props.limit ||
-            nextProps.data.length != this.props.data.length ||
-            nextProps.data.some((d, i) => d !== this.props.data[i]);
+        return shallowCompare(this, nextProps);
     }
 
     render() {
@@ -55,22 +47,20 @@ class Sparklines extends React.Component {
 
         if (data.length === 0) return null;
 
-        const points = DataProcessor.dataToPoints(data, limit, width, height, margin, max, min);
+        const points = dataToPoints({ data, limit, width, height, margin, max, min });
 
         const svgOpts = { style: style, viewBox: `0 0 ${width} ${height}`, preserveAspectRatio: preserveAspectRatio };
-        if( svgWidth > 0 ) svgOpts.width = svgWidth;
-        if( svgHeight > 0 ) svgOpts.height = svgHeight;
+        if (svgWidth > 0) svgOpts.width = svgWidth;
+        if (svgHeight > 0) svgOpts.height = svgHeight;
 
         return (
             <svg {...svgOpts} >
-                {
-                    React.Children.map(this.props.children, function(child) {
-                        return React.cloneElement(child, { points, width, height, margin });
-                    })
-                }
+                {React.Children.map(this.props.children, child =>
+                    React.cloneElement(child, { points, width, height, margin })
+                )}
             </svg>
         );
     }
 }
 
-export { Sparklines, SparklinesLine, SparklinesCurve, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand, DataProcessor }
+export { Sparklines, SparklinesLine, SparklinesCurve, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand }

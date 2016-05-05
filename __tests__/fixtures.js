@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Sparklines, SparklinesBars, SparklinesLine, SparklinesCurve,  SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from '../src/Sparklines';
-import { sampleData, sampleData100 } from './data.js';
+import { sampleData, sampleData100 } from './sampleData';
 
 export default {
 // AUTO-GENERATED PART STARTS HERE

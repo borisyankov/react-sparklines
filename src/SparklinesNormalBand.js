@@ -1,5 +1,6 @@
 import React from 'react';
-import DataProcessor from './DataProcessor';
+import mean from './dataProcessing/mean';
+import stdev from './dataProcessing/stdev';
 
 export default class SparklinesNormalBand extends React.Component {
 
@@ -16,11 +17,11 @@ export default class SparklinesNormalBand extends React.Component {
         const { points, margin, style } = this.props;
 
         const ypoints = points.map(p => p.y);
-        const mean = DataProcessor.calculateFromData(ypoints, 'mean');
-        const stdev = DataProcessor.calculateFromData(ypoints, 'stdev');
+        const dataMean = mean(ypoints);
+        const dataStdev = stdev(ypoints);
 
         return (
-            <rect x={points[0].x} y={mean - stdev + margin}
+            <rect x={points[0].x} y={dataMean - dataStdev + margin}
                 width={points[points.length - 1].x - points[0].x} height={stdev * 2}
                 style={style} />
         )

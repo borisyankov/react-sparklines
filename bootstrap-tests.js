@@ -9,10 +9,10 @@
 // Run with babel-node or using "npm run test:bootstrap".
 
 import path from 'path';
-import {render} from 'enzyme';
+import { render } from 'enzyme';
 import LineByLineReader from 'line-by-line';
 import reactElementToJsx from 'react-element-to-jsx-string';
-import {writeFileSync} from 'fs';
+import { writeFileSync } from 'fs';
 import replaceAll from 'replaceall';
 import React from 'react';
 
@@ -23,7 +23,7 @@ const dynamicPartEndSignal = '// AUTO-GENERATED PART ENDS HERE';
 const fixtures = require(fixturesFile).default;
 
 // Handle recurring data constants
-import {sampleData, sampleData100} from './__tests__/data.json';
+import { sampleData, sampleData100 } from './__tests__/data';
 const recognizedDataConstants = {
 	sampleData, sampleData100
 };
