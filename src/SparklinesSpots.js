@@ -17,35 +17,27 @@ export default class SparklinesSpots extends React.Component {
         }
     };
 
-    lastDirection(points) {
-
-        Math.sign = Math.sign || function(x) { return x > 0 ? 1 : -1; }
-
-        return points.length < 2
-            ? 0
-            : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
+    getDirection(points, index) {
+        return points[index - 1] ? Math.sign(points[index - 1].y - points[index].y) : 0;
     }
 
     render() {
-
-        const { points, width, height, size, style, spotColors } = this.props;
-
-        const startSpot = <circle
-                            cx={points[0].x}
-                            cy={points[0].y}
-                            r={size}
-                            style={style} />
-
-        const endSpot = <circle
-                            cx={points[points.length - 1].x}
-                            cy={points[points.length - 1].y}
-                            r={size}
-                            style={style || { fill: spotColors[this.lastDirection(points)] }} />
-
+        const { points, size, style, spotColors, indexes = [0, points.length - 1] } = this.props;
         return (
             <g>
-                {style && startSpot}
-                {endSpot}
+                {indexes
+                  .filter(i => points[i])
+                    .map((index, i) => {
+                        console.log(points[index]);
+                        return (
+                        <circle
+                            key={index + ' ' + i}
+                            cx={points[index].x}
+                            cy={points[index].y}
+                            r={size}
+                            style={style || { fill: spotColors[this.getDirection(points, index)] }}
+                        />
+                    )})}
             </g>
         )
     }
