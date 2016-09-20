@@ -99,6 +99,12 @@ const Spots3 = () =>
         <SparklinesSpots size={4} style={{ stroke: "#336aff", strokeWidth: 3, fill: "white" }} />
     </Sparklines>
 
+const Spots4 = () =>
+  <Sparklines data={sampleData}>
+    <SparklinesLine style={{ fill: "none" }} />
+    <SparklinesSpots indexes={[3, 4, 8, 12]} />
+  </Sparklines>
+
 const Bars1 = () =>
     <Sparklines data={sampleData}>
         <SparklinesBars style={{ fill: "#41c3f9" }} />
@@ -305,6 +311,7 @@ const demos = {
     'spots1': Spots1,
     'spots2': Spots2,
     'spots3': Spots3,
+    'spots4': Spots4,
     'bounds1': Bounds1,
     'bars1': Bars1,
     'bars2': Bars2,
