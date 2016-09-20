@@ -26,7 +26,7 @@ export default class SparklinesSpots extends React.Component {
         return (
             <g>
                 {indexes
-                  .filter(i => points[i])
+                    .filter(i => points[i])
                     .map((index, i) => {
                         console.log(points[index]);
                         return (
