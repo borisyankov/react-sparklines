@@ -789,7 +789,6 @@ var SparklinesSpots = function (_React$Component) {
                 indexes.filter(function (i) {
                     return points[i];
                 }).map(function (index, i) {
-                    console.log(points[index]);
                     return _react2.default.createElement('circle', {
                         key: index + ' ' + i,
                         cx: points[index].x,

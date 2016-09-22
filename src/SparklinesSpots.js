@@ -28,7 +28,6 @@ export default class SparklinesSpots extends React.Component {
                 {indexes
                     .filter(i => points[i])
                     .map((index, i) => {
-                        console.log(points[index]);
                         return (
                         <circle
                             key={index + ' ' + i}
