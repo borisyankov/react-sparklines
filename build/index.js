@@ -7,7 +7,7 @@
 		exports["ReactSparklines"] = factory(require("react"));
 	else
 		root["ReactSparklines"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -21,16 +21,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
 /******/ 		};
 
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 
 /******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
+/******/ 		module.loaded = true;
 
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -47,87 +47,26 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+	module.exports = __webpack_require__(1);
+
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (data) {
-	    return data.reduce(function (a, b) {
-	        return a + b;
-	    }) / data.length;
-	};
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (data) {
-	    return Math.min.apply(Math, data);
-	};
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (data) {
-	    return Math.max.apply(Math, data);
-	};
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	var stdev = exports.stdev = function stdev(data) {
-	    var mean = mean(data);
-	    var sqDiff = data.map(function (n) {
-	        return Math.pow(n - mean, 2);
-	    });
-	    var avgSqDiff = avg(sqDiff);
-	    return Math.sqrt(avgSqDiff);
-	};
-
-/***/ },
-/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = __webpack_require__(6);
+	module.exports = __webpack_require__(2);
 
 /***/ },
-/* 6 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -139,35 +78,35 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(0);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SparklinesLine = __webpack_require__(9);
+	var _SparklinesLine = __webpack_require__(4);
 
 	var _SparklinesLine2 = _interopRequireDefault(_SparklinesLine);
 
-	var _SparklinesCurve = __webpack_require__(8);
+	var _SparklinesCurve = __webpack_require__(5);
 
 	var _SparklinesCurve2 = _interopRequireDefault(_SparklinesCurve);
 
-	var _SparklinesBars = __webpack_require__(7);
+	var _SparklinesBars = __webpack_require__(6);
 
 	var _SparklinesBars2 = _interopRequireDefault(_SparklinesBars);
 
-	var _SparklinesSpots = __webpack_require__(12);
+	var _SparklinesSpots = __webpack_require__(7);
 
 	var _SparklinesSpots2 = _interopRequireDefault(_SparklinesSpots);
 
-	var _SparklinesReferenceLine = __webpack_require__(11);
+	var _SparklinesReferenceLine = __webpack_require__(8);
 
 	var _SparklinesReferenceLine2 = _interopRequireDefault(_SparklinesReferenceLine);
 
-	var _SparklinesNormalBand = __webpack_require__(10);
+	var _SparklinesNormalBand = __webpack_require__(17);
 
 	var _SparklinesNormalBand2 = _interopRequireDefault(_SparklinesNormalBand);
 
-	var _dataToPoints = __webpack_require__(13);
+	var _dataToPoints = __webpack_require__(18);
 
 	var _dataToPoints2 = _interopRequireDefault(_dataToPoints);
 
@@ -189,7 +128,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function Sparklines(props) {
 	        _classCallCheck(this, Sparklines);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Sparklines).call(this, props));
+	        return _possibleConstructorReturn(this, (Sparklines.__proto__ || Object.getPrototypeOf(Sparklines)).call(this, props));
 	    }
 
 	    _createClass(Sparklines, [{
@@ -200,18 +139,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _props = this.props;
-	            var data = _props.data;
-	            var limit = _props.limit;
-	            var width = _props.width;
-	            var height = _props.height;
-	            var svgWidth = _props.svgWidth;
-	            var svgHeight = _props.svgHeight;
-	            var preserveAspectRatio = _props.preserveAspectRatio;
-	            var margin = _props.margin;
-	            var style = _props.style;
-	            var max = _props.max;
-	            var min = _props.min;
+	            var _props = this.props,
+	                data = _props.data,
+	                limit = _props.limit,
+	                width = _props.width,
+	                height = _props.height,
+	                svgWidth = _props.svgWidth,
+	                svgHeight = _props.svgHeight,
+	                preserveAspectRatio = _props.preserveAspectRatio,
+	                margin = _props.margin,
+	                style = _props.style,
+	                max = _props.max,
+	                min = _props.min;
 
 
 	            if (data.length === 0) return null;
@@ -265,7 +204,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.SparklinesNormalBand = _SparklinesNormalBand2.default;
 
 /***/ },
-/* 7 */
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ },
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -276,7 +221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(0);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -288,59 +233,72 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var SparklinesBars = function (_React$Component) {
-	    _inherits(SparklinesBars, _React$Component);
+	var SparklinesLine = function (_React$Component) {
+	    _inherits(SparklinesLine, _React$Component);
 
-	    function SparklinesBars() {
-	        _classCallCheck(this, SparklinesBars);
+	    function SparklinesLine() {
+	        _classCallCheck(this, SparklinesLine);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SparklinesBars).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (SparklinesLine.__proto__ || Object.getPrototypeOf(SparklinesLine)).apply(this, arguments));
 	    }
 
-	    _createClass(SparklinesBars, [{
+	    _createClass(SparklinesLine, [{
 	        key: 'render',
 	        value: function render() {
-	            var _props = this.props;
-	            var points = _props.points;
-	            var height = _props.height;
-	            var style = _props.style;
-	            var barWidth = _props.barWidth;
+	            var _props = this.props,
+	                points = _props.points,
+	                width = _props.width,
+	                height = _props.height,
+	                margin = _props.margin,
+	                color = _props.color,
+	                style = _props.style;
 
-	            var strokeWidth = 1 * (style && style.strokeWidth || 0);
-	            var width = barWidth || (points && points.length >= 2 ? Math.ceil(Math.max(0, points[1].x - points[0].x - strokeWidth)) : 0);
+
+	            var linePoints = points.map(function (p) {
+	                return [p.x, p.y];
+	            }).reduce(function (a, b) {
+	                return a.concat(b);
+	            });
+	            var closePolyPoints = [points[points.length - 1].x, height - margin, margin, height - margin, margin, points[0].y];
+	            var fillPoints = linePoints.concat(closePolyPoints);
+
+	            var lineStyle = {
+	                stroke: color || style.stroke || 'slategray',
+	                strokeWidth: style.strokeWidth || '1',
+	                strokeLinejoin: style.strokeLinejoin || 'round',
+	                strokeLinecap: style.strokeLinecap || 'round',
+	                fill: 'none'
+	            };
+	            var fillStyle = {
+	                stroke: style.stroke || 'none',
+	                strokeWidth: '0',
+	                fillOpacity: style.fillOpacity || '.1',
+	                fill: style.fill || color || 'slategray'
+	            };
 
 	            return _react2.default.createElement(
 	                'g',
 	                null,
-	                points.map(function (p, i) {
-	                    return _react2.default.createElement('rect', {
-	                        key: i,
-	                        x: Math.ceil(p.x - strokeWidth * i),
-	                        y: Math.ceil(p.y),
-	                        width: Math.ceil(width),
-	                        height: Math.ceil(Math.max(0, height - p.y)),
-	                        style: style });
-	                })
+	                _react2.default.createElement('polyline', { points: fillPoints.join(' '), style: fillStyle }),
+	                _react2.default.createElement('polyline', { points: linePoints.join(' '), style: lineStyle })
 	            );
 	        }
 	    }]);
 
-	    return SparklinesBars;
+	    return SparklinesLine;
 	}(_react2.default.Component);
 
-	SparklinesBars.propTypes = {
-	    points: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.object),
-	    height: _react2.default.PropTypes.number,
-	    style: _react2.default.PropTypes.object,
-	    barWidth: _react2.default.PropTypes.number
+	SparklinesLine.propTypes = {
+	    color: _react2.default.PropTypes.string,
+	    style: _react2.default.PropTypes.object
 	};
-	SparklinesBars.defaultProps = {
-	    style: { fill: 'slategray' }
+	SparklinesLine.defaultProps = {
+	    style: {}
 	};
-	exports.default = SparklinesBars;
+	exports.default = SparklinesLine;
 
 /***/ },
-/* 8 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -351,7 +309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(0);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -369,21 +327,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function SparklinesCurve() {
 	        _classCallCheck(this, SparklinesCurve);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SparklinesCurve).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (SparklinesCurve.__proto__ || Object.getPrototypeOf(SparklinesCurve)).apply(this, arguments));
 	    }
 
 	    _createClass(SparklinesCurve, [{
 	        key: "render",
 	        value: function render() {
-	            var _props = this.props;
-	            var points = _props.points;
-	            var width = _props.width;
-	            var height = _props.height;
-	            var margin = _props.margin;
-	            var color = _props.color;
-	            var style = _props.style;
-	            var _props$divisor = _props.divisor;
-	            var divisor = _props$divisor === undefined ? 0.25 : _props$divisor;
+	            var _props = this.props,
+	                points = _props.points,
+	                width = _props.width,
+	                height = _props.height,
+	                margin = _props.margin,
+	                color = _props.color,
+	                style = _props.style,
+	                _props$divisor = _props.divisor,
+	                divisor = _props$divisor === undefined ? 0.25 : _props$divisor;
 
 	            var prev = void 0;
 	            var curve = function curve(p) {
@@ -453,7 +411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = SparklinesCurve;
 
 /***/ },
-/* 9 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -464,7 +422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(0);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -476,72 +434,59 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var SparklinesLine = function (_React$Component) {
-	    _inherits(SparklinesLine, _React$Component);
+	var SparklinesBars = function (_React$Component) {
+	    _inherits(SparklinesBars, _React$Component);
 
-	    function SparklinesLine() {
-	        _classCallCheck(this, SparklinesLine);
+	    function SparklinesBars() {
+	        _classCallCheck(this, SparklinesBars);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SparklinesLine).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (SparklinesBars.__proto__ || Object.getPrototypeOf(SparklinesBars)).apply(this, arguments));
 	    }
 
-	    _createClass(SparklinesLine, [{
+	    _createClass(SparklinesBars, [{
 	        key: 'render',
 	        value: function render() {
-	            var _props = this.props;
-	            var points = _props.points;
-	            var width = _props.width;
-	            var height = _props.height;
-	            var margin = _props.margin;
-	            var color = _props.color;
-	            var style = _props.style;
+	            var _props = this.props,
+	                points = _props.points,
+	                height = _props.height,
+	                style = _props.style,
+	                barWidth = _props.barWidth;
 
-
-	            var linePoints = points.map(function (p) {
-	                return [p.x, p.y];
-	            }).reduce(function (a, b) {
-	                return a.concat(b);
-	            });
-	            var closePolyPoints = [points[points.length - 1].x, height - margin, margin, height - margin, margin, points[0].y];
-	            var fillPoints = linePoints.concat(closePolyPoints);
-
-	            var lineStyle = {
-	                stroke: color || style.stroke || 'slategray',
-	                strokeWidth: style.strokeWidth || '1',
-	                strokeLinejoin: style.strokeLinejoin || 'round',
-	                strokeLinecap: style.strokeLinecap || 'round',
-	                fill: 'none'
-	            };
-	            var fillStyle = {
-	                stroke: style.stroke || 'none',
-	                strokeWidth: '0',
-	                fillOpacity: style.fillOpacity || '.1',
-	                fill: style.fill || color || 'slategray'
-	            };
+	            var strokeWidth = 1 * (style && style.strokeWidth || 0);
+	            var width = barWidth || (points && points.length >= 2 ? Math.ceil(Math.max(0, points[1].x - points[0].x - strokeWidth)) : 0);
 
 	            return _react2.default.createElement(
 	                'g',
 	                null,
-	                _react2.default.createElement('polyline', { points: fillPoints.join(' '), style: fillStyle }),
-	                _react2.default.createElement('polyline', { points: linePoints.join(' '), style: lineStyle })
+	                points.map(function (p, i) {
+	                    return _react2.default.createElement('rect', {
+	                        key: i,
+	                        x: Math.ceil(p.x - strokeWidth * i),
+	                        y: Math.ceil(p.y),
+	                        width: Math.ceil(width),
+	                        height: Math.ceil(Math.max(0, height - p.y)),
+	                        style: style });
+	                })
 	            );
 	        }
 	    }]);
 
-	    return SparklinesLine;
+	    return SparklinesBars;
 	}(_react2.default.Component);
 
-	SparklinesLine.propTypes = {
-	    color: _react2.default.PropTypes.string,
-	    style: _react2.default.PropTypes.object
+	SparklinesBars.propTypes = {
+	    points: _react2.default.PropTypes.arrayOf(_react2.default.PropTypes.object),
+	    height: _react2.default.PropTypes.number,
+	    style: _react2.default.PropTypes.object,
+	    barWidth: _react2.default.PropTypes.number
 	};
-	SparklinesLine.defaultProps = {
-	    style: {}
+	SparklinesBars.defaultProps = {
+	    style: { fill: 'slategray' }
 	};
-	exports.default = SparklinesLine;
+	exports.default = SparklinesBars;
 
 /***/ },
-/* 10 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -552,17 +497,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(0);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	var _mean = __webpack_require__(1);
-
-	var _mean2 = _interopRequireDefault(_mean);
-
-	var _stdev = __webpack_require__(4);
-
-	var _stdev2 = _interopRequireDefault(_stdev);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -572,49 +509,71 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var SparklinesNormalBand = function (_React$Component) {
-	    _inherits(SparklinesNormalBand, _React$Component);
+	var SparklinesSpots = function (_React$Component) {
+	    _inherits(SparklinesSpots, _React$Component);
 
-	    function SparklinesNormalBand() {
-	        _classCallCheck(this, SparklinesNormalBand);
+	    function SparklinesSpots() {
+	        _classCallCheck(this, SparklinesSpots);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SparklinesNormalBand).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (SparklinesSpots.__proto__ || Object.getPrototypeOf(SparklinesSpots)).apply(this, arguments));
 	    }
 
-	    _createClass(SparklinesNormalBand, [{
+	    _createClass(SparklinesSpots, [{
+	        key: 'getDirection',
+	        value: function getDirection(points, index) {
+	            return points[index - 1] ? Math.sign(points[index - 1].y - points[index].y) : 0;
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _props = this.props;
-	            var points = _props.points;
-	            var margin = _props.margin;
-	            var style = _props.style;
+	            var _this2 = this;
 
+	            var _props = this.props,
+	                points = _props.points,
+	                size = _props.size,
+	                style = _props.style,
+	                spotColors = _props.spotColors,
+	                _props$indexes = _props.indexes,
+	                indexes = _props$indexes === undefined ? [0, points.length - 1] : _props$indexes;
 
-	            var ypoints = points.map(function (p) {
-	                return p.y;
-	            });
-	            var dataMean = (0, _mean2.default)(ypoints);
-	            var dataStdev = (0, _stdev2.default)(ypoints);
-
-	            return _react2.default.createElement('rect', { x: points[0].x, y: dataMean - dataStdev + margin,
-	                width: points[points.length - 1].x - points[0].x, height: _stdev2.default * 2,
-	                style: style });
+	            return _react2.default.createElement(
+	                'g',
+	                null,
+	                indexes.filter(function (i) {
+	                    return points[i];
+	                }).map(function (index, i) {
+	                    return _react2.default.createElement('circle', {
+	                        key: index + ' ' + i,
+	                        cx: points[index].x,
+	                        cy: points[index].y,
+	                        r: size,
+	                        style: style || { fill: spotColors[_this2.getDirection(points, index)] }
+	                    });
+	                })
+	            );
 	        }
 	    }]);
 
-	    return SparklinesNormalBand;
+	    return SparklinesSpots;
 	}(_react2.default.Component);
 
-	SparklinesNormalBand.propTypes = {
-	    style: _react2.default.PropTypes.object
+	SparklinesSpots.propTypes = {
+	    size: _react2.default.PropTypes.number,
+	    style: _react2.default.PropTypes.object,
+	    spotColors: _react2.default.PropTypes.object
 	};
-	SparklinesNormalBand.defaultProps = {
-	    style: { fill: 'red', fillOpacity: .1 }
+	SparklinesSpots.defaultProps = {
+	    size: 2,
+	    spotColors: {
+	        '-1': 'red',
+	        '0': 'black',
+	        '1': 'green'
+	    }
 	};
-	exports.default = SparklinesNormalBand;
+	exports.default = SparklinesSpots;
 
 /***/ },
-/* 11 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -625,11 +584,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(0);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _dataProcessing = __webpack_require__(14);
+	var _dataProcessing = __webpack_require__(9);
 
 	var dataProcessing = _interopRequireWildcard(_dataProcessing);
 
@@ -649,18 +608,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function SparklinesReferenceLine() {
 	        _classCallCheck(this, SparklinesReferenceLine);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SparklinesReferenceLine).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (SparklinesReferenceLine.__proto__ || Object.getPrototypeOf(SparklinesReferenceLine)).apply(this, arguments));
 	    }
 
 	    _createClass(SparklinesReferenceLine, [{
 	        key: 'render',
 	        value: function render() {
-	            var _props = this.props;
-	            var points = _props.points;
-	            var margin = _props.margin;
-	            var type = _props.type;
-	            var style = _props.style;
-	            var value = _props.value;
+	            var _props = this.props,
+	                points = _props.points,
+	                margin = _props.margin,
+	                type = _props.type,
+	                style = _props.style,
+	                value = _props.value;
 
 
 	            var ypoints = points.map(function (p) {
@@ -690,7 +649,186 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = SparklinesReferenceLine;
 
 /***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.variance = exports.stdev = exports.median = exports.midRange = exports.avg = exports.mean = exports.max = exports.min = undefined;
+
+	var _min2 = __webpack_require__(10);
+
+	var _min3 = _interopRequireDefault(_min2);
+
+	var _mean2 = __webpack_require__(11);
+
+	var _mean3 = _interopRequireDefault(_mean2);
+
+	var _midRange2 = __webpack_require__(12);
+
+	var _midRange3 = _interopRequireDefault(_midRange2);
+
+	var _median2 = __webpack_require__(14);
+
+	var _median3 = _interopRequireDefault(_median2);
+
+	var _stdev2 = __webpack_require__(15);
+
+	var _stdev3 = _interopRequireDefault(_stdev2);
+
+	var _variance2 = __webpack_require__(16);
+
+	var _variance3 = _interopRequireDefault(_variance2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.min = _min3.default;
+	exports.max = _min3.default;
+	exports.mean = _mean3.default;
+	exports.avg = _mean3.default;
+	exports.midRange = _midRange3.default;
+	exports.median = _median3.default;
+	exports.stdev = _stdev3.default;
+	exports.variance = _variance3.default;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (data) {
+	    return Math.min.apply(Math, data);
+	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (data) {
+	    return data.reduce(function (a, b) {
+	        return a + b;
+	    }) / data.length;
+	};
+
+/***/ },
 /* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _min = __webpack_require__(10);
+
+	var _min2 = _interopRequireDefault(_min);
+
+	var _max = __webpack_require__(13);
+
+	var _max2 = _interopRequireDefault(_max);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (data) {
+	    return (0, _max2.default)(data) - (0, _min2.default)(data) / 2;
+	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (data) {
+	    return Math.max.apply(Math, data);
+	};
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (data) {
+	    return data.sort(function (a, b) {
+	        return a - b;
+	    })[Math.floor(data.length / 2)];
+	};
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _mean = __webpack_require__(11);
+
+	var _mean2 = _interopRequireDefault(_mean);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (data) {
+	    var dataMean = (0, _mean2.default)(data);
+	    var sqDiff = data.map(function (n) {
+	        return Math.pow(n - dataMean, 2);
+	    });
+	    var avgSqDiff = (0, _mean2.default)(sqDiff);
+	    return Math.sqrt(avgSqDiff);
+	};
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _mean = __webpack_require__(11);
+
+	var _mean2 = _interopRequireDefault(_mean);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = function (data) {
+	    var dataMean = (0, _mean2.default)(data);
+	    var sq = data.map(function (n) {
+	        return Math.pow(n - dataMean, 2);
+	    });
+	    return (0, _mean2.default)(sq);
+	};
+
+/***/ },
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -701,9 +839,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(0);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _mean = __webpack_require__(11);
+
+	var _mean2 = _interopRequireDefault(_mean);
+
+	var _stdev = __webpack_require__(15);
+
+	var _stdev2 = _interopRequireDefault(_stdev);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -713,78 +859,49 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var SparklinesSpots = function (_React$Component) {
-	    _inherits(SparklinesSpots, _React$Component);
+	var SparklinesNormalBand = function (_React$Component) {
+	    _inherits(SparklinesNormalBand, _React$Component);
 
-	    function SparklinesSpots() {
-	        _classCallCheck(this, SparklinesSpots);
+	    function SparklinesNormalBand() {
+	        _classCallCheck(this, SparklinesNormalBand);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SparklinesSpots).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (SparklinesNormalBand.__proto__ || Object.getPrototypeOf(SparklinesNormalBand)).apply(this, arguments));
 	    }
 
-	    _createClass(SparklinesSpots, [{
-	        key: 'lastDirection',
-	        value: function lastDirection(points) {
-
-	            Math.sign = Math.sign || function (x) {
-	                return x > 0 ? 1 : -1;
-	            };
-
-	            return points.length < 2 ? 0 : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
-	        }
-	    }, {
+	    _createClass(SparklinesNormalBand, [{
 	        key: 'render',
 	        value: function render() {
-	            var _props = this.props;
-	            var points = _props.points;
-	            var width = _props.width;
-	            var height = _props.height;
-	            var size = _props.size;
-	            var style = _props.style;
-	            var spotColors = _props.spotColors;
+	            var _props = this.props,
+	                points = _props.points,
+	                margin = _props.margin,
+	                style = _props.style;
 
 
-	            var startSpot = _react2.default.createElement('circle', {
-	                cx: points[0].x,
-	                cy: points[0].y,
-	                r: size,
+	            var ypoints = points.map(function (p) {
+	                return p.y;
+	            });
+	            var dataMean = (0, _mean2.default)(ypoints);
+	            var dataStdev = (0, _stdev2.default)(ypoints);
+
+	            return _react2.default.createElement('rect', { x: points[0].x, y: dataMean - dataStdev + margin,
+	                width: points[points.length - 1].x - points[0].x, height: _stdev2.default * 2,
 	                style: style });
-
-	            var endSpot = _react2.default.createElement('circle', {
-	                cx: points[points.length - 1].x,
-	                cy: points[points.length - 1].y,
-	                r: size,
-	                style: style || { fill: spotColors[this.lastDirection(points)] } });
-
-	            return _react2.default.createElement(
-	                'g',
-	                null,
-	                style && startSpot,
-	                endSpot
-	            );
 	        }
 	    }]);
 
-	    return SparklinesSpots;
+	    return SparklinesNormalBand;
 	}(_react2.default.Component);
 
-	SparklinesSpots.propTypes = {
-	    size: _react2.default.PropTypes.number,
-	    style: _react2.default.PropTypes.object,
-	    spotColors: _react2.default.PropTypes.object
+	SparklinesNormalBand.propTypes = {
+	    style: _react2.default.PropTypes.object
 	};
-	SparklinesSpots.defaultProps = {
-	    size: 2,
-	    spotColors: {
-	        '-1': 'red',
-	        '0': 'black',
-	        '1': 'green'
-	    }
+	SparklinesNormalBand.defaultProps = {
+	    style: { fill: 'red', fillOpacity: .1 }
 	};
-	exports.default = SparklinesSpots;
+	exports.default = SparklinesNormalBand;
 
 /***/ },
-/* 13 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -793,29 +910,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: true
 	});
 
-	var _min = __webpack_require__(2);
+	var _min = __webpack_require__(10);
 
 	var _min2 = _interopRequireDefault(_min);
 
-	var _max = __webpack_require__(3);
+	var _max = __webpack_require__(13);
 
 	var _max2 = _interopRequireDefault(_max);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = function (_ref) {
-	    var data = _ref.data;
-	    var limit = _ref.limit;
-	    var _ref$width = _ref.width;
-	    var width = _ref$width === undefined ? 1 : _ref$width;
-	    var _ref$height = _ref.height;
-	    var height = _ref$height === undefined ? 1 : _ref$height;
-	    var _ref$margin = _ref.margin;
-	    var margin = _ref$margin === undefined ? 0 : _ref$margin;
-	    var _ref$max = _ref.max;
-	    var max = _ref$max === undefined ? (0, _max2.default)(data) : _ref$max;
-	    var _ref$min = _ref.min;
-	    var min = _ref$min === undefined ? (0, _min2.default)(data) : _ref$min;
+	    var data = _ref.data,
+	        limit = _ref.limit,
+	        _ref$width = _ref.width,
+	        width = _ref$width === undefined ? 1 : _ref$width,
+	        _ref$height = _ref.height,
+	        height = _ref$height === undefined ? 1 : _ref$height,
+	        _ref$margin = _ref.margin,
+	        margin = _ref$margin === undefined ? 0 : _ref$margin,
+	        _ref$max = _ref.max,
+	        max = _ref$max === undefined ? (0, _max2.default)(data) : _ref$max,
+	        _ref$min = _ref.min,
+	        min = _ref$min === undefined ? (0, _min2.default)(data) : _ref$min;
 
 
 	    var len = data.length;
@@ -836,117 +953,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 14 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(20);
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 */
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.variance = exports.stdev = exports.median = exports.midRange = exports.avg = exports.mean = exports.max = exports.min = undefined;
+	var shallowEqual = __webpack_require__(21);
 
-	var _min2 = __webpack_require__(2);
+	/**
+	 * Does a shallow comparison for props and state.
+	 * See ReactComponentWithPureRenderMixin
+	 * See also https://facebook.github.io/react/docs/shallow-compare.html
+	 */
+	function shallowCompare(instance, nextProps, nextState) {
+	  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
+	}
 
-	var _min3 = _interopRequireDefault(_min2);
-
-	var _mean2 = __webpack_require__(1);
-
-	var _mean3 = _interopRequireDefault(_mean2);
-
-	var _midRange2 = __webpack_require__(16);
-
-	var _midRange3 = _interopRequireDefault(_midRange2);
-
-	var _median2 = __webpack_require__(15);
-
-	var _median3 = _interopRequireDefault(_median2);
-
-	var _stdev2 = __webpack_require__(4);
-
-	var _stdev3 = _interopRequireDefault(_stdev2);
-
-	var _variance2 = __webpack_require__(17);
-
-	var _variance3 = _interopRequireDefault(_variance2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.min = _min3.default;
-	exports.max = _min3.default;
-	exports.mean = _mean3.default;
-	exports.avg = _mean3.default;
-	exports.midRange = _midRange3.default;
-	exports.median = _median3.default;
-	exports.stdev = _stdev3.default;
-	exports.variance = _variance3.default;
+	module.exports = shallowCompare;
 
 /***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (data) {
-	    return data.sort(function (a, b) {
-	        return a - b;
-	    })[Math.floor(data.length / 2)];
-	};
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _min = __webpack_require__(2);
-
-	var _min2 = _interopRequireDefault(_min);
-
-	var _max = __webpack_require__(3);
-
-	var _max2 = _interopRequireDefault(_max);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function (data) {
-	    return (0, _max2.default)(data) - (0, _min2.default)(data) / 2;
-	};
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _mean = __webpack_require__(1);
-
-	var _mean2 = _interopRequireDefault(_mean);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function (data) {
-	    var dataMean = (0, _mean2.default)(data);
-	    var sq = data.map(function (n) {
-	        return Math.pow(n - dataMean, 2);
-	    });
-	    return (0, _mean2.default)(sq);
-	};
-
-/***/ },
-/* 18 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/**
@@ -976,7 +1018,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (x === y) {
 	    // Steps 1-5, 7-10
 	    // Steps 6.b-6.e: +0 != -0
-	    return x !== 0 || 1 / x === 1 / y;
+	    // Added the nonzero y check to make Flow happy, but it is redundant
+	    return x !== 0 || y !== 0 || 1 / x === 1 / y;
 	  } else {
 	    // Step 6.a: NaN == NaN
 	    return x !== x && y !== y;
@@ -1015,48 +1058,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = shallowEqual;
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(20);
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	* @providesModule shallowCompare
-	*/
-
-	'use strict';
-
-	var shallowEqual = __webpack_require__(18);
-
-	/**
-	 * Does a shallow comparison for props and state.
-	 * See ReactComponentWithPureRenderMixin
-	 */
-	function shallowCompare(instance, nextProps, nextState) {
-	  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
-	}
-
-	module.exports = shallowCompare;
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(5);
-
 
 /***/ }
 /******/ ])
