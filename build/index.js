@@ -316,7 +316,8 @@ var Sparklines = function (_React$Component) {
                 'svg',
                 svgOpts,
                 _react2.default.Children.map(this.props.children, function (child) {
-                    return _react2.default.cloneElement(child, { points: points, limit: limit, width: width, height: height, margin: margin, max: max, min: min });
+                    return _react2.default.cloneElement(child, { points: points, limit: limit, width: width, height: height, margin: margin, max: typeof max == "undefined" ? Math.max.apply(Math, data) : max,
+                        min: typeof min == "undefined" ? Math.min.apply(Math, data) : min });
                 })
             );
         }
