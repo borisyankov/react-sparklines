@@ -1,5 +1,6 @@
 import React from 'react';
 import * as dataProcessing from './dataProcessing';
+import dataToPoints from './dataProcessing/dataToPoints';
 
 export default class SparklinesReferenceLine extends React.Component {
 
@@ -16,10 +17,11 @@ export default class SparklinesReferenceLine extends React.Component {
 
     render() {
 
-        const { points, margin, type, style, value } = this.props;
+        const { points, limit, width, height, margin, max, min, type, style, value } = this.props;
 
         const ypoints = points.map(p => p.y);
-        const y = type == 'custom' ? value : dataProcessing[type](ypoints);
+        const data = type == 'custom' ? [value] : dataProcessing[type](ypoints);
+        const y = dataToPoints({ data, limit, width, height, margin, max, min })[0].y;
 
         return (
             <line
