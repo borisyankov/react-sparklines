@@ -1,4 +1,5 @@
 import React from 'react';
+import SparklinesText from './SparklinesText';
 import SparklinesLine from './SparklinesLine';
 import SparklinesCurve from './SparklinesCurve';
 import SparklinesBars from './SparklinesBars';
@@ -7,7 +8,6 @@ import SparklinesReferenceLine from './SparklinesReferenceLine';
 import SparklinesNormalBand from './SparklinesNormalBand';
 import dataToPoints from './dataProcessing/dataToPoints';
 import shallowCompare from 'react-addons-shallow-compare';
-
 
 class Sparklines extends React.Component {
 
@@ -22,7 +22,8 @@ class Sparklines extends React.Component {
         margin: React.PropTypes.number,
         style: React.PropTypes.object,
         min: React.PropTypes.number,
-        max: React.PropTypes.number
+        max: React.PropTypes.number,
+        onMouseMove: React.PropTypes.func
     };
 
     static defaultProps = {
@@ -43,7 +44,7 @@ class Sparklines extends React.Component {
     }
 
     render() {
-        const { data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, margin, style, max, min } = this.props;
+        const {  data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, margin, style, max, min} = this.props;
 
         if (data.length === 0) return null;
 
@@ -54,13 +55,15 @@ class Sparklines extends React.Component {
         if (svgHeight > 0) svgOpts.height = svgHeight;
 
         return (
-            <svg {...svgOpts} >
-                {React.Children.map(this.props.children, child =>
-                    React.cloneElement(child, { points, width, height, margin })
-                )}
+            <svg {...svgOpts}>
+                {
+                    React.Children.map(this.props.children, function(child) {
+                        return React.cloneElement(child, { data, points, width, height, margin });
+                    })
+                }
             </svg>
         );
     }
 }
 
-export { Sparklines, SparklinesLine, SparklinesCurve, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand }
+export { Sparklines, SparklinesLine, SparklinesCurve, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand, SparklinesText }
