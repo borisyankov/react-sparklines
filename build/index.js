@@ -43,16 +43,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 
-/******/ 	// identity function for calling harmory imports with the correct context
+/******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
 
-/******/ 	// define getter function for harmory exports
+/******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		Object.defineProperty(exports, name, {
-/******/ 			configurable: false,
-/******/ 			enumerable: true,
-/******/ 			get: getter
-/******/ 		});
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
 /******/ 	};
 
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -71,21 +73,21 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ 	return __webpack_require__(__webpack_require__.s = 22);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -97,12 +99,12 @@ exports.default = function (data) {
     }) / data.length;
 };
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -112,12 +114,12 @@ exports.default = function (data) {
     return Math.min.apply(Math, data);
 };
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -127,12 +129,12 @@ exports.default = function (data) {
     return Math.max.apply(Math, data);
 };
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -153,21 +155,21 @@ exports.default = function (data) {
     return Math.sqrt(avgSqDiff);
 };
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 module.exports = __webpack_require__(6);
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -180,7 +182,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SparklinesText = __webpack_require__(22);
+var _SparklinesText = __webpack_require__(13);
 
 var _SparklinesText2 = _interopRequireDefault(_SparklinesText);
 
@@ -208,11 +210,11 @@ var _SparklinesNormalBand = __webpack_require__(10);
 
 var _SparklinesNormalBand2 = _interopRequireDefault(_SparklinesNormalBand);
 
-var _dataToPoints = __webpack_require__(13);
+var _dataToPoints = __webpack_require__(14);
 
 var _dataToPoints2 = _interopRequireDefault(_dataToPoints);
 
-var _reactAddonsShallowCompare = __webpack_require__(19);
+var _reactAddonsShallowCompare = __webpack_require__(20);
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
@@ -307,12 +309,12 @@ exports.SparklinesReferenceLine = _SparklinesReferenceLine2.default;
 exports.SparklinesNormalBand = _SparklinesNormalBand2.default;
 exports.SparklinesText = _SparklinesText2.default;
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -354,18 +356,18 @@ var SparklinesBars = function (_React$Component) {
                 onMouseMove = _props.onMouseMove;
 
             var strokeWidth = 1 * (style && style.strokeWidth || 0);
-            var width = barWidth || (points && points.length >= 2 ? Math.ceil(Math.max(0, points[1].x - points[0].x - strokeWidth)) : 0);
+            var width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth) : 0);
 
             return _react2.default.createElement(
                 'g',
-                null,
+                { transform: 'scale(1,-1)' },
                 points.map(function (p, i) {
                     return _react2.default.createElement('rect', {
                         key: i,
-                        x: Math.ceil(p.x - strokeWidth * i),
-                        y: Math.ceil(p.y),
-                        width: Math.ceil(width),
-                        height: Math.ceil(Math.max(0, height - p.y)),
+                        x: p.x - (width + strokeWidth) / 2,
+                        y: -height,
+                        width: width,
+                        height: Math.max(0, height - p.y),
                         style: style,
                         onMouseMove: onMouseMove.bind(_this2, p) });
                 })
@@ -388,12 +390,12 @@ SparklinesBars.defaultProps = {
 };
 exports.default = SparklinesBars;
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -502,12 +504,12 @@ SparklinesCurve.defaultProps = {
 };
 exports.default = SparklinesCurve;
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -612,12 +614,12 @@ SparklinesLine.defaultProps = {
 };
 exports.default = SparklinesLine;
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -686,12 +688,12 @@ SparklinesNormalBand.defaultProps = {
 };
 exports.default = SparklinesNormalBand;
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -703,7 +705,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _dataProcessing = __webpack_require__(14);
+var _dataProcessing = __webpack_require__(15);
 
 var dataProcessing = _interopRequireWildcard(_dataProcessing);
 
@@ -763,12 +765,12 @@ SparklinesReferenceLine.defaultProps = {
 };
 exports.default = SparklinesReferenceLine;
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -858,295 +860,12 @@ SparklinesSpots.defaultProps = {
 };
 exports.default = SparklinesSpots;
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _min = __webpack_require__(2);
-
-var _min2 = _interopRequireDefault(_min);
-
-var _max = __webpack_require__(3);
-
-var _max2 = _interopRequireDefault(_max);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (_ref) {
-    var data = _ref.data,
-        limit = _ref.limit,
-        _ref$width = _ref.width,
-        width = _ref$width === undefined ? 1 : _ref$width,
-        _ref$height = _ref.height,
-        height = _ref$height === undefined ? 1 : _ref$height,
-        _ref$margin = _ref.margin,
-        margin = _ref$margin === undefined ? 0 : _ref$margin,
-        _ref$max = _ref.max,
-        max = _ref$max === undefined ? (0, _max2.default)(data) : _ref$max,
-        _ref$min = _ref.min,
-        min = _ref$min === undefined ? (0, _min2.default)(data) : _ref$min;
-
-
-    var len = data.length;
-
-    if (limit && limit < len) {
-        data = data.slice(len - limit);
-    }
-
-    var vfactor = (height - margin * 2) / (max - min || 2);
-    var hfactor = (width - margin * 2) / ((limit || len) - (len > 1 ? 1 : 0));
-
-    return data.map(function (d, i) {
-        return {
-            x: i * hfactor + margin,
-            y: (max === min ? 1 : max - d) * vfactor + margin
-        };
-    });
-};
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.variance = exports.stdev = exports.median = exports.midRange = exports.avg = exports.mean = exports.max = exports.min = undefined;
-
-var _min2 = __webpack_require__(2);
-
-var _min3 = _interopRequireDefault(_min2);
-
-var _mean2 = __webpack_require__(1);
-
-var _mean3 = _interopRequireDefault(_mean2);
-
-var _midRange2 = __webpack_require__(16);
-
-var _midRange3 = _interopRequireDefault(_midRange2);
-
-var _median2 = __webpack_require__(15);
-
-var _median3 = _interopRequireDefault(_median2);
-
-var _stdev2 = __webpack_require__(4);
-
-var _stdev3 = _interopRequireDefault(_stdev2);
-
-var _variance2 = __webpack_require__(17);
-
-var _variance3 = _interopRequireDefault(_variance2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.min = _min3.default;
-exports.max = _min3.default;
-exports.mean = _mean3.default;
-exports.avg = _mean3.default;
-exports.midRange = _midRange3.default;
-exports.median = _median3.default;
-exports.stdev = _stdev3.default;
-exports.variance = _variance3.default;
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-"use strict";
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function (data) {
-    return data.sort(function (a, b) {
-        return a - b;
-    })[Math.floor(data.length / 2)];
-};
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _min = __webpack_require__(2);
-
-var _min2 = _interopRequireDefault(_min);
-
-var _max = __webpack_require__(3);
-
-var _max2 = _interopRequireDefault(_max);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (data) {
-    return (0, _max2.default)(data) - (0, _min2.default)(data) / 2;
-};
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _mean = __webpack_require__(1);
-
-var _mean2 = _interopRequireDefault(_mean);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (data) {
-    var dataMean = (0, _mean2.default)(data);
-    var sq = data.map(function (n) {
-        return Math.pow(n - dataMean, 2);
-    });
-    return (0, _mean2.default)(sq);
-};
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-"use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @typechecks
- * 
- */
-
-/*eslint-disable no-self-compare */
-
-'use strict';
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
- */
-function is(x, y) {
-  // SameValue algorithm
-  if (x === y) {
-    // Steps 1-5, 7-10
-    // Steps 6.b-6.e: +0 != -0
-    // Added the nonzero y check to make Flow happy, but it is redundant
-    return x !== 0 || y !== 0 || 1 / x === 1 / y;
-  } else {
-    // Step 6.a: NaN == NaN
-    return x !== x && y !== y;
-  }
-}
-
-/**
- * Performs equality by iterating through keys on an object and returning false
- * when any key has values which are not strictly equal between the arguments.
- * Returns true when the values of all keys are strictly equal.
- */
-function shallowEqual(objA, objB) {
-  if (is(objA, objB)) {
-    return true;
-  }
-
-  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-    return false;
-  }
-
-  var keysA = Object.keys(objA);
-  var keysB = Object.keys(objB);
-
-  if (keysA.length !== keysB.length) {
-    return false;
-  }
-
-  // Test for A's keys different from B.
-  for (var i = 0; i < keysA.length; i++) {
-    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-module.exports = shallowEqual;
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(20);
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var shallowEqual = __webpack_require__(18);
-
-/**
- * Does a shallow comparison for props and state.
- * See ReactComponentWithPureRenderMixin
- * See also https://facebook.github.io/react/docs/shallow-compare.html
- */
-function shallowCompare(instance, nextProps, nextState) {
-  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
-}
-
-module.exports = shallowCompare;
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(5);
-
-
-/***/ },
-/* 22 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1213,7 +932,289 @@ SparklinesText.defaultProps = {
 };
 exports.default = SparklinesText;
 
-/***/ }
-/******/ ])
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
-;
+
+var _min = __webpack_require__(2);
+
+var _min2 = _interopRequireDefault(_min);
+
+var _max = __webpack_require__(3);
+
+var _max2 = _interopRequireDefault(_max);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+    var data = _ref.data,
+        limit = _ref.limit,
+        _ref$width = _ref.width,
+        width = _ref$width === undefined ? 1 : _ref$width,
+        _ref$height = _ref.height,
+        height = _ref$height === undefined ? 1 : _ref$height,
+        _ref$margin = _ref.margin,
+        margin = _ref$margin === undefined ? 0 : _ref$margin,
+        _ref$max = _ref.max,
+        max = _ref$max === undefined ? (0, _max2.default)(data) : _ref$max,
+        _ref$min = _ref.min,
+        min = _ref$min === undefined ? (0, _min2.default)(data) : _ref$min;
+
+
+    var len = data.length;
+
+    if (limit && limit < len) {
+        data = data.slice(len - limit);
+    }
+
+    var vfactor = (height - margin * 2) / (max - min || 2);
+    var hfactor = (width - margin * 2) / ((limit || len) - (len > 1 ? 1 : 0));
+
+    return data.map(function (d, i) {
+        return {
+            x: i * hfactor + margin,
+            y: (max === min ? 1 : max - d) * vfactor + margin
+        };
+    });
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.variance = exports.stdev = exports.median = exports.midRange = exports.avg = exports.mean = exports.max = exports.min = undefined;
+
+var _min2 = __webpack_require__(2);
+
+var _min3 = _interopRequireDefault(_min2);
+
+var _mean2 = __webpack_require__(1);
+
+var _mean3 = _interopRequireDefault(_mean2);
+
+var _midRange2 = __webpack_require__(17);
+
+var _midRange3 = _interopRequireDefault(_midRange2);
+
+var _median2 = __webpack_require__(16);
+
+var _median3 = _interopRequireDefault(_median2);
+
+var _stdev2 = __webpack_require__(4);
+
+var _stdev3 = _interopRequireDefault(_stdev2);
+
+var _variance2 = __webpack_require__(18);
+
+var _variance3 = _interopRequireDefault(_variance2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.min = _min3.default;
+exports.max = _min3.default;
+exports.mean = _mean3.default;
+exports.avg = _mean3.default;
+exports.midRange = _midRange3.default;
+exports.median = _median3.default;
+exports.stdev = _stdev3.default;
+exports.variance = _variance3.default;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (data) {
+    return data.sort(function (a, b) {
+        return a - b;
+    })[Math.floor(data.length / 2)];
+};
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _min = __webpack_require__(2);
+
+var _min2 = _interopRequireDefault(_min);
+
+var _max = __webpack_require__(3);
+
+var _max2 = _interopRequireDefault(_max);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (data) {
+    return (0, _max2.default)(data) - (0, _min2.default)(data) / 2;
+};
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mean = __webpack_require__(1);
+
+var _mean2 = _interopRequireDefault(_mean);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (data) {
+    var dataMean = (0, _mean2.default)(data);
+    var sq = data.map(function (n) {
+        return Math.pow(n - dataMean, 2);
+    });
+    return (0, _mean2.default)(sq);
+};
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @typechecks
+ * 
+ */
+
+/*eslint-disable no-self-compare */
+
+
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/**
+ * inlined Object.is polyfill to avoid requiring consumers ship their own
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+ */
+function is(x, y) {
+  // SameValue algorithm
+  if (x === y) {
+    // Steps 1-5, 7-10
+    // Steps 6.b-6.e: +0 != -0
+    // Added the nonzero y check to make Flow happy, but it is redundant
+    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+  } else {
+    // Step 6.a: NaN == NaN
+    return x !== x && y !== y;
+  }
+}
+
+/**
+ * Performs equality by iterating through keys on an object and returning false
+ * when any key has values which are not strictly equal between the arguments.
+ * Returns true when the values of all keys are strictly equal.
+ */
+function shallowEqual(objA, objB) {
+  if (is(objA, objB)) {
+    return true;
+  }
+
+  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  // Test for A's keys different from B.
+  for (var i = 0; i < keysA.length; i++) {
+    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+module.exports = shallowEqual;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(21);
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+
+
+var shallowEqual = __webpack_require__(19);
+
+/**
+ * Does a shallow comparison for props and state.
+ * See ReactComponentWithPureRenderMixin
+ * See also https://facebook.github.io/react/docs/shallow-compare.html
+ */
+function shallowCompare(instance, nextProps, nextState) {
+  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
+}
+
+module.exports = shallowCompare;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(5);
+
+
+/***/ })
+/******/ ]);
+});
