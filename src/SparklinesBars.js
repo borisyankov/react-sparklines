@@ -17,17 +17,17 @@ export default class SparklinesBars extends React.Component {
 
         const { points, height, style, barWidth } = this.props;
         const strokeWidth = 1 * ((style && style.strokeWidth) || 0);
-        const width = barWidth || (points && points.length >= 2 ? Math.ceil(Math.max(0, points[1].x - points[0].x - strokeWidth)) : 0);
+        const width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth) : 0);
 
         return (
-            <g>
+            <g transform = "scale(1,-1)">
                 {points.map((p, i) =>
                     <rect
                         key={i}
-                        x={Math.ceil(p.x - strokeWidth * i)}
-                        y={Math.ceil(p.y)}
-                        width={Math.ceil(width)}
-                        height={Math.ceil(Math.max(0, height - p.y))}
+                        x={p.x - (width + strokeWidth)/2}
+                        y={-height}
+                        width={width}
+                        height={Math.max(0, height-p.y)}
                         style={style} />
                 )}
             </g>
