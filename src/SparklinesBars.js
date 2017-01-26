@@ -7,6 +7,7 @@ export default class SparklinesBars extends React.Component {
         height: React.PropTypes.number,
         style: React.PropTypes.object,
         barWidth: React.PropTypes.number,
+        margin: React.PropTypes.number,
         onMouseMove: React.PropTypes.func
     };
 
@@ -18,7 +19,8 @@ export default class SparklinesBars extends React.Component {
 
         const { points, height, style, barWidth, onMouseMove } = this.props;
         const strokeWidth = 1 * ((style && style.strokeWidth) || 0);
-        const width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth) : 0);
+        const marginWidth = margin ? 2*margin : 0;
+        const width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth - marginWidth) : 0);
 
         return (
             <g transform = "scale(1,-1)">
