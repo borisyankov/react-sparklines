@@ -59,7 +59,5 @@
     "react": "*",
     "react-dom": "*"
   },
-  "dependencies": {
-    "react-addons-shallow-compare": "^15.0.2"
-  }
+  "dependencies": {}
 }
