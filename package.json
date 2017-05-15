@@ -60,6 +60,7 @@
     "react-dom": "*"
   },
   "dependencies": {
+    "prop-types": "^15.5.10",
     "react-addons-shallow-compare": "^15.0.2"
   }
 }
