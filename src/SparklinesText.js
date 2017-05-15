@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class SparklinesText extends React.Component {
 
@@ -10,7 +10,7 @@ export default class SparklinesText extends React.Component {
     };
 
     static defaultProps = {
-        text: '',
+        text: "",
         point: { x: 0, y: 0 }
     };
 
@@ -23,6 +23,6 @@ export default class SparklinesText extends React.Component {
                 { text }
               </text>
             </g>
-        )
+        );
     }
 }

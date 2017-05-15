@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class SparklinesLine extends React.Component {
 
@@ -27,18 +27,18 @@ export default class SparklinesLine extends React.Component {
         const fillPoints = linePoints.concat(closePolyPoints);
 
         const lineStyle = {
-            stroke: color || style.stroke || 'slategray',
-            strokeWidth: style.strokeWidth || '1',
-            strokeLinejoin: style.strokeLinejoin || 'round',
-            strokeLinecap: style.strokeLinecap || 'round',
-            fill: 'none'
+            stroke: color || style.stroke || "slategray",
+            strokeWidth: style.strokeWidth || "1",
+            strokeLinejoin: style.strokeLinejoin || "round",
+            strokeLinecap: style.strokeLinecap || "round",
+            fill: "none"
         };
         const fillStyle = {
-            stroke: style.stroke || 'none',
-            strokeWidth: '0',
-            fillOpacity: style.fillOpacity || '.1',
-            fill: style.fill || color || 'slategray',
-            pointerEvents: 'auto'
+            stroke: style.stroke || "none",
+            strokeWidth: "0",
+            fillOpacity: style.fillOpacity || ".1",
+            fill: style.fill || color || "slategray",
+            pointerEvents: "auto"
         };
 
         const tooltips = points.map((p, i) => {
@@ -47,17 +47,17 @@ export default class SparklinesLine extends React.Component {
             cy={p.y}
             r={2}
             style={fillStyle}
-            onMouseEnter={(e) => onMouseMove('enter', data[i], p)}
-            onClick={(e) => onMouseMove('click', data[i], p)}
-          />)
+            onMouseEnter={(e) => onMouseMove("enter", data[i], p)}
+            onClick={(e) => onMouseMove("click", data[i], p)}
+            />);
         });
 
         return (
             <g>
                 {tooltips}
-                <polyline points={fillPoints.join(' ')} style={fillStyle}/>
-                <polyline points={linePoints.join(' ')} style={lineStyle}/>
+                <polyline points={fillPoints.join(" ")} style={fillStyle}/>
+                <polyline points={linePoints.join(" ")} style={lineStyle}/>
             </g>
-        )
+        );
     }
-}
+};

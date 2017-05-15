@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class SparklinesBars extends React.Component {
 
@@ -12,12 +12,12 @@ export default class SparklinesBars extends React.Component {
     };
 
     static defaultProps = {
-        style: { fill: 'slategray' }
+        style: { fill: "slategray" }
     };
 
     render() {
 
-        const { points, height, style, barWidth, onMouseMove } = this.props;
+        const { points, height, margin, style, barWidth, onMouseMove } = this.props;
         const strokeWidth = 1 * ((style && style.strokeWidth) || 0);
         const marginWidth = margin ? 2*margin : 0;
         const width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth - marginWidth) : 0);
@@ -35,6 +35,6 @@ export default class SparklinesBars extends React.Component {
                         onMouseMove={onMouseMove.bind(this, p)}/>
                 )}
             </g>
-        )
+        );
     }
 }
