@@ -236,12 +236,12 @@ var Sparklines = function (_React$Component) {
     }
 
     _createClass(Sparklines, [{
-        key: 'shouldComponentUpdate',
+        key: "shouldComponentUpdate",
         value: function shouldComponentUpdate(nextProps) {
             return (0, _reactAddonsShallowCompare2.default)(this, nextProps);
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             var _props = this.props,
                 data = _props.data,
@@ -261,12 +261,12 @@ var Sparklines = function (_React$Component) {
 
             var points = (0, _dataToPoints2.default)({ data: data, limit: limit, width: width, height: height, margin: margin, max: max, min: min });
 
-            var svgOpts = { style: style, viewBox: '0 0 ' + width + ' ' + height, preserveAspectRatio: preserveAspectRatio };
+            var svgOpts = { style: style, viewBox: "0 0 " + width + " " + height, preserveAspectRatio: preserveAspectRatio };
             if (svgWidth > 0) svgOpts.width = svgWidth;
             if (svgHeight > 0) svgOpts.height = svgHeight;
 
             return _react2.default.createElement(
-                'svg',
+                "svg",
                 svgOpts,
                 _react2.default.Children.map(this.props.children, function (child) {
                     return _react2.default.cloneElement(child, { data: data, points: points, width: width, height: height, margin: margin });
@@ -296,8 +296,8 @@ Sparklines.defaultProps = {
     data: [],
     width: 240,
     height: 60,
-    //Scale the graphic content of the given element non-uniformly if necessary such that the element's bounding box exactly matches the viewport rectangle.
-    preserveAspectRatio: 'none', //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
+    //Scale the graphic content of the given element non-uniformly if necessary such that the element"s bounding box exactly matches the viewport rectangle.
+    preserveAspectRatio: "none", //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
     margin: 2
 };
 exports.Sparklines = Sparklines;
@@ -344,25 +344,27 @@ var SparklinesBars = function (_React$Component) {
     }
 
     _createClass(SparklinesBars, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             var _this2 = this;
 
             var _props = this.props,
                 points = _props.points,
                 height = _props.height,
+                margin = _props.margin,
                 style = _props.style,
                 barWidth = _props.barWidth,
                 onMouseMove = _props.onMouseMove;
 
             var strokeWidth = 1 * (style && style.strokeWidth || 0);
-            var width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth) : 0);
+            var marginWidth = margin ? 2 * margin : 0;
+            var width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth - marginWidth) : 0);
 
             return _react2.default.createElement(
-                'g',
-                { transform: 'scale(1,-1)' },
+                "g",
+                { transform: "scale(1,-1)" },
                 points.map(function (p, i) {
-                    return _react2.default.createElement('rect', {
+                    return _react2.default.createElement("rect", {
                         key: i,
                         x: p.x - (width + strokeWidth) / 2,
                         y: -height,
@@ -383,10 +385,11 @@ SparklinesBars.propTypes = {
     height: _react2.default.PropTypes.number,
     style: _react2.default.PropTypes.object,
     barWidth: _react2.default.PropTypes.number,
+    margin: _react2.default.PropTypes.number,
     onMouseMove: _react2.default.PropTypes.func
 };
 SparklinesBars.defaultProps = {
-    style: { fill: 'slategray' }
+    style: { fill: "slategray" }
 };
 exports.default = SparklinesBars;
 
@@ -461,33 +464,35 @@ var SparklinesCurve = function (_React$Component) {
                 prev = p;
                 return res;
             };
+
             var linePoints = points.map(function (p) {
                 return curve(p);
             }).reduce(function (a, b) {
                 return a.concat(b);
             });
+
             var closePolyPoints = ["L" + points[points.length - 1].x, height - margin, margin, height - margin, margin, points[0].y];
             var fillPoints = linePoints.concat(closePolyPoints);
 
             var lineStyle = {
-                stroke: color || style.stroke || 'slategray',
-                strokeWidth: style.strokeWidth || '1',
-                strokeLinejoin: style.strokeLinejoin || 'round',
-                strokeLinecap: style.strokeLinecap || 'round',
-                fill: 'none'
+                stroke: color || style.stroke || "slategray",
+                strokeWidth: style.strokeWidth || "1",
+                strokeLinejoin: style.strokeLinejoin || "round",
+                strokeLinecap: style.strokeLinecap || "round",
+                fill: "none"
             };
             var fillStyle = {
-                stroke: style.stroke || 'none',
-                strokeWidth: '0',
-                fillOpacity: style.fillOpacity || '.1',
-                fill: style.fill || color || 'slategray'
+                stroke: style.stroke || "none",
+                strokeWidth: "0",
+                fillOpacity: style.fillOpacity || ".1",
+                fill: style.fill || color || "slategray"
             };
 
             return _react2.default.createElement(
                 "g",
                 null,
-                _react2.default.createElement("path", { d: "M" + fillPoints.join(' '), style: fillStyle }),
-                _react2.default.createElement("path", { d: "M" + linePoints.join(' '), style: lineStyle })
+                _react2.default.createElement("path", { d: "M" + fillPoints.join(" "), style: fillStyle }),
+                _react2.default.createElement("path", { d: "M" + linePoints.join(" "), style: lineStyle })
             );
         }
     }]);
@@ -503,6 +508,7 @@ SparklinesCurve.defaultProps = {
     style: {}
 };
 exports.default = SparklinesCurve;
+;
 
 /***/ }),
 /* 9 */
@@ -539,7 +545,7 @@ var SparklinesLine = function (_React$Component) {
     }
 
     _createClass(SparklinesLine, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             var _props = this.props,
                 data = _props.data,
@@ -563,41 +569,41 @@ var SparklinesLine = function (_React$Component) {
             var fillPoints = linePoints.concat(closePolyPoints);
 
             var lineStyle = {
-                stroke: color || style.stroke || 'slategray',
-                strokeWidth: style.strokeWidth || '1',
-                strokeLinejoin: style.strokeLinejoin || 'round',
-                strokeLinecap: style.strokeLinecap || 'round',
-                fill: 'none'
+                stroke: color || style.stroke || "slategray",
+                strokeWidth: style.strokeWidth || "1",
+                strokeLinejoin: style.strokeLinejoin || "round",
+                strokeLinecap: style.strokeLinecap || "round",
+                fill: "none"
             };
             var fillStyle = {
-                stroke: style.stroke || 'none',
-                strokeWidth: '0',
-                fillOpacity: style.fillOpacity || '.1',
-                fill: style.fill || color || 'slategray',
-                pointerEvents: 'auto'
+                stroke: style.stroke || "none",
+                strokeWidth: "0",
+                fillOpacity: style.fillOpacity || ".1",
+                fill: style.fill || color || "slategray",
+                pointerEvents: "auto"
             };
 
             var tooltips = points.map(function (p, i) {
-                return _react2.default.createElement('circle', {
+                return _react2.default.createElement("circle", {
                     cx: p.x,
                     cy: p.y,
                     r: 2,
                     style: fillStyle,
                     onMouseEnter: function onMouseEnter(e) {
-                        return onMouseMove('enter', data[i], p);
+                        return onMouseMove("enter", data[i], p);
                     },
                     onClick: function onClick(e) {
-                        return onMouseMove('click', data[i], p);
+                        return onMouseMove("click", data[i], p);
                     }
                 });
             });
 
             return _react2.default.createElement(
-                'g',
+                "g",
                 null,
                 tooltips,
-                _react2.default.createElement('polyline', { points: fillPoints.join(' '), style: fillStyle }),
-                _react2.default.createElement('polyline', { points: linePoints.join(' '), style: lineStyle })
+                _react2.default.createElement("polyline", { points: fillPoints.join(" "), style: fillStyle }),
+                _react2.default.createElement("polyline", { points: linePoints.join(" "), style: lineStyle })
             );
         }
     }]);
@@ -613,6 +619,7 @@ SparklinesLine.defaultProps = {
     style: {}
 };
 exports.default = SparklinesLine;
+;
 
 /***/ }),
 /* 10 */
@@ -657,7 +664,7 @@ var SparklinesNormalBand = function (_React$Component) {
     }
 
     _createClass(SparklinesNormalBand, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             var _props = this.props,
                 points = _props.points,
@@ -671,7 +678,7 @@ var SparklinesNormalBand = function (_React$Component) {
             var dataMean = (0, _mean2.default)(ypoints);
             var dataStdev = (0, _stdev2.default)(ypoints);
 
-            return _react2.default.createElement('rect', { x: points[0].x, y: dataMean - dataStdev + margin,
+            return _react2.default.createElement("rect", { x: points[0].x, y: dataMean - dataStdev + margin,
                 width: points[points.length - 1].x - points[0].x, height: _stdev2.default * 2,
                 style: style });
         }
@@ -684,9 +691,10 @@ SparklinesNormalBand.propTypes = {
     style: _react2.default.PropTypes.object
 };
 SparklinesNormalBand.defaultProps = {
-    style: { fill: 'red', fillOpacity: .1 }
+    style: { fill: "red", fillOpacity: .1 }
 };
 exports.default = SparklinesNormalBand;
+;
 
 /***/ }),
 /* 11 */
@@ -729,7 +737,7 @@ var SparklinesReferenceLine = function (_React$Component) {
     }
 
     _createClass(SparklinesReferenceLine, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             var _props = this.props,
                 points = _props.points,
@@ -742,9 +750,9 @@ var SparklinesReferenceLine = function (_React$Component) {
             var ypoints = points.map(function (p) {
                 return p.y;
             });
-            var y = type == 'custom' ? value : dataProcessing[type](ypoints);
+            var y = type == "custom" ? value : dataProcessing[type](ypoints);
 
-            return _react2.default.createElement('line', {
+            return _react2.default.createElement("line", {
                 x1: points[0].x, y1: y + margin,
                 x2: points[points.length - 1].x, y2: y + margin,
                 style: style });
@@ -755,15 +763,16 @@ var SparklinesReferenceLine = function (_React$Component) {
 }(_react2.default.Component);
 
 SparklinesReferenceLine.propTypes = {
-    type: _react2.default.PropTypes.oneOf(['max', 'min', 'mean', 'avg', 'median', 'custom']),
+    type: _react2.default.PropTypes.oneOf(["max", "min", "mean", "avg", "median", "custom"]),
     value: _react2.default.PropTypes.number,
     style: _react2.default.PropTypes.object
 };
 SparklinesReferenceLine.defaultProps = {
-    type: 'mean',
-    style: { stroke: 'red', strokeOpacity: .75, strokeDasharray: '2, 2' }
+    type: "mean",
+    style: { stroke: "red", strokeOpacity: .75, strokeDasharray: "2, 2" }
 };
 exports.default = SparklinesReferenceLine;
+;
 
 /***/ }),
 /* 12 */
@@ -800,7 +809,7 @@ var SparklinesSpots = function (_React$Component) {
     }
 
     _createClass(SparklinesSpots, [{
-        key: 'lastDirection',
+        key: "lastDirection",
         value: function lastDirection(points) {
 
             Math.sign = Math.sign || function (x) {
@@ -810,7 +819,7 @@ var SparklinesSpots = function (_React$Component) {
             return points.length < 2 ? 0 : Math.sign(points[points.length - 2].y - points[points.length - 1].y);
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             var _props = this.props,
                 points = _props.points,
@@ -821,20 +830,20 @@ var SparklinesSpots = function (_React$Component) {
                 spotColors = _props.spotColors;
 
 
-            var startSpot = _react2.default.createElement('circle', {
+            var startSpot = _react2.default.createElement("circle", {
                 cx: points[0].x,
                 cy: points[0].y,
                 r: size,
                 style: style });
 
-            var endSpot = _react2.default.createElement('circle', {
+            var endSpot = _react2.default.createElement("circle", {
                 cx: points[points.length - 1].x,
                 cy: points[points.length - 1].y,
                 r: size,
                 style: style || { fill: spotColors[this.lastDirection(points)] } });
 
             return _react2.default.createElement(
-                'g',
+                "g",
                 null,
                 style && startSpot,
                 endSpot
@@ -853,12 +862,13 @@ SparklinesSpots.propTypes = {
 SparklinesSpots.defaultProps = {
     size: 2,
     spotColors: {
-        '-1': 'red',
-        '0': 'black',
-        '1': 'green'
+        "-1": "red",
+        "0": "black",
+        "1": "green"
     }
 };
 exports.default = SparklinesSpots;
+;
 
 /***/ }),
 /* 13 */
@@ -895,7 +905,7 @@ var SparklinesText = function (_React$Component) {
     }
 
     _createClass(SparklinesText, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             var _props = this.props,
                 point = _props.point,
@@ -906,10 +916,10 @@ var SparklinesText = function (_React$Component) {
                 y = point.y;
 
             return _react2.default.createElement(
-                'g',
+                "g",
                 null,
                 _react2.default.createElement(
-                    'text',
+                    "text",
                     { x: x, y: y, fontFamily: fontFamily || "Verdana", fontSize: fontSize || 10 },
                     text
                 )
@@ -927,7 +937,7 @@ SparklinesText.propTypes = {
     fontFamily: _react2.default.PropTypes.string
 };
 SparklinesText.defaultProps = {
-    text: '',
+    text: "",
     point: { x: 0, y: 0 }
 };
 exports.default = SparklinesText;

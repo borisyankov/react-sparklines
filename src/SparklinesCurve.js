@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class SparklinesCurve extends React.Component {
 
@@ -17,7 +17,7 @@ export default class SparklinesCurve extends React.Component {
         const curve = (p) => {
             let res;
             if (!prev) {
-                res = [p.x, p.y]
+              res = [p.x, p.y];
             } else {
                 const len = (p.x - prev.x) * divisor;
                 res = [ "C",
@@ -37,11 +37,12 @@ export default class SparklinesCurve extends React.Component {
             }
             prev = p;
             return res;
-
-        }
+        };
+        
         const linePoints = points
             .map((p) => curve(p))
             .reduce((a, b) => a.concat(b));
+            
         const closePolyPoints = [
             "L" + points[points.length - 1].x, height - margin,
             margin, height - margin,
@@ -50,24 +51,24 @@ export default class SparklinesCurve extends React.Component {
         const fillPoints = linePoints.concat(closePolyPoints);
 
         const lineStyle = {
-            stroke: color || style.stroke || 'slategray',
-            strokeWidth: style.strokeWidth || '1',
-            strokeLinejoin: style.strokeLinejoin || 'round',
-            strokeLinecap: style.strokeLinecap || 'round',
-            fill: 'none'
+            stroke: color || style.stroke || "slategray",
+            strokeWidth: style.strokeWidth || "1",
+            strokeLinejoin: style.strokeLinejoin || "round",
+            strokeLinecap: style.strokeLinecap || "round",
+            fill: "none"
         };
         const fillStyle = {
-            stroke: style.stroke || 'none',
-            strokeWidth: '0',
-            fillOpacity: style.fillOpacity || '.1',
-            fill: style.fill || color || 'slategray'
+            stroke: style.stroke || "none",
+            strokeWidth: "0",
+            fillOpacity: style.fillOpacity || ".1",
+            fill: style.fill || color || "slategray"
         };
 
         return (
             <g>
-                <path d={"M"+fillPoints.join(' ')} style={fillStyle} />
-                <path d={"M"+linePoints.join(' ')} style={lineStyle} />
+                <path d={"M"+fillPoints.join(" ")} style={fillStyle} />
+                <path d={"M"+linePoints.join(" ")} style={lineStyle} />
             </g>
-        )
+        );
     }
-}
+};

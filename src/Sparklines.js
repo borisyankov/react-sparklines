@@ -1,13 +1,13 @@
-import React from 'react';
-import SparklinesText from './SparklinesText';
-import SparklinesLine from './SparklinesLine';
-import SparklinesCurve from './SparklinesCurve';
-import SparklinesBars from './SparklinesBars';
-import SparklinesSpots from './SparklinesSpots';
-import SparklinesReferenceLine from './SparklinesReferenceLine';
-import SparklinesNormalBand from './SparklinesNormalBand';
-import dataToPoints from './dataProcessing/dataToPoints';
-import shallowCompare from 'react-addons-shallow-compare';
+import React from "react";
+import SparklinesText from "./SparklinesText";
+import SparklinesLine from "./SparklinesLine";
+import SparklinesCurve from "./SparklinesCurve";
+import SparklinesBars from "./SparklinesBars";
+import SparklinesSpots from "./SparklinesSpots";
+import SparklinesReferenceLine from "./SparklinesReferenceLine";
+import SparklinesNormalBand from "./SparklinesNormalBand";
+import dataToPoints from "./dataProcessing/dataToPoints";
+import shallowCompare from "react-addons-shallow-compare";
 
 class Sparklines extends React.Component {
 
@@ -30,8 +30,8 @@ class Sparklines extends React.Component {
         data: [],
         width: 240,
         height: 60,
-        //Scale the graphic content of the given element non-uniformly if necessary such that the element's bounding box exactly matches the viewport rectangle.
-        preserveAspectRatio: 'none', //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
+        //Scale the graphic content of the given element non-uniformly if necessary such that the element"s bounding box exactly matches the viewport rectangle.
+        preserveAspectRatio: "none", //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
         margin: 2
     };
 
@@ -66,4 +66,4 @@ class Sparklines extends React.Component {
     }
 }
 
-export { Sparklines, SparklinesLine, SparklinesCurve, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand, SparklinesText }
+export { Sparklines, SparklinesLine, SparklinesCurve, SparklinesBars, SparklinesSpots, SparklinesReferenceLine, SparklinesNormalBand, SparklinesText };

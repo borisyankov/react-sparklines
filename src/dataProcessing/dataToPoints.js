@@ -1,5 +1,5 @@
-import arrayMin from './min';
-import arrayMax from './max';
+import arrayMin from "./min";
+import arrayMax from "./max";
 
 export default ({ data, limit, width = 1, height = 1, margin = 0, max = arrayMax(data), min = arrayMin(data) }) => {
 
