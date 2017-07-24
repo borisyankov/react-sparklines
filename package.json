@@ -59,5 +59,7 @@
     "react": "*",
     "react-dom": "*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }

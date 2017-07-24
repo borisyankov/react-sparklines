@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export default class SparklinesBars extends React.Component {
 
     static propTypes = {
-        points: React.PropTypes.arrayOf(React.PropTypes.object),
-        height: React.PropTypes.number,
-        style: React.PropTypes.object,
-        barWidth: React.PropTypes.number,
-        margin: React.PropTypes.number,
-        onMouseMove: React.PropTypes.func
+        points: PropTypes.arrayOf(PropTypes.object),
+        height: PropTypes.number,
+        style: PropTypes.object,
+        barWidth: PropTypes.number,
+        margin: PropTypes.number,
+        onMouseMove: PropTypes.func
     };
 
     static defaultProps = {
@@ -17,7 +18,7 @@ export default class SparklinesBars extends React.Component {
 
     render() {
 
-        const { points, height, style, barWidth, onMouseMove } = this.props;
+        const { points, height, style, barWidth, margin, onMouseMove } = this.props;
         const strokeWidth = 1 * ((style && style.strokeWidth) || 0);
         const marginWidth = margin ? 2*margin : 0;
         const width = barWidth || (points && points.length >= 2 ? Math.max(0, points[1].x - points[0].x - strokeWidth - marginWidth) : 0);
