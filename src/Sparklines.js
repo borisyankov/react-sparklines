@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { PureComponent} from 'react';
 import SparklinesText from './SparklinesText';
 import SparklinesLine from './SparklinesLine';
 import SparklinesCurve from './SparklinesCurve';
@@ -8,9 +8,8 @@ import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
 import SparklinesNormalBand from './SparklinesNormalBand';
 import dataToPoints from './dataProcessing/dataToPoints';
-import shallowCompare from 'react-addons-shallow-compare';
 
-class Sparklines extends React.Component {
+class Sparklines extends PureComponent {
 
     static propTypes = {
         data: PropTypes.array,
@@ -38,10 +37,6 @@ class Sparklines extends React.Component {
 
     constructor (props) {
         super(props);
-    }
-
-    shouldComponentUpdate(nextProps) {
-        return shallowCompare(this, nextProps);
     }
 
     render() {
