@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export default class SparklinesSpots extends React.Component {
 
     static propTypes = {
-        size: React.PropTypes.number,
-        style: React.PropTypes.object,
-        spotColors: React.PropTypes.object
+        size: PropTypes.number,
+        style: PropTypes.object,
+        spotColors: PropTypes.object
     };
 
     static defaultProps = {

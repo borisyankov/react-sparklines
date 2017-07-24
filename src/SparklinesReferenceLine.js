@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import * as dataProcessing from './dataProcessing';
 
 export default class SparklinesReferenceLine extends React.Component {
 
     static propTypes = {
-        type: React.PropTypes.oneOf(['max', 'min', 'mean', 'avg', 'median', 'custom']),
-        value: React.PropTypes.number,
-        style: React.PropTypes.object
+        type: PropTypes.oneOf(['max', 'min', 'mean', 'avg', 'median', 'custom']),
+        value: PropTypes.number,
+        style: PropTypes.object
     };
 
     static defaultProps = {
