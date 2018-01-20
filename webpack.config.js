@@ -7,6 +7,7 @@ module.exports = {
             './index.js'
         ]
     },
+    node: false,
     output: {
         path: path.join(__dirname, 'build'),
         publicPath: '/',
