@@ -23,7 +23,8 @@ class Sparklines extends PureComponent {
         style: PropTypes.object,
         min: PropTypes.number,
         max: PropTypes.number,
-        onMouseMove: PropTypes.func
+        onMouseMove: PropTypes.func,
+        className: PropTypes.string
     };
 
     static defaultProps = {
@@ -32,7 +33,8 @@ class Sparklines extends PureComponent {
         height: 60,
         //Scale the graphic content of the given element non-uniformly if necessary such that the element's bounding box exactly matches the viewport rectangle.
         preserveAspectRatio: 'none', //https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute
-        margin: 2
+        margin: 2,
+        className: ''
     };
 
     constructor (props) {
@@ -40,7 +42,7 @@ class Sparklines extends PureComponent {
     }
 
     render() {
-        const {  data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, margin, style, max, min} = this.props;
+        const {  data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, margin, style, max, min, className} = this.props;
 
         if (data.length === 0) return null;
 
@@ -51,7 +53,7 @@ class Sparklines extends PureComponent {
         if (svgHeight > 0) svgOpts.height = svgHeight;
 
         return (
-            <svg {...svgOpts}>
+            <svg className={className} {...svgOpts}>
                 {
                     React.Children.map(this.props.children, function(child) {
                         return React.cloneElement(child, { data, points, width, height, margin });
