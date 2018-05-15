@@ -16,8 +16,14 @@ class Sparklines extends PureComponent {
         limit: PropTypes.number,
         width: PropTypes.number,
         height: PropTypes.number,
-        svgWidth: PropTypes.number,
-        svgHeight: PropTypes.number,
+        svgWidth: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]),
+        svgHeight: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string,
+        ]),
         preserveAspectRatio: PropTypes.string,
         margin: PropTypes.number,
         style: PropTypes.object,
@@ -47,8 +53,11 @@ class Sparklines extends PureComponent {
         const points = dataToPoints({ data, limit, width, height, margin, max, min });
 
         const svgOpts = { style: style, viewBox: `0 0 ${width} ${height}`, preserveAspectRatio: preserveAspectRatio };
-        if (svgWidth > 0) svgOpts.width = svgWidth;
-        if (svgHeight > 0) svgOpts.height = svgHeight;
+        if (!isNaN(svgWidth)) { if (svgWidth > 0) svgOpts.width = svgWidth; }
+        else svgOpts.width = svgWidth;
+        if (!isNaN(svgHeight)) { if (svgHeight > 0) svgOpts.height = svgHeight; }
+        else svgOpts.height = svgHeight;
+        
 
         return (
             <svg {...svgOpts}>
