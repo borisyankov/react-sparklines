@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Sparklines, SparklinesBars, SparklinesLine, SparklinesCurve,  SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from '../src/Sparklines';
+import { Sparklines, SparklinesBars, SparklinesLine, SparklinesCurve,  SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots, SparklinesInteractiveLayer } from '../src/Sparklines';
 
 function boxMullerRandom () {
     let phase = false,
@@ -292,6 +292,48 @@ const RealWorld9 = () =>
         <SparklinesReferenceLine style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
     </Sparklines>
 
+const Tooltip = (props) => 
+    <div style={{position: "absolute", top: props.y, left: props.x, width: "100px"}}>
+        <span style={{fontSize: "12px"}}>x: {props.x}, </span>
+        <span style={{fontSize: "12px"}}>y: {props.y}</span>
+    </div>
+
+const offscreen = -1000
+
+class RealWorld10 extends Component {
+    state = {
+        showTooltip: false,
+        x: offscreen,
+        y: offscreen,
+    }
+
+    onMouseMove = (point, index, x, y) => {
+        this.setState({
+            showTooltip: true,
+            x: x + 10,
+            y: y
+        })
+    }
+
+    onMouseLeave = () => {
+        this.setState({showTooltip: false, x: offscreen, y: offscreen})
+    }
+
+    render() {
+        const { showTooltip, x, y} = this.state
+        return (
+            <div style={{position: 'relative'}}>
+                <Sparklines data={sampleData} style={{background: '#ccc'}} margin={10} height={40}>
+                    <SparklinesLine style={{ stroke: 'white', fill: 'none' }} />
+                    <SparklinesInteractiveLayer style={{cursor: 'pointer'}} onMouseMove={this.onMouseMove} onMouseLeave={this.onMouseLeave} />
+                </Sparklines>
+                <Tooltip showTooltip={showTooltip} x={x} y={y}/>
+            </div>
+        )
+    }
+}
+
+
 const demos = {
     'headersparklines': Header,
     'simple': Simple,
@@ -328,7 +370,8 @@ const demos = {
     'realworld6': RealWorld6,
     'realworld7': RealWorld7,
     'realworld8': RealWorld8,
-    'realworld9': RealWorld9
+    'realworld9': RealWorld9,
+    'realworld10': RealWorld10
 };
 
 for (let d in demos) {
