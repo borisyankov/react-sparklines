@@ -43,9 +43,7 @@ export default class SparklinesLine extends React.Component {
       pointerEvents: 'auto',
     };
 
-    const tooltips = points.map((p, i) => {
-      console.log('tooltip', i, p);
-      
+    const tooltips = points.map((p, i) => {      
       return (
         <circle
           key={i}
