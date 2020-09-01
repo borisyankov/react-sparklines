@@ -1,5 +1,5 @@
 export min from './min';
-export max from './min';
+export max from './max';
 export mean from './mean';
 export avg from './mean';
 export midRange from './midRange';
