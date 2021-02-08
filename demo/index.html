@@ -1,89 +1,175 @@
 <html>
+
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet">
 
     <style>
+        pre .str,
+        code .str {
+            color: #e6db5a;
+        }
 
-        pre .str, code .str { color: #e6db5a; } /* string */
-        pre .kwd, code .kwd { color: #66d9ef; } /* keyword */
-        pre .com, code .com { color: #75715e; font-style: italic; } /* comment */
-        pre .typ, code .typ { color: #66d9ef; } /* type */
-        pre .lit, code .lit { color: #ae81ff; } /* literal */
-        pre .pun, code .pun { color: #fff; } /* punctuation */
-        pre .pln, code .pln { color: #fff; } /* plaintext */
-        pre .tag, code .tag { color: #f92672; } /* html/xml tag */
-        pre .atn, code .atn { color: #a6e22a; } /* html/xml attribute name */
-        pre .atv, code .atv { color: #e6db74; } /* html/xml attribute value */
-        pre .dec, code .dec { color: #ae81ff; } /* decimal */
+        /* string */
+        pre .kwd,
+        code .kwd {
+            color: #66d9ef;
+        }
 
-        pre.prettyprint, code.prettyprint {
-        	background-color: #272822;
-        	font-family: consolas, menlo, courier, monospace;
+        /* keyword */
+        pre .com,
+        code .com {
+            color: #75715e;
+            font-style: italic;
+        }
+
+        /* comment */
+        pre .typ,
+        code .typ {
+            color: #66d9ef;
+        }
+
+        /* type */
+        pre .lit,
+        code .lit {
+            color: #ae81ff;
+        }
+
+        /* literal */
+        pre .pun,
+        code .pun {
+            color: #fff;
+        }
+
+        /* punctuation */
+        pre .pln,
+        code .pln {
+            color: #fff;
+        }
+
+        /* plaintext */
+        pre .tag,
+        code .tag {
+            color: #f92672;
+        }
+
+        /* html/xml tag */
+        pre .atn,
+        code .atn {
+            color: #a6e22a;
+        }
+
+        /* html/xml attribute name */
+        pre .atv,
+        code .atv {
+            color: #e6db74;
+        }
+
+        /* html/xml attribute value */
+        pre .dec,
+        code .dec {
+            color: #ae81ff;
+        }
+
+        /* decimal */
+
+        pre.prettyprint,
+        code.prettyprint {
+            background-color: #272822;
+            font-family: consolas, menlo, courier, monospace;
         }
 
         pre.prettyprint {
             overflow: auto;
-        	width: 100%;
-        	margin: 1rem auto;
-        	padding: 0 1rem;
+            width: 100%;
+            margin: 1rem auto;
+            padding: 0 1rem;
             border: 0;
-        	white-space: pre-wrap;
+            white-space: pre-wrap;
             font-size: 13px;
         }
+
         * {
             box-sizing: border-box;
         }
+
         body {
-            margin: 0; font-family: roboto;
+            margin: 0;
+            font-family: roboto;
         }
+
         header {
-            color: white; background: #336aff;
+            color: white;
+            background: #336aff;
         }
+
         .content {
-            max-width: 1000px; margin: 0 auto; padding: 1rem .5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem .5rem;
         }
+
         header .content {
-            display: flex; justify-content: space-between; flex-wrap: wrap;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
-        h1, #headersparklines {
-             margin: 1rem 0;
+
+        h1,
+        #headersparklines {
+            margin: 1rem 0;
         }
+
         .c2 {
-            background: #272822; color: white;
+            background: #272822;
+            color: white;
         }
+
         .c3 {
-            background: slategray; color: white;
+            background: slategray;
+            color: white;
         }
-        h1, h2, h3 {
+
+        h1,
+        h2,
+        h3 {
             font-weight: 300;
         }
+
         h2 {
             color: #336aff;
         }
+
         .row {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
         }
-        .row > div {
+
+        .row>div {
             flex: 1;
             margin-right: 5px;
         }
-        .row > pre {
+
+        .row>pre {
             flex: 2;
         }
-        xmp { margin: 0; }
+
+        xmp {
+            margin: 0;
+        }
+
         a.button {
             background: white;
             float: right;
             margin-top: 1rem;
             padding: 1rem;
             color: #336aff;
-            box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.5);
+            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.5);
             text-decoration: none;
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="content">
@@ -311,6 +397,16 @@
             </xmp></pre>
         </div>
 
+        <div class="row">
+            <div id="referenceline7"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData}>
+    <SparklinesBars style={{ fill: 'slategray', fillOpacity: ".5" }} />
+    <SparklinesReferenceLine type="custom" value={0} />
+</Sparklines>
+            </xmp></pre>
+        </div>
+
         <h2>Normal Band</h2>
 
         <div class="row">
@@ -428,4 +524,5 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js"></script>
     <script>prettyPrint();</script>
 </body>
+
 </html>
