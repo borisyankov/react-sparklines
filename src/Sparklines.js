@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import SparklinesText from './SparklinesText';
 import SparklinesLine from './SparklinesLine';
 import SparklinesCurve from './SparklinesCurve';
@@ -8,6 +8,8 @@ import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
 import SparklinesNormalBand from './SparklinesNormalBand';
 import dataToPoints from './dataProcessing/dataToPoints';
+import arrayMin from './dataProcessing/min';
+import arrayMax from './dataProcessing/max';
 
 class Sparklines extends PureComponent {
 
@@ -35,14 +37,17 @@ class Sparklines extends PureComponent {
         margin: 2
     };
 
-    constructor (props) {
+    constructor(props) {
         super(props);
     }
 
     render() {
-        const {  data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, margin, style, max, min} = this.props;
+        const { data, limit, width, height, svgWidth, svgHeight, preserveAspectRatio, margin, style, max: forceMax, min: forceMin } = this.props;
 
         if (data.length === 0) return null;
+
+        const max = typeof forceMax === 'number' ? forceMax : arrayMax(data);
+        const min = typeof forceMin === 'number' ? forceMin : arrayMin(data);
 
         const points = dataToPoints({ data, limit, width, height, margin, max, min });
 
@@ -53,8 +58,8 @@ class Sparklines extends PureComponent {
         return (
             <svg {...svgOpts}>
                 {
-                    React.Children.map(this.props.children, function(child) {
-                        return React.cloneElement(child, { data, points, width, height, margin });
+                    React.Children.map(this.props.children, function (child) {
+                        return React.cloneElement(child, { data, points, width, height, margin, max, min });
                     })
                 }
             </svg>
