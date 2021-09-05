@@ -422,6 +422,17 @@
             </xmp></pre>
         </div>
 
+        <div class="row">
+            <div id="realworld10"></div>
+            <pre class="prettyprint"><xmp>
+<Sparklines data={sampleData} style={{background: '#ccc'}} margin={10} height={40}>
+        <SparklinesLine style={{ stroke: 'white', fill: 'none' }} />
+        <SparklinesInteractiveLayer style={{cursor: 'pointer'}} onMouseMove={this.onMouseMove} onMouseLeave={this.onMouseLeave}/>
+</Sparklines>
+<Tooltip showTooltip={showTooltip} x={x} y={y}/>
+            </xmp></pre>
+        </div>
+
     </div>
 
     <script src="demo.build.js"></script>
