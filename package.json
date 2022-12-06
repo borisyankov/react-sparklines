@@ -1,8 +1,9 @@
 {
-  "name": "react-sparklines",
-  "version": "1.7.0",
-  "description": "Beautiful and expressive Sparklines component for React ",
+  "name": "@jrwats/react-sparklines",
+  "version": "1.7.8",
+  "description": "Hacked up / forked Sparklines",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "directories": {
     "src": "src/"
   },
@@ -16,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/borisyankov/react-sparklines.git"
+    "url": "git+https://github.com/jrwats/react-sparklines.git"
   },
   "keywords": [
     "react",
@@ -27,12 +28,15 @@
     "visualization",
     "jsx"
   ],
-  "author": "Boris Yankov <borisyankov@gmail.com> (https://github.com/borisyankov)",
+  "authors": [
+    "Boris Yankov <borisyankov@gmail.com> (https://github.com/borisyankov)",
+    "jrwats"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/borisyankov/react-sparklines/issues"
+    "url": "https://github.com/jrwats/react-sparklines/issues"
   },
-  "homepage": "https://github.com/borisyankov/react-sparklines#readme",
+  "homepage": "https://github.com/jrwats/react-sparklines#readme",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.8.0",
