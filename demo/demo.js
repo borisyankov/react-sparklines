@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Sparklines, SparklinesBars, SparklinesLine, SparklinesCurve,  SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from '../src/Sparklines';
+import { Sparklines, SparklinesBars, SparklinesLine, SparklinesCurve, SparklinesNormalBand, SparklinesReferenceLine, SparklinesSpots } from '../src/Sparklines';
 
-function boxMullerRandom () {
+function boxMullerRandom() {
     let phase = false,
         x1, x2, w, z;
 
-    return (function() {
+    return (function () {
 
         if (phase = !phase) {
             do {
@@ -230,6 +230,12 @@ const ReferenceLine6 = () =>
         <SparklinesReferenceLine />
     </Sparklines>
 
+const ReferenceLine7 = () =>
+    <Sparklines data={sampleData}>
+        <SparklinesBars style={{ fill: 'slategray', fillOpacity: ".5" }} />
+        <SparklinesReferenceLine type="custom" value={0} />
+    </Sparklines>
+
 const NormalBand1 = () =>
     <Sparklines data={sampleData}>
         <SparklinesLine style={{ fill: "none" }} />
@@ -238,7 +244,7 @@ const NormalBand1 = () =>
 
 const NormalBand2 = () =>
     <Sparklines data={sampleData}>
-        <SparklinesLine style={{ fill: "none" }}/>
+        <SparklinesLine style={{ fill: "none" }} />
         <SparklinesNormalBand />
         <SparklinesReferenceLine type="mean" />
     </Sparklines>
@@ -250,7 +256,7 @@ const RealWorld1 = () =>
 
 const RealWorld2 = () =>
     <Sparklines data={sampleData100} svgWidth={200}>
-        <SparklinesLine style={{ stroke: "#2991c8", fill: "none"}} />
+        <SparklinesLine style={{ stroke: "#2991c8", fill: "none" }} />
         <SparklinesSpots />
         <SparklinesNormalBand style={{ fill: "#2991c8", fillOpacity: .1 }} />
     </Sparklines>
@@ -282,12 +288,12 @@ const RealWorld7 = () =>
     </Sparklines>
 
 const RealWorld8 = () =>
-    <Sparklines data={sampleData} style={{background: "#272727"}} margin={10} height={40}>
+    <Sparklines data={sampleData} style={{ background: "#272727" }} margin={10} height={40}>
         <SparklinesLine style={{ stroke: "none", fill: "#d2673a", fillOpacity: ".5" }} />
     </Sparklines>
 
 const RealWorld9 = () =>
-    <Sparklines data={sampleData} style={{background: "#00bdcc"}} margin={10} height={40}>
+    <Sparklines data={sampleData} style={{ background: "#00bdcc" }} margin={10} height={40}>
         <SparklinesLine style={{ stroke: "white", fill: "none" }} />
         <SparklinesReferenceLine style={{ stroke: 'white', strokeOpacity: .75, strokeDasharray: '2, 2' }} />
     </Sparklines>
@@ -318,6 +324,7 @@ const demos = {
     'referenceline4': ReferenceLine4,
     'referenceline5': ReferenceLine5,
     'referenceline6': ReferenceLine6,
+    'referenceline7': ReferenceLine7,
     'normalband1': NormalBand1,
     'normalband2': NormalBand2,
     'realworld1': RealWorld1,
