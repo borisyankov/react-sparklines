@@ -15,13 +15,15 @@ export default class SparklinesLine extends React.Component {
   render() {
     const { data, points, width, height, margin, color, style, onMouseMove } = this.props;
 
+    const fillInvert = style.fillInvert ? style.fillInvert : false
+    
     const linePoints = points.map(p => [p.x, p.y]).reduce((a, b) => a.concat(b));
 
     const closePolyPoints = [
       points[points.length - 1].x,
-      height - margin,
+      fillInvert ? margin : height - margin,
       margin,
-      height - margin,
+      fillInvert ? margin : height - margin,
       margin,
       points[0].y,
     ];
