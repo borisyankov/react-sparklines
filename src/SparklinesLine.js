@@ -9,7 +9,6 @@ export default class SparklinesLine extends React.Component {
 
   static defaultProps = {
     style: {},
-    onMouseMove: () => {},
   };
 
   render() {
@@ -51,8 +50,8 @@ export default class SparklinesLine extends React.Component {
           cy={p.y}
           r={2}
           style={fillStyle}
-          onMouseEnter={e => onMouseMove('enter', data[i], p)}
-          onClick={e => onMouseMove('click', data[i], p)}
+          onMouseEnter={onMouseMove ? e => onMouseMove('enter', data[i], p) : null}
+          onClick={onMouseMove ? e => onMouseMove('click', data[i], p) : null}
         />
       );
     });
