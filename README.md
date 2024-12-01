@@ -29,9 +29,10 @@ Import the Sparklines components that you need; for example to generate a simple
 
 ```
 import React from 'react';
-import { Sparklines } from 'react-sparklines';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 ...
 <Sparklines data={[5, 10, 5, 20, 8, 15]} limit={5} width={100} height={20} margin={5}>
+  <SparklinesLine />
 </Sparklines>
 ```
 
